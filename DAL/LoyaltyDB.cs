@@ -19,13 +19,14 @@ namespace DAL
         //    Database.SetInitializer(new LoyaltyDBInitializer());
         //}
 
-        public LoyaltyDB() : base(GetConnectionString("LoyaltyDB", "LocalDB"))//Descomentar para usar BD local de pruebas
+        public LoyaltyDB() : base(GetConnectionString("ccb_ef6", "LocalDB"))//Descomentar para usar BD local de pruebas
         {
             Database.SetInitializer(new LoyaltyDBInitializer());
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }

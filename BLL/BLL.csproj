@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AccountServices.cs" />
     <Compile Include="ApplicationSettingServices.cs" />
+    <Compile Include="ClienteServices.cs" />
     <Compile Include="CustomerServices.cs" />
     <Compile Include="RegexUtilities.cs" />
     <Compile Include="TransactionServices.cs" />

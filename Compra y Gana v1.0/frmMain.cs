@@ -116,5 +116,14 @@ namespace Compra_y_Gana_v1._0
             frmContactForm frm = new frmContactForm(frmContactForm.ContactReason.ErrorNotification);
             frm.ShowDialog();
         }
+
+        private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmListaCliente frm = new frmListaCliente
+            {
+                MdiParent = this
+            };
+            frm.Show();
+        }
     }
 }

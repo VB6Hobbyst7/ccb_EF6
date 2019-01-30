@@ -55,7 +55,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -68,6 +68,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
             this.pictureBox1.Location = new System.Drawing.Point(4, 183);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(82, 70);
@@ -82,7 +83,7 @@
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(175)))), ((int)(((byte)(240)))));
             this.label4.Location = new System.Drawing.Point(18, 223);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 37);
+            this.label4.Size = new System.Drawing.Size(21, 28);
             this.label4.TabIndex = 3;
             this.label4.Text = "I";
             // 
@@ -93,7 +94,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(175)))), ((int)(((byte)(240)))));
             this.label3.Location = new System.Drawing.Point(18, 187);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 37);
+            this.label3.Size = new System.Drawing.Size(27, 28);
             this.label3.TabIndex = 3;
             this.label3.Text = "G";
             // 
@@ -194,7 +195,7 @@
             this.lblOlvidePassword.ForeColor = System.Drawing.Color.White;
             this.lblOlvidePassword.Location = new System.Drawing.Point(144, 366);
             this.lblOlvidePassword.Name = "lblOlvidePassword";
-            this.lblOlvidePassword.Size = new System.Drawing.Size(160, 28);
+            this.lblOlvidePassword.Size = new System.Drawing.Size(128, 22);
             this.lblOlvidePassword.TabIndex = 2;
             this.lblOlvidePassword.Text = "Esuqseu a senha?";
             // 

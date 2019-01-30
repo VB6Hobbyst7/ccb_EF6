@@ -1,6 +1,6 @@
 ﻿namespace Compra_y_Gana_v1._0
 {
-    partial class frmCustomerList
+    partial class frmListaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -29,26 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomerList));
             this.label1 = new System.Windows.Forms.Label();
             this.txtTextToFind = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.gbList = new System.Windows.Forms.GroupBox();
-            this.dgvCustomers = new System.Windows.Forms.DataGridView();
-            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Names = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PaternalLastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaternalLastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cellphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nickname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Account = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CreatedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ModifiedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
             this.btnViewAccount = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -60,8 +45,14 @@
             this.btnExpense = new System.Windows.Forms.Button();
             this.btnPurchase = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contato_Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.gbAcciones.SuspendLayout();
             this.gbxTransactions.SuspendLayout();
             this.SuspendLayout();
@@ -71,17 +62,17 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.Size = new System.Drawing.Size(90, 17);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Busca: ";
+            this.label1.Text = "Búsqueda: ";
             // 
             // txtTextToFind
             // 
             this.txtTextToFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTextToFind.Location = new System.Drawing.Point(70, 30);
+            this.txtTextToFind.Location = new System.Drawing.Point(108, 30);
             this.txtTextToFind.Name = "txtTextToFind";
-            this.txtTextToFind.Size = new System.Drawing.Size(408, 23);
+            this.txtTextToFind.Size = new System.Drawing.Size(370, 23);
             this.txtTextToFind.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtTextToFind, "Criterios de busqueda: Nombres, Apellidos, Correo o Teléfonos");
             this.txtTextToFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTextToFind_KeyUp);
@@ -93,7 +84,6 @@
             this.btnFind.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnFind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFind.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFind.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.Image")));
             this.btnFind.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFind.Location = new System.Drawing.Point(484, 17);
             this.btnFind.Name = "btnFind";
@@ -108,7 +98,7 @@
             this.gbList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbList.Controls.Add(this.dgvCustomers);
+            this.gbList.Controls.Add(this.dgvClientes);
             this.gbList.Controls.Add(this.btnFind);
             this.gbList.Controls.Add(this.txtTextToFind);
             this.gbList.Controls.Add(this.label1);
@@ -120,160 +110,36 @@
             this.gbList.TabStop = false;
             this.gbList.Text = "Lista de clientes";
             // 
-            // dgvCustomers
+            // dgvClientes
             // 
-            this.dgvCustomers.AllowUserToAddRows = false;
-            this.dgvCustomers.AllowUserToDeleteRows = false;
-            this.dgvCustomers.AllowUserToOrderColumns = true;
-            this.dgvCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvClientes.AllowUserToAddRows = false;
+            this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.AllowUserToOrderColumns = true;
+            this.dgvClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CustomerID,
-            this.Names,
-            this.PaternalLastname,
-            this.MaternalLastname,
-            this.Address,
-            this.Phone,
-            this.Cellphone,
-            this.Email,
-            this.Nickname,
-            this.Username,
-            this.Password,
-            this.Account,
-            this.CreatedDate,
-            this.ModifiedDate});
-            this.dgvCustomers.Location = new System.Drawing.Point(15, 71);
-            this.dgvCustomers.MultiSelect = false;
-            this.dgvCustomers.Name = "dgvCustomers";
-            this.dgvCustomers.ReadOnly = true;
-            this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCustomers.Size = new System.Drawing.Size(613, 429);
-            this.dgvCustomers.TabIndex = 17;
-            // 
-            // CustomerID
-            // 
-            this.CustomerID.DataPropertyName = "CustomerID";
-            this.CustomerID.HeaderText = "CustomerID";
-            this.CustomerID.Name = "CustomerID";
-            this.CustomerID.ReadOnly = true;
-            this.CustomerID.Visible = false;
-            this.CustomerID.Width = 116;
-            // 
-            // Names
-            // 
-            this.Names.DataPropertyName = "Names";
-            this.Names.HeaderText = "Nombre (s)";
-            this.Names.Name = "Names";
-            this.Names.ReadOnly = true;
-            this.Names.Width = 105;
-            // 
-            // PaternalLastname
-            // 
-            this.PaternalLastname.DataPropertyName = "PaternalLastname";
-            this.PaternalLastname.HeaderText = "Apellido paterno";
-            this.PaternalLastname.Name = "PaternalLastname";
-            this.PaternalLastname.ReadOnly = true;
-            this.PaternalLastname.Width = 139;
-            // 
-            // MaternalLastname
-            // 
-            this.MaternalLastname.DataPropertyName = "MaternalLastname";
-            this.MaternalLastname.HeaderText = "Apellido materno";
-            this.MaternalLastname.Name = "MaternalLastname";
-            this.MaternalLastname.ReadOnly = true;
-            this.MaternalLastname.Width = 141;
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "Address";
-            this.Address.HeaderText = "Dirección";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            this.Address.Width = 101;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "Teléfono";
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            this.Phone.Width = 97;
-            // 
-            // Cellphone
-            // 
-            this.Cellphone.DataPropertyName = "Cellphone";
-            this.Cellphone.HeaderText = "Celular";
-            this.Cellphone.Name = "Cellphone";
-            this.Cellphone.ReadOnly = true;
-            this.Cellphone.Width = 84;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Correo electrónico";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 152;
-            // 
-            // Nickname
-            // 
-            this.Nickname.DataPropertyName = "Nickname";
-            this.Nickname.HeaderText = "Alias";
-            this.Nickname.Name = "Nickname";
-            this.Nickname.ReadOnly = true;
-            this.Nickname.Width = 68;
-            // 
-            // Username
-            // 
-            this.Username.DataPropertyName = "Username";
-            this.Username.HeaderText = "Usuario";
-            this.Username.Name = "Username";
-            this.Username.ReadOnly = true;
-            this.Username.Width = 89;
-            // 
-            // Password
-            // 
-            this.Password.DataPropertyName = "Password";
-            this.Password.HeaderText = "Contraseña";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            this.Password.Visible = false;
-            this.Password.Width = 116;
-            // 
-            // Account
-            // 
-            this.Account.DataPropertyName = "Account";
-            this.Account.HeaderText = "Account";
-            this.Account.Name = "Account";
-            this.Account.ReadOnly = true;
-            this.Account.Visible = false;
-            this.Account.Width = 91;
-            // 
-            // CreatedDate
-            // 
-            this.CreatedDate.DataPropertyName = "CreatedDate";
-            this.CreatedDate.HeaderText = "Fecha de alta";
-            this.CreatedDate.Name = "CreatedDate";
-            this.CreatedDate.ReadOnly = true;
-            this.CreatedDate.Width = 96;
-            // 
-            // ModifiedDate
-            // 
-            this.ModifiedDate.DataPropertyName = "ModifiedDate";
-            this.ModifiedDate.HeaderText = "Fecha Modificado";
-            this.ModifiedDate.Name = "ModifiedDate";
-            this.ModifiedDate.ReadOnly = true;
-            this.ModifiedDate.Width = 146;
+            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Nome,
+            this.Contato_Nome,
+            this.Telefone1,
+            this.Telefone2,
+            this.Email});
+            this.dgvClientes.Location = new System.Drawing.Point(15, 71);
+            this.dgvClientes.MultiSelect = false;
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(613, 429);
+            this.dgvClientes.TabIndex = 17;
             // 
             // btnViewAccount
             // 
             this.btnViewAccount.BackColor = System.Drawing.Color.LimeGreen;
             this.btnViewAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewAccount.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewAccount.Image = ((System.Drawing.Image)(resources.GetObject("btnViewAccount.Image")));
             this.btnViewAccount.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnViewAccount.Location = new System.Drawing.Point(12, 129);
             this.btnViewAccount.Name = "btnViewAccount";
@@ -289,7 +155,6 @@
             this.btnNew.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnNew.Location = new System.Drawing.Point(12, 23);
             this.btnNew.Name = "btnNew";
@@ -304,7 +169,6 @@
             this.btnEdit.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEdit.Location = new System.Drawing.Point(12, 76);
             this.btnEdit.Name = "btnEdit";
@@ -321,7 +185,6 @@
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClose.Location = new System.Drawing.Point(12, 452);
             this.btnClose.Name = "btnClose";
@@ -379,7 +242,6 @@
             this.btnWithdrawal.BackColor = System.Drawing.Color.Tomato;
             this.btnWithdrawal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWithdrawal.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWithdrawal.Image = ((System.Drawing.Image)(resources.GetObject("btnWithdrawal.Image")));
             this.btnWithdrawal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnWithdrawal.Location = new System.Drawing.Point(6, 139);
             this.btnWithdrawal.Name = "btnWithdrawal";
@@ -394,7 +256,6 @@
             this.btnExpense.BackColor = System.Drawing.Color.RosyBrown;
             this.btnExpense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExpense.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExpense.Image = ((System.Drawing.Image)(resources.GetObject("btnExpense.Image")));
             this.btnExpense.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnExpense.Location = new System.Drawing.Point(6, 85);
             this.btnExpense.Name = "btnExpense";
@@ -409,7 +270,6 @@
             this.btnPurchase.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPurchase.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPurchase.Image = ((System.Drawing.Image)(resources.GetObject("btnPurchase.Image")));
             this.btnPurchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPurchase.Location = new System.Drawing.Point(6, 31);
             this.btnPurchase.Name = "btnPurchase";
@@ -419,7 +279,56 @@
             this.btnPurchase.UseVisualStyleBackColor = false;
             this.btnPurchase.Click += new System.EventHandler(this.btnPurchase_Click);
             // 
-            // frmCustomerList
+            // ID
+            // 
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 46;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 74;
+            // 
+            // Contato_Nome
+            // 
+            this.Contato_Nome.DataPropertyName = "Contato_Nome";
+            this.Contato_Nome.HeaderText = "Contato_nome";
+            this.Contato_Nome.Name = "Contato_Nome";
+            this.Contato_Nome.ReadOnly = true;
+            this.Contato_Nome.Width = 137;
+            // 
+            // Telefone1
+            // 
+            this.Telefone1.DataPropertyName = "Telefone1";
+            this.Telefone1.HeaderText = "Telefone";
+            this.Telefone1.Name = "Telefone1";
+            this.Telefone1.ReadOnly = true;
+            this.Telefone1.Width = 97;
+            // 
+            // Telefone2
+            // 
+            this.Telefone2.DataPropertyName = "Telefone2";
+            this.Telefone2.HeaderText = "Celular";
+            this.Telefone2.Name = "Telefone2";
+            this.Telefone2.ReadOnly = true;
+            this.Telefone2.Width = 84;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 72;
+            // 
+            // frmListaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -429,14 +338,13 @@
             this.Controls.Add(this.gbAcciones);
             this.Controls.Add(this.gbList);
             this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(825, 545);
-            this.Name = "frmCustomerList";
+            this.Name = "frmListaCliente";
             this.Text = "Lista de clientes";
-            this.Load += new System.EventHandler(this.frmCustomerList_Load);
+            this.Load += new System.EventHandler(this.frmListaCliente_Load);
             this.gbList.ResumeLayout(false);
             this.gbList.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.gbAcciones.ResumeLayout(false);
             this.gbxTransactions.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -453,26 +361,18 @@
         protected System.Windows.Forms.Button btnClose;
         protected System.Windows.Forms.GroupBox gbAcciones;
         protected System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvCustomers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Names;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PaternalLastname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaternalLastname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cellphone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nickname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Account;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CreatedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ModifiedDate;
+        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.GroupBox gbxTransactions;
         protected System.Windows.Forms.Button btnWithdrawal;
         protected System.Windows.Forms.Button btnExpense;
         protected System.Windows.Forms.Button btnPurchase;
         protected System.Windows.Forms.Button btnAdjustment;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contato_Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefone1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefone2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
     }
 }

@@ -69,6 +69,34 @@
     <Compile Include="Migrations\201901291820298_Initial.Designer.cs">
       <DependentUpon>201901291820298_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901292200576_CreateCliente.cs" />
+    <Compile Include="Migrations\201901292200576_CreateCliente.Designer.cs">
+      <DependentUpon>201901292200576_CreateCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901292205454_CreateCliente1.cs" />
+    <Compile Include="Migrations\201901292205454_CreateCliente1.Designer.cs">
+      <DependentUpon>201901292205454_CreateCliente1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901292324003_CreateCliente2.cs" />
+    <Compile Include="Migrations\201901292324003_CreateCliente2.Designer.cs">
+      <DependentUpon>201901292324003_CreateCliente2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901292325224_CreateCliente3.cs" />
+    <Compile Include="Migrations\201901292325224_CreateCliente3.Designer.cs">
+      <DependentUpon>201901292325224_CreateCliente3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901292334355_reiniciar.cs" />
+    <Compile Include="Migrations\201901292334355_reiniciar.Designer.cs">
+      <DependentUpon>201901292334355_reiniciar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901292336268_reiniciar1.cs" />
+    <Compile Include="Migrations\201901292336268_reiniciar1.Designer.cs">
+      <DependentUpon>201901292336268_reiniciar1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901300059295_reiniciar2.cs" />
+    <Compile Include="Migrations\201901300059295_reiniciar2.Designer.cs">
+      <DependentUpon>201901300059295_reiniciar2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -85,6 +113,27 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901291820298_Initial.resx">
       <DependentUpon>201901291820298_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901292200576_CreateCliente.resx">
+      <DependentUpon>201901292200576_CreateCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901292205454_CreateCliente1.resx">
+      <DependentUpon>201901292205454_CreateCliente1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901292324003_CreateCliente2.resx">
+      <DependentUpon>201901292324003_CreateCliente2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901292325224_CreateCliente3.resx">
+      <DependentUpon>201901292325224_CreateCliente3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901292334355_reiniciar.resx">
+      <DependentUpon>201901292334355_reiniciar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901292336268_reiniciar1.resx">
+      <DependentUpon>201901292336268_reiniciar1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901300059295_reiniciar2.resx">
+      <DependentUpon>201901300059295_reiniciar2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
