@@ -63,18 +63,18 @@
             this.label1.Location = new System.Drawing.Point(16, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 20);
+            this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Búsqueda: ";
+            this.label1.Text = "Busca: ";
             // 
             // txtTextToFind
             // 
             this.txtTextToFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTextToFind.Location = new System.Drawing.Point(144, 37);
+            this.txtTextToFind.Location = new System.Drawing.Point(82, 38);
             this.txtTextToFind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTextToFind.Name = "txtTextToFind";
-            this.txtTextToFind.Size = new System.Drawing.Size(492, 26);
+            this.txtTextToFind.Size = new System.Drawing.Size(555, 26);
             this.txtTextToFind.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtTextToFind, "Criterios de busqueda: Nombres, Apellidos, Correo o Teléfonos");
             this.txtTextToFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTextToFind_KeyUp);
@@ -204,7 +204,7 @@
             this.btnViewAccount.Name = "btnViewAccount";
             this.btnViewAccount.Size = new System.Drawing.Size(192, 59);
             this.btnViewAccount.TabIndex = 12;
-            this.btnViewAccount.Text = "Ver Cuenta";
+            this.btnViewAccount.Text = "Ver Conta";
             this.btnViewAccount.UseVisualStyleBackColor = false;
             this.btnViewAccount.Click += new System.EventHandler(this.btnViewAccount_Click);
             // 

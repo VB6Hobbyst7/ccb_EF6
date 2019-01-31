@@ -32,47 +32,6 @@ namespace ccb_ef6
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
-            if (!ValidateInput())
-            {
-                return;
-            }
-
-            //Registrar cliente en la BD
-            if (cliente == null)
-            {
-                IsNewCliente = true;
-                cliente = new Cliente();
-
-                AssignDataFromTextBox(cliente);
-
-                try
-                {
-                    //Creo al cliente e inmediatamente creo su cuenta correspondiente
-                    BLL.ClienteServices.AddNew(cliente);
-
-                    MessageBox.Show("Cliente agregado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-            else//Actualizar cliente en la BD
-            {
-                try
-                {
-                    IsNewCliente = false;
-                    AssignDataFromTextBox(cliente);
-                    BLL.ClienteServices.Update(cliente);
-                    MessageBox.Show("Cliente actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
 
         private bool ValidateInput()
@@ -132,6 +91,52 @@ namespace ccb_ef6
 
         private void frmNewOrUpdateCliente_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void btnAddOrUpdate_Click_1(object sender, EventArgs e)
+        {
+            if (!ValidateInput())
+            {
+                return;
+            }
+
+            //Registrar cliente en la BD
+            if (cliente == null)
+            {
+                IsNewCliente = true;
+                cliente = new Cliente();
+
+                AssignDataFromTextBox(cliente);
+
+                try
+                {
+                    //Creo al cliente e inmediatamente creo su cuenta correspondiente
+                    BLL.ClienteServices.AddNew(cliente);
+
+                    MessageBox.Show("Cliente agregado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else//Actualizar cliente en la BD
+            {
+                try
+                {
+                    IsNewCliente = false;
+                    AssignDataFromTextBox(cliente);
+                    BLL.ClienteServices.Update(cliente);
+                    MessageBox.Show("Cliente actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
 
         }
     }

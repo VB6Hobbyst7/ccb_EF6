@@ -135,17 +135,17 @@
   </data>
   <data name="btnLogin.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAR8AAAApCAYAAAAMAy1JAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIUSURBVHhe7d29jgFRHIbxvV2NQqPRaDUKjWYKhRsQnYg7
-        EMUoKDSiQyQ+4yP/zTsz7Iohu+HMaZ5f8jaytnzCzO6Zr1wuZ4wxlvWID2PMy4gPY8zLiA9jzMuID2PM
-        y4gPY8zLXsYnn89bEAQWhqFNp1Nbr9cGAM+oEWrFaDSyRqNhhUIhtS3a0/jUajXbbDa23++TXwsAf3c4
-        HGy321mz2UxtzEN8VKrBYBC9CQDepZZMJhMrFot3rbmLj8KzWCzsfD4nbwOAz1gul1YqldLjo088hAeA
-        K7oe9BAfXePhqxYAl3QdqN1u/8RHd7V0cRkAXFNryuVyHB/dElORAMA1XdrpdrtxfHRPHgCyMp/P4/is
-        VqvkJQBw73K5xPE5Ho/JSwCQjSg+AJA14gPAC+IDwAviA8AL4gPAC+IDwAviA8AL4gPAiyg++mtDAMhS
-        FB/OZgaQtSg+OuIQALKi/yeN4tNqtex0OiUvA4Bb/X4/jo/OVd1ut8nLAOCOTkyt1+txfLROp8OBYgCc
-        0kFiw+Hw/gxnHaU6m82SHwGAz9PNreuDBG/x0XSuKmc5A3BBbalWq7fe3MVHq1Qq0bO7OGAMwCfoq5Y+
-        8fwOj/YQH01fwXq9HhehAbxFj1sfj8epz2xPjc91KpVuifG8dgD/oW9OYRhaEASpbdFexocxxlyN+DDG
-        vIz4MMa8jPgwxryM+DDGPCxn3zx8l+8t28RZAAAAAElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAAREAAAApCAYAAAASyh36AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIQSURBVHhe7d29jgFRHIbxvd1pFBqNRqtRaDQKhRsQnYg7
+        EAUFhUZ0iMRnfOS/ec8Ma2IwnG49v+RpZHe7fcPM7pmfIAiMiOjTGBEi8ooRISKvGBEi8ooRISKvGBEi
+        8urpiGQyGatWq9bv920ymdhqtTIA/59+1/U7PxwOrVarWTabTdwI9XBEyuWyrddr2+120Y8F8I32+71t
+        t1ur1+uJW3E3IlqcXq/nvgkALrQJ4/HYcrlcbDNiI6IBmc/ndjqdom8DgLjFYmH5fD55RPQOhAEB8Iqu
+        l9yNiK6B8BEGQBq6TtJsNv9GRHdhdBEVANLSZhQKhXBEdAtHywIAaenSR7vdDkdE94IB4F2z2SwckeVy
+        Gb0EAOmdz+dwRA6HQ/QSALzHjQgAfIoRAeCFEQHghREB4IURAeCFEQHghREB4IURAeDFjYj+6gwAPuFG
+        hLNTAXzKjYiOPAOAd+n/7tyINBoNOx6P0csAkE632w1HROclbjab6GUAeE0nIVYqlXBEVKvV4mAiAKno
+        QKLBYBA/Y1VHJE6n0+hLAOAx3Yy5PNDqOiJK5yVy1iqAZ7QRpVLpuhuxEVHFYtE9e4aDigDc0kcYvQO5
+        HRB1NyJKH206nQ4XWwE4epzuaDRKfCZv4ohc0uLoFg7P4wW+kz6R6IH+erB/0kaopyNCRPQqRoSIvGJE
+        iMgrRoSIvGJEiMijwH4Bu5K3I/sCqHEAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="pbLogo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

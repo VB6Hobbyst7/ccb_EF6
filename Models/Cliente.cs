@@ -50,7 +50,7 @@ namespace Models
         [MaxLength(15)]
         public string Telefone3 { get; set; }
 
-        [StringLength(60, ErrorMessage = "Longitud máxima del correo debe es {0} caracteres")]
+        [StringLength(60, ErrorMessage = "Tamanho máxiomo do email é {0} caracteres")]
         public string Email { get; set; }
 
         [MaxLength(512)]
@@ -61,7 +61,7 @@ namespace Models
 
         public override string ToString()
         {
-            return string.Format($"({Nome}) {Contato_Nome}");
+            return string.Format($"({Nome}) {Contato_Nome} {Telefone1} {Email}");
         }
     }
 }

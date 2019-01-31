@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewOrUpdateCliente));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtContatoFuncao = new System.Windows.Forms.TextBox();
@@ -49,11 +50,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.btnAddOrUpdate = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.txtTelefone3 = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnAddOrUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -218,32 +219,6 @@
             this.label10.TabIndex = 11;
             this.label10.Text = "Email:";
             // 
-            // btnAddOrUpdate
-            // 
-            this.btnAddOrUpdate.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAddOrUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddOrUpdate.Location = new System.Drawing.Point(538, 302);
-            this.btnAddOrUpdate.Name = "btnAddOrUpdate";
-            this.btnAddOrUpdate.Size = new System.Drawing.Size(87, 66);
-            this.btnAddOrUpdate.TabIndex = 20;
-            this.btnAddOrUpdate.Text = "Guardar";
-            this.btnAddOrUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddOrUpdate.UseVisualStyleBackColor = false;
-            this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Location = new System.Drawing.Point(643, 302);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(87, 66);
-            this.btnClose.TabIndex = 21;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnClose.UseVisualStyleBackColor = false;
-            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -264,14 +239,42 @@
             this.txtTelefone3.Size = new System.Drawing.Size(220, 23);
             this.txtTelefone3.TabIndex = 17;
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Red;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(646, 302);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(87, 66);
+            this.btnClose.TabIndex = 22;
+            this.btnClose.Text = "Fechar";
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnClose.UseVisualStyleBackColor = false;
+            // 
+            // btnAddOrUpdate
+            // 
+            this.btnAddOrUpdate.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnAddOrUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddOrUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOrUpdate.Image")));
+            this.btnAddOrUpdate.Location = new System.Drawing.Point(541, 302);
+            this.btnAddOrUpdate.Name = "btnAddOrUpdate";
+            this.btnAddOrUpdate.Size = new System.Drawing.Size(87, 66);
+            this.btnAddOrUpdate.TabIndex = 23;
+            this.btnAddOrUpdate.Text = "Gravar";
+            this.btnAddOrUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAddOrUpdate.UseVisualStyleBackColor = false;
+            this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click_1);
+            // 
             // frmNewOrUpdateCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(748, 372);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddOrUpdate);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtCidade);
@@ -332,10 +335,10 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnAddOrUpdate;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox txtTelefone3;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnAddOrUpdate;
     }
 }

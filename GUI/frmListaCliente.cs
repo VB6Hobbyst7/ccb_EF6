@@ -102,6 +102,23 @@ namespace ccb_ef6
 
             dgvClientes.DataSource = ClienteList;
 
+            foreach (DataGridViewColumn col in dgvClientes.Columns)
+            {
+                switch (col.Name)
+                {
+                    case "Nome":
+                    case "Contato_Nome":
+                    case "Telefone1":
+                    case "Telefone2":
+                    case "Email":
+                        col.Visible = true;
+                        break;
+                    default:
+                        col.Visible = false;
+                        break;
+                }
+            }
+
             if (ClienteList.Count == 0)
             {
                 DisableButtonsWhenNoCustomers(true);
@@ -129,11 +146,8 @@ namespace ccb_ef6
                 this.WindowState = FormWindowState.Maximized;
                 this.Show();
             };
-
             frm.ShowDialog();
-
         }
-
 
         private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

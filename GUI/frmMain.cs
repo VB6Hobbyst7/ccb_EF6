@@ -77,7 +77,7 @@ namespace ccb_ef6
 
         private void ClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCustomerList frm = new frmCustomerList
+            frmListaCliente frm = new frmListaCliente
             {
                 MdiParent = this
             };
@@ -119,7 +119,7 @@ namespace ccb_ef6
 
         private void clientesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmListaCliente frm = new frmListaCliente
+            frmCustomerList frm = new frmCustomerList
             {
                 MdiParent = this
             };

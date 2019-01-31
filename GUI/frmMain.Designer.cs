@@ -113,7 +113,7 @@
             // 
             this.clientesToolStripMenuItem1.Name = "clientesToolStripMenuItem1";
             this.clientesToolStripMenuItem1.Size = new System.Drawing.Size(181, 26);
-            this.clientesToolStripMenuItem1.Text = "Clientes";
+            this.clientesToolStripMenuItem1.Text = "Customers";
             this.clientesToolStripMenuItem1.Click += new System.EventHandler(this.clientesToolStripMenuItem1_Click);
             // 
             // toolStripSeparator5
@@ -334,7 +334,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1093, 724);
             this.Name = "frmMain";
             this.Text = "CCB - Controle Computadorizado de Bordados";

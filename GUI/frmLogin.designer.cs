@@ -108,9 +108,9 @@
             // pbLogo
             // 
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(155, 16);
+            this.pbLogo.Location = new System.Drawing.Point(155, 19);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(137, 131);
+            this.pbLogo.Size = new System.Drawing.Size(134, 131);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
@@ -127,10 +127,10 @@
             this.txtUsuario.LineIdleColor = System.Drawing.Color.White;
             this.txtUsuario.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.txtUsuario.LineThickness = 3;
-            this.txtUsuario.Location = new System.Drawing.Point(95, 182);
+            this.txtUsuario.Location = new System.Drawing.Point(94, 205);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(287, 30);
+            this.txtUsuario.Size = new System.Drawing.Size(273, 30);
             this.txtUsuario.TabIndex = 4;
             this.txtUsuario.Text = "admin";
             this.txtUsuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -154,7 +154,7 @@
             this.txtPassword.Location = new System.Drawing.Point(95, 243);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(287, 30);
+            this.txtPassword.Size = new System.Drawing.Size(273, 30);
             this.txtPassword.TabIndex = 5;
             this.txtPassword.Text = "1234";
             this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -183,7 +183,7 @@
             this.btnLogin.Location = new System.Drawing.Point(95, 309);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(5);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(287, 41);
+            this.btnLogin.Size = new System.Drawing.Size(273, 41);
             this.btnLogin.TabIndex = 6;
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -193,7 +193,7 @@
             this.lblOlvidePassword.AutoSize = true;
             this.lblOlvidePassword.Font = new System.Drawing.Font("Monotype Corsiva", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblOlvidePassword.ForeColor = System.Drawing.Color.White;
-            this.lblOlvidePassword.Location = new System.Drawing.Point(144, 366);
+            this.lblOlvidePassword.Location = new System.Drawing.Point(159, 366);
             this.lblOlvidePassword.Name = "lblOlvidePassword";
             this.lblOlvidePassword.Size = new System.Drawing.Size(160, 28);
             this.lblOlvidePassword.TabIndex = 2;
@@ -217,7 +217,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.label1.Location = new System.Drawing.Point(95, 153);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(328, 35);
+            this.label1.Size = new System.Drawing.Size(287, 35);
             this.label1.TabIndex = 3;
             this.label1.Text = "Se não houve modificação na aplicação, os dados padrão sao: Usuário: admin e Senh" +
     "a: 1234";
