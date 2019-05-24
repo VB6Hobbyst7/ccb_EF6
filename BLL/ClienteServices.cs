@@ -10,23 +10,28 @@ namespace BLL
 {
     public static class ClienteServices
     {
-        public static void AddNewCustomer(string Nombre, string ApellidoPaterno, string ApellidoMaterno, string Direccion, string Telefono,
-            string Celular, string Correo, string Usuario, string Contrasena)
+        public static void AddNewCliente(string Nome, string Contato_Funcao, string Contato_Nome, string Cgc_Cpf, string Inscr_Estadual,
+            string Endereco, string Cidade, string Estado, string Cep, string Telefone1, string Telefone2, string Telefone3,
+            string Email, string Obs, decimal Preco_Base)
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                db.Customers.Add(new Customer
+                db.Clientes.Add(new Cliente
                 {
-                    Address = Direccion,
-                    Cellphone = Celular,
-                    Email = Correo,
-                    MaternalLastname = ApellidoMaterno,
-                    Names = Nombre,
-                    Username = Usuario,
-                    Password = Contrasena,
-                    PaternalLastname = ApellidoPaterno,
-                    Phone = Telefono,
-                    CreatedDate = DateTime.Now
+                    Nome =  Nome,
+                    Contato_Funcao = Contato_Funcao,
+                    Cgc_Cpf = Cgc_Cpf,
+                    Inscr_Estadual = Inscr_Estadual,
+                    Endereco = Endereco,
+                    Cidade = Cidade,
+                    Estado = Estado,
+                    Cep = Cep,
+                    Telefone1 = Telefone1,
+                    Telefone2 = Telefone2,
+                    Telefone3 = Telefone3,
+                    Email = Email,
+                    Obs = Obs,
+                    Preco_Base = Preco_Base
                 });
             }
         }

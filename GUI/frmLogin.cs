@@ -69,7 +69,7 @@ namespace ccb_ef6
                     if (UserExists != null)
                     {
                         //MessageBox.Show("Bienvenido al sistema", "Autenticación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        Properties.Settings.Default.UserID = UserExists.UserID;
+                        GUI.Properties.Settings.Default.UserID = UserExists.UserID;
                         this.Close();
                     }
                     else

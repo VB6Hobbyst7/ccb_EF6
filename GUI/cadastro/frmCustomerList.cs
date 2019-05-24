@@ -41,7 +41,7 @@ namespace ccb_ef6
                 DisableButtonsWhenNoCustomers(false);
             }
 
-            btnWithdrawal.Visible = Properties.Settings.Default.AllowCashRequest;
+            btnWithdrawal.Visible = GUI.Properties.Settings.Default.AllowCashRequest;
 
             this.WindowState = FormWindowState.Maximized;
         }

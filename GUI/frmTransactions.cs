@@ -63,7 +63,7 @@ namespace ccb_ef6
             transaction.Amount = nudAmount.Value;
             transaction.Description = txtDescription.Text;
             transaction.Notes = txtNotes.Text;
-            transaction.UserID = Properties.Settings.Default.UserID;
+            transaction.UserID = GUI.Properties.Settings.Default.UserID;
             transaction.TransactionType = (TransactionType)cbxTransactionType.SelectedIndex;
 
             try
@@ -76,13 +76,13 @@ namespace ccb_ef6
                 {
                     case TransactionType.Purchase:
                         BLL.TransactionServices.AddNew(transaction);
-                        decimal PercentagePoints = Properties.Settings.Default.PercentagePoints / 100;
+                        decimal PercentagePoints = GUI.Properties.Settings.Default.PercentagePoints / 100;
                         decimal AmountOfPointsToDeposit = transaction.Amount * PercentagePoints;
                         BLL.AccountServices.Deposit(account, AmountOfPointsToDeposit);                        
                         break;
                     case TransactionType.Expense:
                     case TransactionType.Withdrawal:
-                        decimal AmountOfPointsToWithdraw = transaction.Amount * Properties.Settings.Default.PointValueCash * 100;
+                        decimal AmountOfPointsToWithdraw = transaction.Amount * GUI.Properties.Settings.Default.PointValueCash * 100;
                         BLL.AccountServices.Withdraw(account, AmountOfPointsToWithdraw);                                                                        
                         BLL.TransactionServices.AddNew(transaction);
                         break;
@@ -142,11 +142,11 @@ namespace ccb_ef6
                         lblPointsInformation.Text = $"Tiene {currentPoints} puntos, con esta compra acumula ";
                         break;
                     case TransactionType.Expense:
-                        currentMoney = account.CurrentPointsBalance * Properties.Settings.Default.PointValueCash;
+                        currentMoney = account.CurrentPointsBalance * GUI.Properties.Settings.Default.PointValueCash;
                         lblPointsInformation.Text = $"Monto disponible para gasto ${currentMoney}";
                         break;
                     case TransactionType.Withdrawal:
-                        currentMoney = account.CurrentPointsBalance * Properties.Settings.Default.PointValueCash;
+                        currentMoney = account.CurrentPointsBalance * GUI.Properties.Settings.Default.PointValueCash;
                         lblPointsInformation.Text = $"Monto disponible para retiro ${currentMoney}";
                         break;
                     case TransactionType.Adjustment:
@@ -165,7 +165,7 @@ namespace ccb_ef6
         {
             if (cbxTransactionType.SelectedIndex == (int)TransactionType.Purchase)
             {
-                lblPointsInformation.Text = $"Tiene {currentPoints} puntos, con esta compra acumula {(nudAmount.Value * Properties.Settings.Default.PercentagePoints / 100).ToString()} puntos";
+                lblPointsInformation.Text = $"Tiene {currentPoints} puntos, con esta compra acumula {(nudAmount.Value * GUI.Properties.Settings.Default.PercentagePoints / 100).ToString()} puntos";
             }
         }        
     }

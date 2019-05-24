@@ -62,7 +62,7 @@ namespace ccb_ef6
             frmLogin  frm = new frmLogin();
             frm.ShowDialog();
 
-            if (Properties.Settings.Default.UserID == 0)
+            if (GUI.Properties.Settings.Default.UserID == 0)
             {
                 Application.Exit();
             }
@@ -70,9 +70,9 @@ namespace ccb_ef6
             //Cargar configuración del sistema de lealtad para las transacciones
             ApplicationSetting setting = BLL.ApplicationSettingServices.GetDefaultApplicationSetting();
 
-            Properties.Settings.Default.PercentagePoints = setting.PercentagePoints;
-            Properties.Settings.Default.PointValueCash = setting.PointValueCash;
-            Properties.Settings.Default.AllowCashRequest = setting.AllowCashRequest;
+            GUI.Properties.Settings.Default.PercentagePoints = setting.PercentagePoints;
+            GUI.Properties.Settings.Default.PointValueCash = setting.PointValueCash;
+            GUI.Properties.Settings.Default.AllowCashRequest = setting.AllowCashRequest;
         }
 
         private void ClientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace ccb_ef6
         {
             frmApplicationSettings frm = new frmApplicationSettings();
 
-            frm.UserLoguedID = Properties.Settings.Default.UserID;
+            frm.UserLoguedID = GUI.Properties.Settings.Default.UserID;
             
             frm.ShowDialog();
         }

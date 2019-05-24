@@ -51,9 +51,9 @@ namespace ccb_ef6
             try
             {
                 BLL.ApplicationSettingServices.Update(setting);
-                Properties.Settings.Default.PercentagePoints = setting.PercentagePoints;
-                Properties.Settings.Default.PointValueCash = setting.PointValueCash;
-                Properties.Settings.Default.AllowCashRequest = setting.AllowCashRequest;
+                GUI.Properties.Settings.Default.PercentagePoints = setting.PercentagePoints;
+                GUI.Properties.Settings.Default.PointValueCash = setting.PointValueCash;
+                GUI.Properties.Settings.Default.AllowCashRequest = setting.AllowCashRequest;
                 MessageBox.Show("Configuración actualizada satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)

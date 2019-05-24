@@ -26,13 +26,11 @@ namespace ccb_ef6
         private void DisableButtonsWhenNoCustomers(bool v)
         {
             btnEdit.Enabled = !v;
-            btnViewAccount.Enabled = !v;
-            gbxTransactions.Enabled = !v;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmNewOrUpdateCustomer frm = new frmNewOrUpdateCustomer();
+            frmNewOrUpdateCliente frm = new frmNewOrUpdateCliente();
 
             frm.FormClosed += (s, ev) =>
             {
@@ -47,14 +45,6 @@ namespace ccb_ef6
         private void btnEdit_Click(object sender, EventArgs e)
         {
             editaCliente();
-        }
-
-        private void btnViewAccount_Click(object sender, EventArgs e)
-        {
-            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["CustomerID"].Value.ToString()));
-
-            frmCustomerAccount frm = new frmCustomerAccount(customer);
-            frm.ShowDialog();
         }
 
         private void btnPurchase_Click(object sender, EventArgs e)
@@ -128,17 +118,20 @@ namespace ccb_ef6
                 DisableButtonsWhenNoCustomers(false);
             }
 
-            btnWithdrawal.Visible = Properties.Settings.Default.AllowCashRequest;
+            //btnWithdrawal.Visible = Properties.Settings.Default.AllowCashRequest;
 
             this.WindowState = FormWindowState.Maximized;
         }
 
         private void editaCliente()
         {
+            int LinhaPrimeira, LinhaAtual;
             Cliente cliente = BLL.ClienteServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["id"].Value.ToString()));
 
             frmNewOrUpdateCliente frm = new frmNewOrUpdateCliente(cliente);
             frm.Text = "Editar cliente";
+
+
 
             frm.FormClosed += (s, ev) =>
             {
@@ -146,7 +139,14 @@ namespace ccb_ef6
                 this.WindowState = FormWindowState.Maximized;
                 this.Show();
             };
+            LinhaPrimeira = dgvClientes.FirstDisplayedScrollingRowIndex;
+            LinhaAtual = dgvClientes.CurrentRow.Index; 
             frm.ShowDialog();
+            dgvClientes.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
+
+            dgvClientes.FirstDisplayedScrollingRowIndex = LinhaPrimeira;
+            dgvClientes.Rows[LinhaAtual].Selected = true;
+            
         }
 
         private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -154,13 +154,5 @@ namespace ccb_ef6
             editaCliente();
         }
 
-        private void dgvClientes_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 13)
-            {
-                editaCliente();
-                e.Handled = false;
-            }
-        }
     }
 }

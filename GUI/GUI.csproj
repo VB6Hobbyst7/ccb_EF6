@@ -56,6 +56,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\DAL\Bunifu_UI_v1.5.3.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v17.1.Core, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.1, Version=17.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -74,6 +80,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
@@ -113,10 +120,10 @@
     <Compile Include="frmCustomerAccount.Designer.cs">
       <DependentUpon>frmCustomerAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmListaCliente.cs">
+    <Compile Include="cadastro\frmListaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmListaCliente.Designer.cs">
+    <Compile Include="cadastro\frmListaCliente.Designer.cs">
       <DependentUpon>frmListaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
@@ -125,16 +132,16 @@
     <Compile Include="frmLogin.designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewOrUpdateCliente.cs">
+    <Compile Include="cadastro\frmNewOrUpdateCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewOrUpdateCliente.Designer.cs">
+    <Compile Include="cadastro\frmNewOrUpdateCliente.Designer.cs">
       <DependentUpon>frmNewOrUpdateCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewOrUpdateCustomer.cs">
+    <Compile Include="cadastro\frmNewOrUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewOrUpdateCustomer.Designer.cs">
+    <Compile Include="cadastro\frmNewOrUpdateCustomer.Designer.cs">
       <DependentUpon>frmNewOrUpdateCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
@@ -143,11 +150,17 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCustomerList.cs">
+    <Compile Include="cadastro\frmCustomerList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCustomerList.designer.cs">
+    <Compile Include="cadastro\frmCustomerList.designer.cs">
       <DependentUpon>frmCustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="frmTransactions.cs">
       <SubType>Form</SubType>
@@ -171,27 +184,31 @@
       <DependentUpon>frmCustomerAccount.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmListaCliente.resx">
+    <EmbeddedResource Include="cadastro\frmListaCliente.resx">
       <DependentUpon>frmListaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewOrUpdateCliente.resx">
+    <EmbeddedResource Include="cadastro\frmNewOrUpdateCliente.resx">
       <DependentUpon>frmNewOrUpdateCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewOrUpdateCustomer.resx">
+    <EmbeddedResource Include="cadastro\frmNewOrUpdateCustomer.resx">
       <DependentUpon>frmNewOrUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCustomerList.resx">
+    <EmbeddedResource Include="cadastro\frmCustomerList.resx">
       <DependentUpon>frmCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmTransactions.resx">
       <DependentUpon>frmTransactions.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -236,7 +253,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="customer.ico" />
+    <Content Include="cadastro\customer.ico" />
     <Content Include="if_business-work_11_2377636.ico" />
     <Content Include="if_business_economic_finance_interprise_company_store_2570298.ico" />
   </ItemGroup>

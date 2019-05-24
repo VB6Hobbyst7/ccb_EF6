@@ -25,7 +25,7 @@ namespace ccb_ef6
 
             var account = BLL.AccountServices.FindById(customer.CustomerID);
             txtAccumulatedPoints.Text = account.CurrentPointsBalance.ToString();
-            txtCashEquivalents.Text = (account.CurrentPointsBalance * Properties.Settings.Default.PointValueCash).ToString("C4");
+            txtCashEquivalents.Text = (account.CurrentPointsBalance * GUI.Properties.Settings.Default.PointValueCash).ToString("C4");
         }        
 
         private void frmCustomerAccount_Load(object sender, EventArgs e)
