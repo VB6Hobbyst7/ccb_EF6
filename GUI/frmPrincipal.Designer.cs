@@ -29,14 +29,13 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup1 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.iOpen = new DevExpress.XtraBars.BarButtonItem();
             this.iSave = new DevExpress.XtraBars.BarButtonItem();
@@ -122,13 +121,13 @@ namespace GUI
             this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage4 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.imageCollection2 = new DevExpress.Utils.ImageCollection(this.components);
-            this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.pmMain = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.imageCollection3 = new DevExpress.Utils.ImageCollection(this.components);
-            this.pmAppMain = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel();
+            this.imageCollection2 = new DevExpress.Utils.ImageCollection();
+            this.imageCollection1 = new DevExpress.Utils.ImageCollection();
+            this.pmMain = new DevExpress.XtraBars.PopupMenu();
+            this.imageCollection3 = new DevExpress.Utils.ImageCollection();
+            this.pmAppMain = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.riicStyle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
@@ -812,6 +811,7 @@ namespace GUI
             // 
             this.btnPedido.Caption = "Pedido";
             this.btnPedido.Id = 11;
+            this.btnPedido.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnPedido.ImageOptions.Image")));
             this.btnPedido.Name = "btnPedido";
             this.btnPedido.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPedido_ItemClick);
             // 
@@ -819,6 +819,7 @@ namespace GUI
             // 
             this.btnBordado.Caption = "Bordado";
             this.btnBordado.Id = 418;
+            this.btnBordado.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBordado.ImageOptions.Image")));
             this.btnBordado.Name = "btnBordado";
             toolTipTitleItem1.Text = "Bordados";
             superToolTip1.Items.Add(toolTipTitleItem1);
@@ -829,6 +830,7 @@ namespace GUI
             // 
             this.btnCliente.Caption = "Cliente";
             this.btnCliente.Id = 419;
+            this.btnCliente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCliente.ImageOptions.Image")));
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCliente_ItemClick);
             // 

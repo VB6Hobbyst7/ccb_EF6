@@ -28,26 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTextToFind = new System.Windows.Forms.TextBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.gbList = new System.Windows.Forms.GroupBox();
-            this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contato_Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefone2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.gbAcciones = new System.Windows.Forms.GroupBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip();
+            this.dgRegistros = new DevExpress.XtraGrid.GridControl();
+            this.gvRegistros = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gbList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.gbAcciones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgRegistros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRegistros)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +87,7 @@
             this.gbList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbList.Controls.Add(this.dgvClientes);
+            this.gbList.Controls.Add(this.dgRegistros);
             this.gbList.Controls.Add(this.btnFind);
             this.gbList.Controls.Add(this.txtTextToFind);
             this.gbList.Controls.Add(this.label1);
@@ -102,82 +98,6 @@
             this.gbList.TabIndex = 0;
             this.gbList.TabStop = false;
             this.gbList.Text = "Lista de clientes";
-            // 
-            // dgvClientes
-            // 
-            this.dgvClientes.AllowUserToAddRows = false;
-            this.dgvClientes.AllowUserToDeleteRows = false;
-            this.dgvClientes.AllowUserToOrderColumns = true;
-            this.dgvClientes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Nome,
-            this.Contato_Nome,
-            this.Telefone1,
-            this.Telefone2,
-            this.Email});
-            this.dgvClientes.Location = new System.Drawing.Point(15, 50);
-            this.dgvClientes.MultiSelect = false;
-            this.dgvClientes.Name = "dgvClientes";
-            this.dgvClientes.ReadOnly = true;
-            this.dgvClientes.RowHeadersWidth = 10;
-            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(613, 450);
-            this.dgvClientes.TabIndex = 17;
-            this.dgvClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvClientes_CellDoubleClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "Id";
-            this.ID.HeaderText = "Id";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            this.ID.Width = 46;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 74;
-            // 
-            // Contato_Nome
-            // 
-            this.Contato_Nome.DataPropertyName = "Contato_Nome";
-            this.Contato_Nome.HeaderText = "Contato_nome";
-            this.Contato_Nome.Name = "Contato_Nome";
-            this.Contato_Nome.ReadOnly = true;
-            this.Contato_Nome.Width = 137;
-            // 
-            // Telefone1
-            // 
-            this.Telefone1.DataPropertyName = "Telefone1";
-            this.Telefone1.HeaderText = "Telefone";
-            this.Telefone1.Name = "Telefone1";
-            this.Telefone1.ReadOnly = true;
-            this.Telefone1.Width = 97;
-            // 
-            // Telefone2
-            // 
-            this.Telefone2.DataPropertyName = "Telefone2";
-            this.Telefone2.HeaderText = "Celular";
-            this.Telefone2.Name = "Telefone2";
-            this.Telefone2.ReadOnly = true;
-            this.Telefone2.Width = 84;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 72;
             // 
             // btnNew
             // 
@@ -238,6 +158,52 @@
             this.gbAcciones.TabStop = false;
             this.gbAcciones.Text = "Acciones";
             // 
+            // dgRegistros
+            // 
+            this.dgRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            gridLevelNode1.RelationName = "Level1";
+            this.dgRegistros.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
+            this.dgRegistros.Location = new System.Drawing.Point(11, 51);
+            this.dgRegistros.MainView = this.gvRegistros;
+            this.dgRegistros.Name = "dgRegistros";
+            this.dgRegistros.Size = new System.Drawing.Size(616, 485);
+            this.dgRegistros.TabIndex = 53;
+            this.dgRegistros.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvRegistros});
+            // 
+            // gvRegistros
+            // 
+            this.gvRegistros.DetailHeight = 100;
+            this.gvRegistros.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gvRegistros.GridControl = this.dgRegistros;
+            this.gvRegistros.Name = "gvRegistros";
+            this.gvRegistros.OptionsBehavior.Editable = false;
+            this.gvRegistros.OptionsBehavior.SmartVertScrollBar = false;
+            this.gvRegistros.OptionsCustomization.AllowColumnMoving = false;
+            this.gvRegistros.OptionsCustomization.AllowColumnResizing = false;
+            this.gvRegistros.OptionsCustomization.AllowFilter = false;
+            this.gvRegistros.OptionsCustomization.AllowGroup = false;
+            this.gvRegistros.OptionsCustomization.AllowQuickHideColumns = false;
+            this.gvRegistros.OptionsCustomization.AllowSort = false;
+            this.gvRegistros.OptionsEditForm.ActionOnModifiedRowChange = DevExpress.XtraGrid.Views.Grid.EditFormModifiedAction.Nothing;
+            this.gvRegistros.OptionsFilter.AllowColumnMRUFilterList = false;
+            this.gvRegistros.OptionsFilter.AllowFilterEditor = false;
+            this.gvRegistros.OptionsFilter.AllowFilterIncrementalSearch = false;
+            this.gvRegistros.OptionsFilter.AllowMRUFilterList = false;
+            this.gvRegistros.OptionsFilter.FilterEditorUseMenuForOperandsAndOperators = false;
+            this.gvRegistros.OptionsFilter.ShowAllTableValuesInCheckedFilterPopup = false;
+            this.gvRegistros.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvRegistros.OptionsSelection.EnableAppearanceFocusedRow = false;
+            this.gvRegistros.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
+            this.gvRegistros.OptionsView.AllowHtmlDrawGroups = false;
+            this.gvRegistros.OptionsView.ShowFooter = true;
+            this.gvRegistros.OptionsView.ShowGroupExpandCollapseButtons = false;
+            this.gvRegistros.OptionsView.ShowGroupPanel = false;
+            this.gvRegistros.DoubleClick += new System.EventHandler(this.gvRegistros_DoubleClick);
+            // 
             // frmListaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,8 +220,9 @@
             this.Load += new System.EventHandler(this.frmListaCliente_Load);
             this.gbList.ResumeLayout(false);
             this.gbList.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
             this.gbAcciones.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgRegistros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRegistros)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,13 +236,8 @@
         protected System.Windows.Forms.Button btnClose;
         protected System.Windows.Forms.GroupBox gbAcciones;
         protected System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvClientes;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Contato_Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefone1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefone2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private DevExpress.XtraGrid.GridControl dgRegistros;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvRegistros;
     }
 }

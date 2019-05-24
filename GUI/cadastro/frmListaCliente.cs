@@ -7,7 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using DevExpress.XtraGrid.Columns;
 using System.Windows.Forms;
 
 namespace ccb_ef6
@@ -49,7 +49,7 @@ namespace ccb_ef6
 
         private void btnPurchase_Click(object sender, EventArgs e)
         {
-            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["CustomerID"].Value.ToString()));
+            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(gvRegistros.GetDataRow(gvRegistros.FocusedRowHandle).Field<"CustomerID"].Value.ToString()));
 
             frmTransactions frm = new frmTransactions(customer, TransactionType.Purchase);
             frm.ShowDialog();
@@ -90,11 +90,12 @@ namespace ccb_ef6
 
             ClienteList = ClienteServices.GetAll();
 
-            dgvClientes.DataSource = ClienteList;
+            //dgvClientes.DataSource = ClienteList;
+            dgRegistros.DataSource = ClienteList;
 
-            foreach (DataGridViewColumn col in dgvClientes.Columns)
+            foreach (GridColumn col in gvRegistros.Columns)
             {
-                switch (col.Name)
+                switch (col.FieldName)
                 {
                     case "Nome":
                     case "Contato_Nome":
@@ -108,6 +109,7 @@ namespace ccb_ef6
                         break;
                 }
             }
+
 
             if (ClienteList.Count == 0)
             {
@@ -149,10 +151,9 @@ namespace ccb_ef6
             
         }
 
-        private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void gvRegistros_DoubleClick(object sender, EventArgs e)
         {
             editaCliente();
         }
-
     }
 }
