@@ -97,6 +97,22 @@
     <Compile Include="Migrations\201901300059295_reiniciar2.Designer.cs">
       <DependentUpon>201901300059295_reiniciar2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905251532018_FornecedorCreate.cs" />
+    <Compile Include="Migrations\201905251532018_FornecedorCreate.Designer.cs">
+      <DependentUpon>201905251532018_FornecedorCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905251541211_FornecedorCreate1.cs" />
+    <Compile Include="Migrations\201905251541211_FornecedorCreate1.Designer.cs">
+      <DependentUpon>201905251541211_FornecedorCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905261350197_LinhaCreate.cs" />
+    <Compile Include="Migrations\201905261350197_LinhaCreate.Designer.cs">
+      <DependentUpon>201905261350197_LinhaCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905262217537_BordadosCreate.cs" />
+    <Compile Include="Migrations\201905262217537_BordadosCreate.Designer.cs">
+      <DependentUpon>201905262217537_BordadosCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -134,6 +150,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901300059295_reiniciar2.resx">
       <DependentUpon>201901300059295_reiniciar2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905251532018_FornecedorCreate.resx">
+      <DependentUpon>201905251532018_FornecedorCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905251541211_FornecedorCreate1.resx">
+      <DependentUpon>201905251541211_FornecedorCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905261350197_LinhaCreate.resx">
+      <DependentUpon>201905261350197_LinhaCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905262217537_BordadosCreate.resx">
+      <DependentUpon>201905262217537_BordadosCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

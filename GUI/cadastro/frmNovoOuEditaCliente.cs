@@ -12,33 +12,29 @@ using Models;
 
 namespace ccb_ef6
 {
-    public partial class frmNewOrUpdateCliente : Form
+    public partial class frmNovoOuEditaCliente : Form
     {
         private Cliente cliente = null;
         private bool IsNewCliente;
 
-        public frmNewOrUpdateCliente()
+        public frmNovoOuEditaCliente()
         {
             InitializeComponent();
         }
 
-        public frmNewOrUpdateCliente(Cliente cliente)
+        public frmNovoOuEditaCliente(Cliente cliente)
         {
             InitializeComponent();
             this.cliente = cliente;
             FillTextBoxSince(cliente);
-            txtUsername.ReadOnly = true;
-        }
-
-        private void btnAddOrUpdate_Click(object sender, EventArgs e)
-        {
+            txtNome.ReadOnly = true;
         }
 
         private bool ValidateInput()
         {
             if (string.IsNullOrEmpty(txtNome.Text))
             {
-                errorProvider1.SetError(txtNome, "Debe ingresar un nombre");
+                errorProvider1.SetError(txtNome, "Digite um Nome");
                 txtNome.Focus();
                 return false;
             }
@@ -50,12 +46,21 @@ namespace ccb_ef6
 
                 if (!regexUtilities.IsValidEmail(txtEmail.Text))
                 {
-                    errorProvider1.SetError(txtEmail, "Ingrese un correo válido");
+                    errorProvider1.SetError(txtEmail, "Digite um eMail válido");
                     txtEmail.Focus();
                     return false;
                 }
 
                 errorProvider1.SetError(txtEmail, "");
+
+                if (BLL.ClienteServices.NomeExists(txtNome.Text) && IsNewCliente)
+                {
+                    errorProvider1.SetError(txtNome, "Este nome de cliente já existe, digite um diferente");
+                    txtNome.Focus();
+                    return false;
+                }
+                errorProvider1.SetError(txtNome, "");
+
             }
 
             return true;
@@ -89,12 +94,7 @@ namespace ccb_ef6
             txtCidade.Text = cliente.Cidade;
         }
 
-        private void frmNewOrUpdateCliente_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAddOrUpdate_Click_1(object sender, EventArgs e)
+        private void btnAddOrUpdate_Click(object sender, EventArgs e)
         {
             if (!ValidateInput())
             {
@@ -138,6 +138,11 @@ namespace ccb_ef6
                 }
             }
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

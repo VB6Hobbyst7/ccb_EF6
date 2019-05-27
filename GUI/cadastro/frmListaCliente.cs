@@ -2,11 +2,6 @@
 using Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using DevExpress.XtraGrid.Columns;
 using System.Windows.Forms;
 
@@ -19,18 +14,14 @@ namespace ccb_ef6
             InitializeComponent();
         }
 
-        private void btnCerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-        private void DisableButtonsWhenNoCustomers(bool v)
+        private void DisableButtonsWhenNoClientes(bool v)
         {
             btnEdit.Enabled = !v;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmNewOrUpdateCliente frm = new frmNewOrUpdateCliente();
+            frmNovoOuEditaCliente frm = new frmNovoOuEditaCliente();
 
             frm.FormClosed += (s, ev) =>
             {
@@ -45,43 +36,6 @@ namespace ccb_ef6
         private void btnEdit_Click(object sender, EventArgs e)
         {
             editaCliente();
-        }
-
-        private void btnPurchase_Click(object sender, EventArgs e)
-        {
-            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(gvRegistros.GetDataRow(gvRegistros.FocusedRowHandle).Field<"CustomerID"].Value.ToString()));
-
-            frmTransactions frm = new frmTransactions(customer, TransactionType.Purchase);
-            frm.ShowDialog();
-        }
-
-        private void btnExpense_Click(object sender, EventArgs e)
-        {
-            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["CustomerID"].Value.ToString()));
-
-            frmTransactions frm = new frmTransactions(customer, TransactionType.Expense);
-            frm.ShowDialog();
-        }
-
-        private void btnWithdrawal_Click(object sender, EventArgs e)
-        {
-            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["CustomerID"].Value.ToString()));
-
-            frmTransactions frm = new frmTransactions(customer, TransactionType.Withdrawal);
-            frm.ShowDialog();
-        }
-
-        private void btnAdjustment_Click(object sender, EventArgs e)
-        {
-            Customer customer = BLL.CustomerServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["CustomerID"].Value.ToString()));
-
-            frmTransactions frm = new frmTransactions(customer, TransactionType.Adjustment);
-            frm.ShowDialog();
-        }
-
-        private void txtTextToFind_KeyUp(object sender, KeyEventArgs e)
-        {
-            dgvClientes.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
         }
 
         private void frmListaCliente_Load(object sender, EventArgs e)
@@ -110,14 +64,13 @@ namespace ccb_ef6
                 }
             }
 
-
             if (ClienteList.Count == 0)
             {
-                DisableButtonsWhenNoCustomers(true);
+                DisableButtonsWhenNoClientes(true);
             }
             else
             {
-                DisableButtonsWhenNoCustomers(false);
+                DisableButtonsWhenNoClientes(false);
             }
 
             //btnWithdrawal.Visible = Properties.Settings.Default.AllowCashRequest;
@@ -127,12 +80,16 @@ namespace ccb_ef6
 
         private void editaCliente()
         {
-            int LinhaPrimeira, LinhaAtual;
-            Cliente cliente = BLL.ClienteServices.FindById(Int32.Parse(dgvClientes.CurrentRow.Cells["id"].Value.ToString()));
+            int Linha;
 
-            frmNewOrUpdateCliente frm = new frmNewOrUpdateCliente(cliente);
+
+            if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
+                return;
+
+            Cliente cliente = BLL.ClienteServices.FindById(Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+
+            frmNovoOuEditaCliente frm = new frmNovoOuEditaCliente(cliente);
             frm.Text = "Editar cliente";
-
 
 
             frm.FormClosed += (s, ev) =>
@@ -141,19 +98,46 @@ namespace ccb_ef6
                 this.WindowState = FormWindowState.Maximized;
                 this.Show();
             };
-            LinhaPrimeira = dgvClientes.FirstDisplayedScrollingRowIndex;
-            LinhaAtual = dgvClientes.CurrentRow.Index; 
+            Linha = gvRegistros.FocusedRowHandle;
             frm.ShowDialog();
-            dgvClientes.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
+            dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
 
-            dgvClientes.FirstDisplayedScrollingRowIndex = LinhaPrimeira;
-            dgvClientes.Rows[LinhaAtual].Selected = true;
-            
+            gvRegistros.FocusedRowHandle = Linha;     
         }
 
         private void gvRegistros_DoubleClick(object sender, EventArgs e)
         {
             editaCliente();
+        }
+
+        private void txtTextToFind_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
+            if (e.KeyCode == Keys.Down)
+                dgRegistros.Focus();
+            if (e.KeyCode == Keys.Escape)
+            {
+                txtTextToFind.Text = "";
+                dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
+            }
+
+        }
+
+        private void gvRegistros_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                editaCliente();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
+            dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
         }
     }
 }

@@ -304,6 +304,11 @@ namespace GUI
         private void btnFornecedor_ItemClick(object sender, ItemClickEventArgs e)
         {
             MostraAgaurde("Aguarde", "Abrindo o formulário...");
+            frmListaFornecedor frm = new frmListaFornecedor
+            {
+                MdiParent = this
+            };
+            frm.Show();
             OcultaAguarde();
         }
 
@@ -322,6 +327,11 @@ namespace GUI
         private void btnLinha_ItemClick(object sender, ItemClickEventArgs e)
         {
             MostraAgaurde("Aguarde", "Abrindo o formulário...");
+            frmListaLinha frm = new frmListaLinha
+            {
+                MdiParent = this
+            };
+            frm.Show();
             OcultaAguarde();
         }
 

@@ -67,6 +67,23 @@ namespace BLL
             }
         }
 
+        public static bool NomeExists(string nome)
+        {
+            using (LoyaltyDB db = new LoyaltyDB())
+            {
+                Cliente cliente = db.Clientes.Where(u => u.Nome == nome).SingleOrDefault();
+
+                if (cliente != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         public static Cliente FindById(int id)
         {
             Cliente cliente = null;
@@ -82,23 +99,6 @@ namespace BLL
             }
 
             return null;
-        }
-
-        public static bool UsernameExists(string nome)
-        {
-            using (LoyaltyDB db = new LoyaltyDB())
-            {
-                Cliente cliente = db.Clientes.Where(u => u.Nome == nome).SingleOrDefault();
-
-                if (cliente != null)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
         }
 
         public static List<Cliente> FindByClienteData(string text)

@@ -1,6 +1,6 @@
 ﻿namespace ccb_ef6
 {
-    partial class frmNewOrUpdateCliente
+    partial class frmNovoOuEditaFornecedor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNewOrUpdateCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNovoOuEditaFornecedor));
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtContatoFuncao = new System.Windows.Forms.TextBox();
@@ -53,8 +53,8 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.txtTelefone3 = new System.Windows.Forms.TextBox();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnAddOrUpdate = new System.Windows.Forms.Button();
+            this.btnExit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAddOrUpdate = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -239,42 +239,37 @@
             this.txtTelefone3.Size = new System.Drawing.Size(220, 23);
             this.txtTelefone3.TabIndex = 17;
             // 
-            // btnClose
+            // btnExit
             // 
-            this.btnClose.BackColor = System.Drawing.Color.Red;
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(646, 302);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(87, 66);
-            this.btnClose.TabIndex = 22;
-            this.btnClose.Text = "Fechar";
-            this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.ImageOptions.Image")));
+            this.btnExit.Location = new System.Drawing.Point(615, 314);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(118, 46);
+            this.btnExit.TabIndex = 27;
+            this.btnExit.Text = "&Fechar";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnAddOrUpdate
             // 
-            this.btnAddOrUpdate.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnAddOrUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddOrUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOrUpdate.Image")));
-            this.btnAddOrUpdate.Location = new System.Drawing.Point(541, 302);
+            this.btnAddOrUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddOrUpdate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddOrUpdate.ImageOptions.Image")));
+            this.btnAddOrUpdate.Location = new System.Drawing.Point(478, 314);
             this.btnAddOrUpdate.Name = "btnAddOrUpdate";
-            this.btnAddOrUpdate.Size = new System.Drawing.Size(87, 66);
-            this.btnAddOrUpdate.TabIndex = 23;
-            this.btnAddOrUpdate.Text = "Gravar";
-            this.btnAddOrUpdate.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAddOrUpdate.UseVisualStyleBackColor = false;
-            this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click_1);
+            this.btnAddOrUpdate.Size = new System.Drawing.Size(118, 46);
+            this.btnAddOrUpdate.TabIndex = 26;
+            this.btnAddOrUpdate.Text = "&Gravar";
+            this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click);
             // 
-            // frmNewOrUpdateCliente
+            // frmNewOrUpdateFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnClose;
+            this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(748, 372);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddOrUpdate);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtCidade);
@@ -303,10 +298,10 @@
             this.MaximumSize = new System.Drawing.Size(766, 419);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(766, 419);
-            this.Name = "frmNewOrUpdateCliente";
+            this.Name = "frmNewOrUpdateFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Novo cliente";
-            this.Load += new System.EventHandler(this.frmNewOrUpdateCliente_Load);
+            this.Text = "Novo Fornecedor";
+            this.Load += new System.EventHandler(this.frmNewOrUpdateFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -338,7 +333,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox txtTelefone3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnAddOrUpdate;
+        private DevExpress.XtraEditors.SimpleButton btnExit;
+        private DevExpress.XtraEditors.SimpleButton btnAddOrUpdate;
     }
 }

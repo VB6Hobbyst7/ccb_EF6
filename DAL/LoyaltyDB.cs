@@ -27,6 +27,9 @@ namespace DAL
         public DbSet<User> Users { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Linha> Linhas { get; set; }
+        public DbSet<Fornecedor> Fornecedores { get; set; }
+        public DbSet<Bordado> Bordados { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
