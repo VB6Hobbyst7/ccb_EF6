@@ -113,6 +113,14 @@
     <Compile Include="Migrations\201905262217537_BordadosCreate.Designer.cs">
       <DependentUpon>201905262217537_BordadosCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905271755336_BordadoDescricaoCreate.cs" />
+    <Compile Include="Migrations\201905271755336_BordadoDescricaoCreate.Designer.cs">
+      <DependentUpon>201905271755336_BordadoDescricaoCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905272043231_linhaUtilizada.cs" />
+    <Compile Include="Migrations\201905272043231_linhaUtilizada.Designer.cs">
+      <DependentUpon>201905272043231_linhaUtilizada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -162,6 +170,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905262217537_BordadosCreate.resx">
       <DependentUpon>201905262217537_BordadosCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271755336_BordadoDescricaoCreate.resx">
+      <DependentUpon>201905271755336_BordadoDescricaoCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905272043231_linhaUtilizada.resx">
+      <DependentUpon>201905272043231_linhaUtilizada.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -287,6 +287,11 @@ namespace GUI
         private void btnBordado_ItemClick(object sender, ItemClickEventArgs e)
         {
             MostraAgaurde("Aguarde", "Abrindo o formulário...");
+            frmListaBordado frm = new frmListaBordado
+            {
+                MdiParent = this
+            };
+            frm.Show();
             OcultaAguarde();
         }
 

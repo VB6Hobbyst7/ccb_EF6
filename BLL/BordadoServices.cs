@@ -3,10 +3,8 @@ using Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ccb_ef6
+namespace BLL
 {
     public static class BordadoServices
     {
@@ -48,7 +46,7 @@ namespace ccb_ef6
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                Bordado.ModifiedDate = DateTime.Now;
+                //Bordado.ModifiedDate = DateTime.Now;
                 db.Entry(Bordado).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -92,8 +90,8 @@ namespace ccb_ef6
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                return db.Bordados.Where(x => x.Nome.Contains(text) || x.Contato_Nome.Contains(text)
-                || x.Telefone1.Contains(text) || x.Telefone2.Contains(text) || x.Email.Contains(text)).ToList();
+                return db.Bordados.Where(x => x.Arquivo.Contains(text) || x.Descricao.Contains(text)
+                || x.ObsPublica.Contains(text) || x.ObsPrivada.Contains(text)).ToList();
             }
         }
     }

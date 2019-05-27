@@ -8,7 +8,7 @@ namespace DAL.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.Bordadoes",
+                "dbo.Bordados",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -37,7 +37,7 @@ namespace DAL.Migrations
         
         public override void Down()
         {
-            DropTable("dbo.Bordadoes");
+            DropTable("dbo.Bordados");
         }
     }
 }

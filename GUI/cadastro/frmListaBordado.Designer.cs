@@ -210,7 +210,7 @@
             this.MinimumSize = new System.Drawing.Size(1093, 659);
             this.Name = "frmListaCliente";
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.frmListaCliente_Load);
+            this.Load += new System.EventHandler(this.frmListaBordado_Load);
             this.gbList.ResumeLayout(false);
             this.gbList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegistros)).EndInit();
