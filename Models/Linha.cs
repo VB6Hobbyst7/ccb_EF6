@@ -31,5 +31,7 @@ namespace Models
         public int Minimo { get; set; } = 0;
         public int Pedido { get; set; } = 0;
 
+        public IList<BordadoLinha> BordadoLinhas { get; set; }
+
     }
 }

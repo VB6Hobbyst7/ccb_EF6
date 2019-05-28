@@ -54,6 +54,7 @@
     <Compile Include="Account.cs" />
     <Compile Include="ApplicationSetting.cs" />
     <Compile Include="Bordado.cs" />
+    <Compile Include="BordadoLinha.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Fornecedor.cs" />

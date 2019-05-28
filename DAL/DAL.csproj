@@ -65,61 +65,9 @@
   <ItemGroup>
     <Compile Include="LoyaltyDB.cs" />
     <Compile Include="LoyaltyDBInitializer.cs" />
-    <Compile Include="Migrations\201901291820298_Initial.cs" />
-    <Compile Include="Migrations\201901291820298_Initial.Designer.cs">
-      <DependentUpon>201901291820298_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901292200576_CreateCliente.cs" />
-    <Compile Include="Migrations\201901292200576_CreateCliente.Designer.cs">
-      <DependentUpon>201901292200576_CreateCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901292205454_CreateCliente1.cs" />
-    <Compile Include="Migrations\201901292205454_CreateCliente1.Designer.cs">
-      <DependentUpon>201901292205454_CreateCliente1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901292324003_CreateCliente2.cs" />
-    <Compile Include="Migrations\201901292324003_CreateCliente2.Designer.cs">
-      <DependentUpon>201901292324003_CreateCliente2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901292325224_CreateCliente3.cs" />
-    <Compile Include="Migrations\201901292325224_CreateCliente3.Designer.cs">
-      <DependentUpon>201901292325224_CreateCliente3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901292334355_reiniciar.cs" />
-    <Compile Include="Migrations\201901292334355_reiniciar.Designer.cs">
-      <DependentUpon>201901292334355_reiniciar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901292336268_reiniciar1.cs" />
-    <Compile Include="Migrations\201901292336268_reiniciar1.Designer.cs">
-      <DependentUpon>201901292336268_reiniciar1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901300059295_reiniciar2.cs" />
-    <Compile Include="Migrations\201901300059295_reiniciar2.Designer.cs">
-      <DependentUpon>201901300059295_reiniciar2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905251532018_FornecedorCreate.cs" />
-    <Compile Include="Migrations\201905251532018_FornecedorCreate.Designer.cs">
-      <DependentUpon>201905251532018_FornecedorCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905251541211_FornecedorCreate1.cs" />
-    <Compile Include="Migrations\201905251541211_FornecedorCreate1.Designer.cs">
-      <DependentUpon>201905251541211_FornecedorCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905261350197_LinhaCreate.cs" />
-    <Compile Include="Migrations\201905261350197_LinhaCreate.Designer.cs">
-      <DependentUpon>201905261350197_LinhaCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905262217537_BordadosCreate.cs" />
-    <Compile Include="Migrations\201905262217537_BordadosCreate.Designer.cs">
-      <DependentUpon>201905262217537_BordadosCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271755336_BordadoDescricaoCreate.cs" />
-    <Compile Include="Migrations\201905271755336_BordadoDescricaoCreate.Designer.cs">
-      <DependentUpon>201905271755336_BordadoDescricaoCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905272043231_linhaUtilizada.cs" />
-    <Compile Include="Migrations\201905272043231_linhaUtilizada.Designer.cs">
-      <DependentUpon>201905272043231_linhaUtilizada.cs</DependentUpon>
+    <Compile Include="Migrations\201905272237121_Inicial.cs" />
+    <Compile Include="Migrations\201905272237121_Inicial.Designer.cs">
+      <DependentUpon>201905272237121_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,47 +83,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901291820298_Initial.resx">
-      <DependentUpon>201901291820298_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901292200576_CreateCliente.resx">
-      <DependentUpon>201901292200576_CreateCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901292205454_CreateCliente1.resx">
-      <DependentUpon>201901292205454_CreateCliente1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901292324003_CreateCliente2.resx">
-      <DependentUpon>201901292324003_CreateCliente2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901292325224_CreateCliente3.resx">
-      <DependentUpon>201901292325224_CreateCliente3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901292334355_reiniciar.resx">
-      <DependentUpon>201901292334355_reiniciar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901292336268_reiniciar1.resx">
-      <DependentUpon>201901292336268_reiniciar1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901300059295_reiniciar2.resx">
-      <DependentUpon>201901300059295_reiniciar2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905251532018_FornecedorCreate.resx">
-      <DependentUpon>201905251532018_FornecedorCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905251541211_FornecedorCreate1.resx">
-      <DependentUpon>201905251541211_FornecedorCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905261350197_LinhaCreate.resx">
-      <DependentUpon>201905261350197_LinhaCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905262217537_BordadosCreate.resx">
-      <DependentUpon>201905262217537_BordadosCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271755336_BordadoDescricaoCreate.resx">
-      <DependentUpon>201905271755336_BordadoDescricaoCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905272043231_linhaUtilizada.resx">
-      <DependentUpon>201905272043231_linhaUtilizada.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905272237121_Inicial.resx">
+      <DependentUpon>201905272237121_Inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

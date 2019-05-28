@@ -5,28 +5,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
-    public class LinhaUtilizada
-    {
-        public int ID { get; set; }
-        public int Seq { get; set; }
-
-        public int Pontos { get; set; }
-
-        public int Metragem { get; set; }
-
-        public int BordadoID { get; set; }
-        public virtual Bordado Bordado { get; set; }
-    }
 
     public class Bordado
     {
-        private HashSet<LinhaUtilizada> LinhasUtilizadas;
-
-        public Bordado()
-        {
-            this.LinhasUtilizadas = new HashSet<LinhaUtilizada>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -67,6 +48,8 @@ namespace Models
 
         [MaxLength(1024)]
         public string ObsPrivada { get; set; }
+
+        public IList<BordadoLinha> BordadoLinhas { get; set; }
 
     }    
 
