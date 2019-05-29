@@ -8,6 +8,11 @@ namespace Models
 
     public class Bordado
     {
+        public Bordado()
+        {
+            Linhas = new HashSet<BordadoLinha>();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -49,7 +54,7 @@ namespace Models
         [MaxLength(1024)]
         public string ObsPrivada { get; set; }
 
-        public IList<BordadoLinha> BordadoLinhas { get; set; }
+        public virtual ICollection<BordadoLinha> Linhas { get; set; }
 
     }    
 

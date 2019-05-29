@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
 using Models;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 
 namespace ccb_ef6
 {
@@ -47,12 +50,27 @@ namespace ccb_ef6
         {
             Bordado.Arquivo = txtArquivo.Text;
             Bordado.Caminho = txtCaminho.Text;
+            Bordado.Descricao = txtDescricao.Text;
+
         }
 
         private void FillTextBoxSince(Bordado Bordado)
         {
+           
+            DataTable dt = new DataTable();
+
             txtArquivo.Text = Bordado.Arquivo;
             txtCaminho.Text = Bordado.Caminho;
+
+            if (Bordado.Linhas.Count < 1) 
+                return;
+            foreach (BordadoLinha l in Bordado.Linhas)
+            {
+                dt.Rows.Add(l.seq, l.LinhaCodigo);
+            }
+            dgLinhas_Utilizadas.DataSource = dt;
+
+            //dgLinhas_Utilizadas.DataSource = Bordado.Linhas;
         }
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
@@ -62,7 +80,7 @@ namespace ccb_ef6
                 return;
             }
 
-            //Registrar Bordado en la BD
+            //Inserir Bordado no BD
             if (Bordado == null)
             {
                 IsNewBordado = true;
@@ -75,7 +93,7 @@ namespace ccb_ef6
                     //Creo al Bordado e inmediatamente creo su cuenta correspondiente
                     BLL.BordadoServices.AddNew(Bordado);
 
-                    MessageBox.Show("Bordado cadastrado corretamente", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Bordado cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)
@@ -83,7 +101,7 @@ namespace ccb_ef6
                     MessageBox.Show(ex.Message);
                 }
             }
-            else//Actualizar Bordado en la BD
+            else//Atualizar Bordado no BD
             {
                 try
                 {

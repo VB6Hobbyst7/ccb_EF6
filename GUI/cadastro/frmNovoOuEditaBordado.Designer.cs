@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNovoOuEditaBordado));
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -49,10 +51,20 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider();
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.btnAddOrUpdate = new DevExpress.XtraEditors.SimpleButton();
+            this.dgLinhas_Utilizadas = new DevExpress.XtraGrid.GridControl();
+            this.gvLinhas_Utilizadas = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSeq = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.codigo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cor = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNome = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPontos = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMetragem = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gcImagem)).BeginInit();
             this.gcImagem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.peImagem.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLinhas_Utilizadas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvLinhas_Utilizadas)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDescricao
@@ -265,11 +277,162 @@
             this.btnAddOrUpdate.Text = "&Gravar";
             this.btnAddOrUpdate.Click += new System.EventHandler(this.btnAddOrUpdate_Click);
             // 
+            // dgLinhas_Utilizadas
+            // 
+            this.dgLinhas_Utilizadas.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(2);
+            this.dgLinhas_Utilizadas.Location = new System.Drawing.Point(108, 169);
+            this.dgLinhas_Utilizadas.MainView = this.gvLinhas_Utilizadas;
+            this.dgLinhas_Utilizadas.Margin = new System.Windows.Forms.Padding(2);
+            this.dgLinhas_Utilizadas.Name = "dgLinhas_Utilizadas";
+            this.dgLinhas_Utilizadas.Size = new System.Drawing.Size(402, 232);
+            this.dgLinhas_Utilizadas.TabIndex = 219;
+            this.dgLinhas_Utilizadas.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvLinhas_Utilizadas});
+            // 
+            // gvLinhas_Utilizadas
+            // 
+            this.gvLinhas_Utilizadas.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gvLinhas_Utilizadas.Appearance.ColumnFilterButton.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.EvenRow.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 10.2F);
+            this.gvLinhas_Utilizadas.Appearance.FocusedRow.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.GroupFooter.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gvLinhas_Utilizadas.Appearance.GroupFooter.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.OddRow.Font = new System.Drawing.Font("Tahoma", 7F);
+            this.gvLinhas_Utilizadas.Appearance.OddRow.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gvLinhas_Utilizadas.Appearance.Row.Options.UseFont = true;
+            this.gvLinhas_Utilizadas.Appearance.Row.Options.UseTextOptions = true;
+            this.gvLinhas_Utilizadas.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gvLinhas_Utilizadas.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colSeq,
+            this.codigo,
+            this.cor,
+            this.colNome,
+            this.colPontos,
+            this.colMetragem});
+            this.gvLinhas_Utilizadas.FixedLineWidth = 1;
+            this.gvLinhas_Utilizadas.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gvLinhas_Utilizadas.FooterPanelHeight = 10;
+            gridFormatRule1.Column = this.colMetragem;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Expression = "Sim";
+            formatConditionRuleValue1.PredefinedName = "Red Fill, Red Text";
+            formatConditionRuleValue1.Value1 = "Sim";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gvLinhas_Utilizadas.FormatRules.Add(gridFormatRule1);
+            this.gvLinhas_Utilizadas.GridControl = this.dgLinhas_Utilizadas;
+            this.gvLinhas_Utilizadas.GroupFormat = "{0}: [#imagem]{1} {2}";
+            this.gvLinhas_Utilizadas.Name = "gvLinhas_Utilizadas";
+            this.gvLinhas_Utilizadas.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gvLinhas_Utilizadas.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.False;
+            this.gvLinhas_Utilizadas.OptionsBehavior.AllowIncrementalSearch = true;
+            this.gvLinhas_Utilizadas.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.True;
+            this.gvLinhas_Utilizadas.OptionsBehavior.AutoPopulateColumns = false;
+            this.gvLinhas_Utilizadas.OptionsBehavior.AutoSelectAllInEditor = false;
+            this.gvLinhas_Utilizadas.OptionsBehavior.FocusLeaveOnTab = true;
+            this.gvLinhas_Utilizadas.OptionsCustomization.AllowColumnMoving = false;
+            this.gvLinhas_Utilizadas.OptionsCustomization.AllowColumnResizing = false;
+            this.gvLinhas_Utilizadas.OptionsCustomization.AllowFilter = false;
+            this.gvLinhas_Utilizadas.OptionsCustomization.AllowGroup = false;
+            this.gvLinhas_Utilizadas.OptionsCustomization.AllowSort = false;
+            this.gvLinhas_Utilizadas.OptionsDetail.EnableMasterViewMode = false;
+            this.gvLinhas_Utilizadas.OptionsDetail.SmartDetailHeight = true;
+            this.gvLinhas_Utilizadas.OptionsMenu.EnableColumnMenu = false;
+            this.gvLinhas_Utilizadas.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gvLinhas_Utilizadas.OptionsSelection.EnableAppearanceFocusedRow = false;
+            this.gvLinhas_Utilizadas.OptionsSelection.MultiSelect = true;
+            this.gvLinhas_Utilizadas.OptionsSelection.UseIndicatorForSelection = false;
+            this.gvLinhas_Utilizadas.OptionsView.ColumnAutoWidth = false;
+            this.gvLinhas_Utilizadas.OptionsView.ShowGroupPanel = false;
+            this.gvLinhas_Utilizadas.RowHeight = 18;
+            this.gvLinhas_Utilizadas.ScrollStyle = DevExpress.XtraGrid.Views.Grid.ScrollStyleFlags.LiveVertScroll;
+            this.gvLinhas_Utilizadas.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            // 
+            // colSeq
+            // 
+            this.colSeq.AppearanceCell.Options.UseTextOptions = true;
+            this.colSeq.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSeq.AppearanceHeader.Options.UseTextOptions = true;
+            this.colSeq.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colSeq.Caption = "seq";
+            this.colSeq.FieldName = "seq";
+            this.colSeq.Name = "colSeq";
+            this.colSeq.OptionsColumn.AllowEdit = false;
+            this.colSeq.Visible = true;
+            this.colSeq.VisibleIndex = 0;
+            this.colSeq.Width = 40;
+            // 
+            // codigo
+            // 
+            this.codigo.AppearanceCell.Options.UseTextOptions = true;
+            this.codigo.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.codigo.AppearanceHeader.Options.UseTextOptions = true;
+            this.codigo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.codigo.Caption = "codigo";
+            this.codigo.FieldName = "codigo";
+            this.codigo.Name = "codigo";
+            this.codigo.Visible = true;
+            this.codigo.VisibleIndex = 1;
+            this.codigo.Width = 53;
+            // 
+            // cor
+            // 
+            this.cor.Caption = "cor";
+            this.cor.FieldName = "cor";
+            this.cor.Name = "cor";
+            this.cor.OptionsColumn.AllowEdit = false;
+            this.cor.Visible = true;
+            this.cor.VisibleIndex = 2;
+            this.cor.Width = 42;
+            // 
+            // colNome
+            // 
+            this.colNome.Caption = "nome";
+            this.colNome.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colNome.FieldName = "nome";
+            this.colNome.Name = "colNome";
+            this.colNome.OptionsColumn.AllowEdit = false;
+            this.colNome.Visible = true;
+            this.colNome.VisibleIndex = 3;
+            this.colNome.Width = 98;
+            // 
+            // colPontos
+            // 
+            this.colPontos.AppearanceCell.Options.UseTextOptions = true;
+            this.colPontos.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colPontos.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPontos.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colPontos.Caption = "pontos";
+            this.colPontos.FieldName = "pontos";
+            this.colPontos.Name = "colPontos";
+            this.colPontos.OptionsColumn.AllowEdit = false;
+            this.colPontos.Visible = true;
+            this.colPontos.VisibleIndex = 4;
+            this.colPontos.Width = 60;
+            // 
+            // colMetragem
+            // 
+            this.colMetragem.AppearanceCell.Options.UseTextOptions = true;
+            this.colMetragem.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colMetragem.AppearanceHeader.Options.UseTextOptions = true;
+            this.colMetragem.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.colMetragem.Caption = "metragem";
+            this.colMetragem.FieldName = "metragem";
+            this.colMetragem.Name = "colMetragem";
+            this.colMetragem.OptionsColumn.AllowEdit = false;
+            this.colMetragem.Visible = true;
+            this.colMetragem.VisibleIndex = 5;
+            this.colMetragem.Width = 67;
+            // 
             // frmNovoOuEditaBordado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 601);
+            this.Controls.Add(this.dgLinhas_Utilizadas);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddOrUpdate);
             this.Controls.Add(this.gcImagem);
@@ -295,6 +458,8 @@
             this.gcImagem.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.peImagem.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgLinhas_Utilizadas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvLinhas_Utilizadas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,5 +487,13 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevExpress.XtraEditors.SimpleButton btnExit;
         private DevExpress.XtraEditors.SimpleButton btnAddOrUpdate;
+        internal DevExpress.XtraGrid.GridControl dgLinhas_Utilizadas;
+        internal DevExpress.XtraGrid.Views.Grid.GridView gvLinhas_Utilizadas;
+        internal DevExpress.XtraGrid.Columns.GridColumn colSeq;
+        internal DevExpress.XtraGrid.Columns.GridColumn codigo;
+        internal DevExpress.XtraGrid.Columns.GridColumn cor;
+        internal DevExpress.XtraGrid.Columns.GridColumn colNome;
+        internal DevExpress.XtraGrid.Columns.GridColumn colPontos;
+        internal DevExpress.XtraGrid.Columns.GridColumn colMetragem;
     }
 }
