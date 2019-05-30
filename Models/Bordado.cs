@@ -6,13 +6,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Models
 {
 
+    [Table("Bordados")]
     public class Bordado
     {
-        public Bordado()
-        {
-            Linhas = new HashSet<BordadoLinha>();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
@@ -54,8 +50,12 @@ namespace Models
         [MaxLength(1024)]
         public string ObsPrivada { get; set; }
 
-        public virtual ICollection<BordadoLinha> Linhas { get; set; }
+        public virtual ICollection<BordadoLinha> BordadoLinhas { get; set; }
 
+        public Bordado()
+        {
+            BordadoLinhas = new HashSet<BordadoLinha>();
+        }
     }    
 
 }

@@ -42,9 +42,11 @@ namespace DAL
             return String.Format(connString, dbName);
         }
 
+        //Fluent API
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BordadoLinha>().HasKey(sc => new { sc.BordadoId, sc.LinhaCodigo });
         }
     }
+
 }

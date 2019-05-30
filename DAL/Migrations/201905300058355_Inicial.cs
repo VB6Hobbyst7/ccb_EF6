@@ -113,13 +113,13 @@ namespace DAL.Migrations
                         seq = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.BordadoId, t.LinhaCodigo })
-                .ForeignKey("dbo.Bordadoes", t => t.BordadoId, cascadeDelete: true)
+                .ForeignKey("dbo.Bordados", t => t.BordadoId, cascadeDelete: true)
                 .ForeignKey("dbo.Linhas", t => t.LinhaCodigo, cascadeDelete: true)
                 .Index(t => t.BordadoId)
                 .Index(t => t.LinhaCodigo);
             
             CreateTable(
-                "dbo.Bordadoes",
+                "dbo.Bordados",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -187,7 +187,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Fornecedors",
+                "dbo.Fornecedores",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -215,7 +215,7 @@ namespace DAL.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.BordadoLinhas", "LinhaCodigo", "dbo.Linhas");
-            DropForeignKey("dbo.BordadoLinhas", "BordadoId", "dbo.Bordadoes");
+            DropForeignKey("dbo.BordadoLinhas", "BordadoId", "dbo.Bordados");
             DropForeignKey("dbo.Transactions", "UserID", "dbo.Users");
             DropForeignKey("dbo.Transactions", "CustomerID", "dbo.Accounts");
             DropForeignKey("dbo.Accounts", "CustomerID", "dbo.Customers");
@@ -224,10 +224,10 @@ namespace DAL.Migrations
             DropIndex("dbo.Transactions", new[] { "UserID" });
             DropIndex("dbo.Transactions", new[] { "CustomerID" });
             DropIndex("dbo.Accounts", new[] { "CustomerID" });
-            DropTable("dbo.Fornecedors");
+            DropTable("dbo.Fornecedores");
             DropTable("dbo.Clientes");
             DropTable("dbo.Linhas");
-            DropTable("dbo.Bordadoes");
+            DropTable("dbo.Bordados");
             DropTable("dbo.BordadoLinhas");
             DropTable("dbo.ApplicationSettings");
             DropTable("dbo.Users");

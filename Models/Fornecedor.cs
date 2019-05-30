@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Models
 {
+    [Table("Fornecedores")]
     public class Fornecedor : SharedBase
     {
         [Key]

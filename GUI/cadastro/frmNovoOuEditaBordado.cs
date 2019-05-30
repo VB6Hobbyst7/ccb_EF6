@@ -9,19 +9,22 @@ namespace ccb_ef6
 {
     public partial class frmNovoOuEditaBordado : Form
     {
-        private Bordado Bordado = null;
+        private Bordado bordado = null;
         private bool IsNewBordado;
+
+        DataTable dt = new DataTable();
+
 
         public frmNovoOuEditaBordado()
         {
             InitializeComponent();
         }
 
-        public frmNovoOuEditaBordado(Bordado Bordado)
+        public frmNovoOuEditaBordado(Bordado bordado)
         {
             InitializeComponent();
-            this.Bordado = Bordado;
-            FillTextBoxSince(Bordado);
+            this.bordado = bordado;
+            FillTextBoxSince(bordado);
             txtArquivo.ReadOnly = true;
         }
 
@@ -46,28 +49,44 @@ namespace ccb_ef6
             return true;
         }
 
-        private void AssignDataFromTextBox(Bordado Bordado)
+        private void AssignDataFromTextBox(Bordado bordado)
         {
-            Bordado.Arquivo = txtArquivo.Text;
-            Bordado.Caminho = txtCaminho.Text;
-            Bordado.Descricao = txtDescricao.Text;
+            bordado.Arquivo = txtArquivo.Text;
+            bordado.Caminho = txtCaminho.Text;
+            bordado.Descricao = txtDescricao.Text;
 
         }
 
-        private void FillTextBoxSince(Bordado Bordado)
+        private void FillTextBoxSince(Bordado bordado)
         {
            
-            DataTable dt = new DataTable();
-
-            txtArquivo.Text = Bordado.Arquivo;
-            txtCaminho.Text = Bordado.Caminho;
-
-            if (Bordado.Linhas.Count < 1) 
-                return;
-            foreach (BordadoLinha l in Bordado.Linhas)
+            try
             {
-                dt.Rows.Add(l.seq, l.LinhaCodigo);
+                txtArquivo.Text = bordado.Arquivo;
+                txtCaminho.Text = bordado.Caminho;
+
+                if (bordado.BordadoLinhas.Count < 1)
+                    return;
+
+                if (dt.Columns.Count < 1)
+                {
+                    dt.Columns.Add("seq");
+                    dt.Columns.Add("codigo");
+                    dt.Columns.Add("cor");
+                    dt.Columns.Add("nome");
+
+                }
+                foreach (BordadoLinha l in bordado.BordadoLinhas)
+                {
+                    dt.Rows.Add(l.seq, l.LinhaCodigo, 0, "teste");
+                }
             }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+
             dgLinhas_Utilizadas.DataSource = dt;
 
             //dgLinhas_Utilizadas.DataSource = Bordado.Linhas;
@@ -81,17 +100,17 @@ namespace ccb_ef6
             }
 
             //Inserir Bordado no BD
-            if (Bordado == null)
+            if (bordado == null)
             {
                 IsNewBordado = true;
-                Bordado = new Bordado();
+                bordado = new Bordado();
 
-                AssignDataFromTextBox(Bordado);
+                AssignDataFromTextBox(bordado);
 
                 try
                 {
                     //Creo al Bordado e inmediatamente creo su cuenta correspondiente
-                    BLL.BordadoServices.AddNew(Bordado);
+                    BLL.BordadoServices.AddNew(bordado);
 
                     MessageBox.Show("Bordado cadastrado com sucesso!", "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -106,8 +125,8 @@ namespace ccb_ef6
                 try
                 {
                     IsNewBordado = false;
-                    AssignDataFromTextBox(Bordado);
-                    BLL.BordadoServices.Update(Bordado);
+                    AssignDataFromTextBox(bordado);
+                    BLL.BordadoServices.Update(bordado);
                     MessageBox.Show("Bordado actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }

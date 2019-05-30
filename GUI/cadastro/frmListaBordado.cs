@@ -87,9 +87,9 @@ namespace ccb_ef6
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
 
-            Bordado Bordado = BLL.BordadoServices.FindById(Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+            Bordado bordado = BLL.BordadoServices.FindById(Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
 
-            frmNovoOuEditaBordado frm = new frmNovoOuEditaBordado(Bordado);
+            frmNovoOuEditaBordado frm = new frmNovoOuEditaBordado(bordado);
             frm.Text = "Editar Bordado";
 
 

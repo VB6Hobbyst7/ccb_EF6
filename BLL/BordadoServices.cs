@@ -33,21 +33,21 @@ namespace BLL
             return list;
         }
 
-        public static void AddNew(Bordado Bordado)
+        public static void AddNew(Bordado bordado)
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                db.Bordados.Add(Bordado);
+                db.Bordados.Add(bordado);
                 db.SaveChanges();
             }
         }
 
-        public static void Update(Bordado Bordado)
+        public static void Update(Bordado bordado)
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
                 //Bordado.ModifiedDate = DateTime.Now;
-                db.Entry(Bordado).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(bordado).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -56,9 +56,9 @@ namespace BLL
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                Bordado Bordado = db.Bordados.Where(u => u.Arquivo == arquivo).SingleOrDefault();
+                Bordado bordado = db.Bordados.Where(u => u.Arquivo == arquivo).SingleOrDefault();
 
-                if (Bordado != null)
+                if (bordado != null)
                 {
                     return true;
                 }
@@ -71,15 +71,15 @@ namespace BLL
 
         public static Bordado FindById(int id)
         {
-            Bordado Bordado = null;
+            Bordado bordado = null;
 
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                Bordado = db.Bordados.Find(id);
+                bordado = db.Bordados.Find(id);
 
-                if (Bordado != null)
+                if (bordado != null)
                 {
-                    return Bordado;
+                    return bordado;
                 }
             }
 
