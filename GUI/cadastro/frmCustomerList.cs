@@ -55,7 +55,7 @@ namespace ccb_ef6
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmNewOrUpdateCustomer frm = new frmNewOrUpdateCustomer();
+            frmNewOrUpdateCourse frm = new frmNewOrUpdateCourse();
             
             frm.FormClosed += (s, ev) =>
             {

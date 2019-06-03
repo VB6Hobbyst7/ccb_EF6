@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL
 {
+
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class LoyaltyDB : DbContext
     {
@@ -35,6 +37,10 @@ namespace DAL
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
 
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+
         public static string GetConnectionString(string dbName, string dbConnectionStringName)
         {
             var connString = ConfigurationManager.ConnectionStrings[dbConnectionStringName].ConnectionString.ToString();
@@ -46,6 +52,8 @@ namespace DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BordadoLinha>().HasKey(sc => new { sc.BordadoId, sc.LinhaCodigo });
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
 

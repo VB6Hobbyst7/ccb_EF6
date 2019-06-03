@@ -39,5 +39,10 @@ namespace DAL
             db.ApplicationSettings.Add(setting);
             db.SaveChanges();
         }
+
+
     }
+
+
+
 }

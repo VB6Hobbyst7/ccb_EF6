@@ -56,13 +56,22 @@
     <Compile Include="Bordado.cs" />
     <Compile Include="BordadoLinha.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Curses.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Enrollment.cs" />
     <Compile Include="Fornecedor.cs" />
+    <Compile Include="Instructor.cs" />
     <Compile Include="Linha.cs" />
+    <Compile Include="OfficeAssignment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedBase.cs" />
+    <Compile Include="Student.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="ViewModels\AssignedCourseData.cs" />
+    <Compile Include="ViewModels\EnrollmentDateGroup.cs" />
+    <Compile Include="ViewModels\InstructorIndexData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

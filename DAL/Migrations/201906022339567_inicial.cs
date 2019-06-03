@@ -3,12 +3,12 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Inicial : DbMigration
+    public partial class inicial : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Accounts",
+                "dbo.Account",
                 c => new
                     {
                         CustomerID = c.Int(nullable: false),
@@ -19,11 +19,11 @@ namespace DAL.Migrations
                         ModifiedDate = c.DateTime(precision: 0),
                     })
                 .PrimaryKey(t => t.CustomerID)
-                .ForeignKey("dbo.Customers", t => t.CustomerID)
+                .ForeignKey("dbo.Customer", t => t.CustomerID)
                 .Index(t => t.CustomerID);
             
             CreateTable(
-                "dbo.Customers",
+                "dbo.Customer",
                 c => new
                     {
                         CustomerID = c.Int(nullable: false, identity: true),
@@ -43,7 +43,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.CustomerID);
             
             CreateTable(
-                "dbo.Transactions",
+                "dbo.Transaction",
                 c => new
                     {
                         TransactionID = c.Int(nullable: false, identity: true),
@@ -57,13 +57,13 @@ namespace DAL.Migrations
                         Amount = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.TransactionID)
-                .ForeignKey("dbo.Accounts", t => t.CustomerID, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserID, cascadeDelete: true)
+                .ForeignKey("dbo.Account", t => t.CustomerID, cascadeDelete: true)
+                .ForeignKey("dbo.User", t => t.UserID, cascadeDelete: true)
                 .Index(t => t.CustomerID)
                 .Index(t => t.UserID);
             
             CreateTable(
-                "dbo.Users",
+                "dbo.User",
                 c => new
                     {
                         UserID = c.Int(nullable: false, identity: true),
@@ -83,7 +83,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.UserID);
             
             CreateTable(
-                "dbo.ApplicationSettings",
+                "dbo.ApplicationSetting",
                 c => new
                     {
                         ApplicationSettingID = c.Int(nullable: false, identity: true),
@@ -105,7 +105,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.ApplicationSettingID);
             
             CreateTable(
-                "dbo.BordadoLinhas",
+                "dbo.BordadoLinha",
                 c => new
                     {
                         BordadoId = c.Int(nullable: false),
@@ -114,7 +114,7 @@ namespace DAL.Migrations
                     })
                 .PrimaryKey(t => new { t.BordadoId, t.LinhaCodigo })
                 .ForeignKey("dbo.Bordados", t => t.BordadoId, cascadeDelete: true)
-                .ForeignKey("dbo.Linhas", t => t.LinhaCodigo, cascadeDelete: true)
+                .ForeignKey("dbo.Linha", t => t.LinhaCodigo, cascadeDelete: true)
                 .Index(t => t.BordadoId)
                 .Index(t => t.LinhaCodigo);
             
@@ -143,7 +143,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Linhas",
+                "dbo.Linha",
                 c => new
                     {
                         Codigo = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
@@ -162,7 +162,7 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.Codigo);
             
             CreateTable(
-                "dbo.Clientes",
+                "dbo.Cliente",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -185,6 +185,81 @@ namespace DAL.Migrations
                         ModifiedDate = c.DateTime(precision: 0),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Course",
+                c => new
+                    {
+                        CourseID = c.Int(nullable: false),
+                        Title = c.String(maxLength: 50, storeType: "nvarchar"),
+                        Credits = c.Int(nullable: false),
+                        DepartmentID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.CourseID)
+                .ForeignKey("dbo.Department", t => t.DepartmentID, cascadeDelete: true)
+                .Index(t => t.DepartmentID);
+            
+            CreateTable(
+                "dbo.Department",
+                c => new
+                    {
+                        DepartmentID = c.Int(nullable: false, identity: true),
+                        Name = c.String(maxLength: 50, storeType: "nvarchar"),
+                        Budget = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        StartDate = c.DateTime(nullable: false, precision: 0),
+                        InstructorID = c.Int(),
+                    })
+                .PrimaryKey(t => t.DepartmentID)
+                .ForeignKey("dbo.Instructor", t => t.InstructorID)
+                .Index(t => t.InstructorID);
+            
+            CreateTable(
+                "dbo.Instructor",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        LastName = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
+                        FirstName = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
+                        HireDate = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.OfficeAssignment",
+                c => new
+                    {
+                        InstructorID = c.Int(nullable: false),
+                        Location = c.String(maxLength: 50, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.InstructorID)
+                .ForeignKey("dbo.Instructor", t => t.InstructorID)
+                .Index(t => t.InstructorID);
+            
+            CreateTable(
+                "dbo.Enrollment",
+                c => new
+                    {
+                        EnrollmentID = c.Int(nullable: false, identity: true),
+                        CourseID = c.Int(nullable: false),
+                        StudentID = c.Int(nullable: false),
+                        Grade = c.Int(),
+                    })
+                .PrimaryKey(t => t.EnrollmentID)
+                .ForeignKey("dbo.Course", t => t.CourseID, cascadeDelete: true)
+                .ForeignKey("dbo.Student", t => t.StudentID, cascadeDelete: true)
+                .Index(t => t.CourseID)
+                .Index(t => t.StudentID);
+            
+            CreateTable(
+                "dbo.Student",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        LastName = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
+                        FirstName = c.String(nullable: false, maxLength: 50, storeType: "nvarchar"),
+                        EnrollmentDate = c.DateTime(nullable: false, precision: 0),
+                    })
+                .PrimaryKey(t => t.ID);
             
             CreateTable(
                 "dbo.Fornecedores",
@@ -210,30 +285,64 @@ namespace DAL.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
+            CreateTable(
+                "dbo.InstructorCourse",
+                c => new
+                    {
+                        Instructor_ID = c.Int(nullable: false),
+                        Course_CourseID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.Instructor_ID, t.Course_CourseID })
+                .ForeignKey("dbo.Instructor", t => t.Instructor_ID, cascadeDelete: true)
+                .ForeignKey("dbo.Course", t => t.Course_CourseID, cascadeDelete: true)
+                .Index(t => t.Instructor_ID)
+                .Index(t => t.Course_CourseID);
+            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.BordadoLinhas", "LinhaCodigo", "dbo.Linhas");
-            DropForeignKey("dbo.BordadoLinhas", "BordadoId", "dbo.Bordados");
-            DropForeignKey("dbo.Transactions", "UserID", "dbo.Users");
-            DropForeignKey("dbo.Transactions", "CustomerID", "dbo.Accounts");
-            DropForeignKey("dbo.Accounts", "CustomerID", "dbo.Customers");
-            DropIndex("dbo.BordadoLinhas", new[] { "LinhaCodigo" });
-            DropIndex("dbo.BordadoLinhas", new[] { "BordadoId" });
-            DropIndex("dbo.Transactions", new[] { "UserID" });
-            DropIndex("dbo.Transactions", new[] { "CustomerID" });
-            DropIndex("dbo.Accounts", new[] { "CustomerID" });
+            DropForeignKey("dbo.Enrollment", "StudentID", "dbo.Student");
+            DropForeignKey("dbo.Enrollment", "CourseID", "dbo.Course");
+            DropForeignKey("dbo.Course", "DepartmentID", "dbo.Department");
+            DropForeignKey("dbo.Department", "InstructorID", "dbo.Instructor");
+            DropForeignKey("dbo.OfficeAssignment", "InstructorID", "dbo.Instructor");
+            DropForeignKey("dbo.InstructorCourse", "Course_CourseID", "dbo.Course");
+            DropForeignKey("dbo.InstructorCourse", "Instructor_ID", "dbo.Instructor");
+            DropForeignKey("dbo.BordadoLinha", "LinhaCodigo", "dbo.Linha");
+            DropForeignKey("dbo.BordadoLinha", "BordadoId", "dbo.Bordados");
+            DropForeignKey("dbo.Transaction", "UserID", "dbo.User");
+            DropForeignKey("dbo.Transaction", "CustomerID", "dbo.Account");
+            DropForeignKey("dbo.Account", "CustomerID", "dbo.Customer");
+            DropIndex("dbo.InstructorCourse", new[] { "Course_CourseID" });
+            DropIndex("dbo.InstructorCourse", new[] { "Instructor_ID" });
+            DropIndex("dbo.Enrollment", new[] { "StudentID" });
+            DropIndex("dbo.Enrollment", new[] { "CourseID" });
+            DropIndex("dbo.OfficeAssignment", new[] { "InstructorID" });
+            DropIndex("dbo.Department", new[] { "InstructorID" });
+            DropIndex("dbo.Course", new[] { "DepartmentID" });
+            DropIndex("dbo.BordadoLinha", new[] { "LinhaCodigo" });
+            DropIndex("dbo.BordadoLinha", new[] { "BordadoId" });
+            DropIndex("dbo.Transaction", new[] { "UserID" });
+            DropIndex("dbo.Transaction", new[] { "CustomerID" });
+            DropIndex("dbo.Account", new[] { "CustomerID" });
+            DropTable("dbo.InstructorCourse");
             DropTable("dbo.Fornecedores");
-            DropTable("dbo.Clientes");
-            DropTable("dbo.Linhas");
+            DropTable("dbo.Student");
+            DropTable("dbo.Enrollment");
+            DropTable("dbo.OfficeAssignment");
+            DropTable("dbo.Instructor");
+            DropTable("dbo.Department");
+            DropTable("dbo.Course");
+            DropTable("dbo.Cliente");
+            DropTable("dbo.Linha");
             DropTable("dbo.Bordados");
-            DropTable("dbo.BordadoLinhas");
-            DropTable("dbo.ApplicationSettings");
-            DropTable("dbo.Users");
-            DropTable("dbo.Transactions");
-            DropTable("dbo.Customers");
-            DropTable("dbo.Accounts");
+            DropTable("dbo.BordadoLinha");
+            DropTable("dbo.ApplicationSetting");
+            DropTable("dbo.User");
+            DropTable("dbo.Transaction");
+            DropTable("dbo.Customer");
+            DropTable("dbo.Account");
         }
     }
 }

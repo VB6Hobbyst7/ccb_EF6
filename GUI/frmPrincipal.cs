@@ -320,6 +320,12 @@ namespace GUI
         private void btnEmpregado_ItemClick(object sender, ItemClickEventArgs e)
         {
             MostraAgaurde("Aguarde", "Abrindo o formulário...");
+            frmCustomerList frm = new frmCustomerList
+            {
+                MdiParent = this
+            };
+            frm.Show();
+
             OcultaAguarde();
         }
 
