@@ -133,12 +133,12 @@ namespace ccb_ef6
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            using (var ctx = new SchoolContext())
+            using (LoyaltyDB db = new LoyaltyDB())
             {
                 var student = new Student { FirstMidName = "Carson", LastName = "Alexander", EnrollmentDate = DateTime.Parse("2005-09-01") };
 
-                ctx.Students.Add(student);
-                ctx.SaveChanges();
+                db.Students.Add(student);
+                db.SaveChanges();
             }
  
         }

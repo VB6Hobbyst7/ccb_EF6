@@ -3,7 +3,7 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class inicial : DbMigration
+    public partial class Inicial : DbMigration
     {
         public override void Up()
         {
@@ -286,36 +286,88 @@ namespace DAL.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.InstructorCourse",
+                "dbo.CourseInstructor",
                 c => new
                     {
-                        Instructor_ID = c.Int(nullable: false),
-                        Course_CourseID = c.Int(nullable: false),
+                        CourseID = c.Int(nullable: false),
+                        InstructorID = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.Instructor_ID, t.Course_CourseID })
-                .ForeignKey("dbo.Instructor", t => t.Instructor_ID, cascadeDelete: true)
-                .ForeignKey("dbo.Course", t => t.Course_CourseID, cascadeDelete: true)
-                .Index(t => t.Instructor_ID)
-                .Index(t => t.Course_CourseID);
+                .PrimaryKey(t => new { t.CourseID, t.InstructorID })
+                .ForeignKey("dbo.Course", t => t.CourseID, cascadeDelete: true)
+                .ForeignKey("dbo.Instructor", t => t.InstructorID, cascadeDelete: true)
+                .Index(t => t.CourseID)
+                .Index(t => t.InstructorID);
+            
+            CreateStoredProcedure(
+                "dbo.Department_Insert",
+                p => new
+                    {
+                        Name = p.String(maxLength: 50, unicode: false, storeType: "nvarchar"),
+                        Budget = p.Decimal(),
+                        StartDate = p.DateTime(),
+                        InstructorID = p.Int(),
+                    },
+                body:
+                    @"SET SESSION sql_mode='ANSI';INSERT INTO `Department`(
+                      `Name`, 
+                      `Budget`, 
+                      `StartDate`, 
+                      `InstructorID`) VALUES (
+                      @Name, 
+                      @Budget, 
+                      @StartDate, 
+                      @InstructorID);
+                      SELECT
+                      `DepartmentID`
+                      FROM `Department`
+                       WHERE  row_count() > 0 AND `DepartmentID`=last_insert_id();"
+            );
+            
+            CreateStoredProcedure(
+                "dbo.Department_Update",
+                p => new
+                    {
+                        DepartmentID = p.Int(),
+                        Name = p.String(maxLength: 50, unicode: false, storeType: "nvarchar"),
+                        Budget = p.Decimal(),
+                        StartDate = p.DateTime(),
+                        InstructorID = p.Int(),
+                    },
+                body:
+                    @"UPDATE `Department` SET `Name`=@Name, `Budget`=@Budget, `StartDate`=@StartDate, `InstructorID`=@InstructorID WHERE `DepartmentID` = @DepartmentID;"
+            );
+            
+            CreateStoredProcedure(
+                "dbo.Department_Delete",
+                p => new
+                    {
+                        DepartmentID = p.Int(),
+                    },
+                body:
+                    @"DELETE FROM `Department` WHERE `DepartmentID` = @DepartmentID;"
+            );
             
         }
         
         public override void Down()
         {
+            DropStoredProcedure("dbo.Department_Delete");
+            DropStoredProcedure("dbo.Department_Update");
+            DropStoredProcedure("dbo.Department_Insert");
+            DropForeignKey("dbo.CourseInstructor", "InstructorID", "dbo.Instructor");
+            DropForeignKey("dbo.CourseInstructor", "CourseID", "dbo.Course");
             DropForeignKey("dbo.Enrollment", "StudentID", "dbo.Student");
             DropForeignKey("dbo.Enrollment", "CourseID", "dbo.Course");
             DropForeignKey("dbo.Course", "DepartmentID", "dbo.Department");
             DropForeignKey("dbo.Department", "InstructorID", "dbo.Instructor");
             DropForeignKey("dbo.OfficeAssignment", "InstructorID", "dbo.Instructor");
-            DropForeignKey("dbo.InstructorCourse", "Course_CourseID", "dbo.Course");
-            DropForeignKey("dbo.InstructorCourse", "Instructor_ID", "dbo.Instructor");
             DropForeignKey("dbo.BordadoLinha", "LinhaCodigo", "dbo.Linha");
             DropForeignKey("dbo.BordadoLinha", "BordadoId", "dbo.Bordados");
             DropForeignKey("dbo.Transaction", "UserID", "dbo.User");
             DropForeignKey("dbo.Transaction", "CustomerID", "dbo.Account");
             DropForeignKey("dbo.Account", "CustomerID", "dbo.Customer");
-            DropIndex("dbo.InstructorCourse", new[] { "Course_CourseID" });
-            DropIndex("dbo.InstructorCourse", new[] { "Instructor_ID" });
+            DropIndex("dbo.CourseInstructor", new[] { "InstructorID" });
+            DropIndex("dbo.CourseInstructor", new[] { "CourseID" });
             DropIndex("dbo.Enrollment", new[] { "StudentID" });
             DropIndex("dbo.Enrollment", new[] { "CourseID" });
             DropIndex("dbo.OfficeAssignment", new[] { "InstructorID" });
@@ -326,7 +378,7 @@ namespace DAL.Migrations
             DropIndex("dbo.Transaction", new[] { "UserID" });
             DropIndex("dbo.Transaction", new[] { "CustomerID" });
             DropIndex("dbo.Account", new[] { "CustomerID" });
-            DropTable("dbo.InstructorCourse");
+            DropTable("dbo.CourseInstructor");
             DropTable("dbo.Fornecedores");
             DropTable("dbo.Student");
             DropTable("dbo.Enrollment");
