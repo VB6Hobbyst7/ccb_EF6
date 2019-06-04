@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAL;
 using Models;
 
 namespace ccb_ef6
@@ -40,18 +32,18 @@ namespace ccb_ef6
             }
             errorProvider1.SetError(txtNome, "");
 
-            if (!string.IsNullOrEmpty(txtEmail.Text))
+            if (!string.IsNullOrEmpty(txtComplemento.Text))
             {
                 RegexUtilities regexUtilities = new RegexUtilities();
 
-                if (!regexUtilities.IsValidEmail(txtEmail.Text))
+                if (!regexUtilities.IsValidEmail(txtComplemento.Text))
                 {
-                    errorProvider1.SetError(txtEmail, "Digite um eMail válido");
-                    txtEmail.Focus();
+                    errorProvider1.SetError(txtComplemento, "Digite um eMail válido");
+                    txtComplemento.Focus();
                     return false;
                 }
 
-                errorProvider1.SetError(txtEmail, "");
+                errorProvider1.SetError(txtComplemento, "");
 
                 if (BLL.ClienteServices.NomeExists(txtNome.Text) && IsNewCliente)
                 {
@@ -72,21 +64,13 @@ namespace ccb_ef6
             cliente.Contato_Funcao = txtContatoFuncao.Text;
             cliente.Contato_Nome = txtContatoNome.Text;
 
-            cliente.Telefone1 = txtTelefone1.Text;
-            cliente.Telefone2 = txtTelefone2.Text;
-            cliente.Telefone3 = txtTelefone3.Text;
-            cliente.Email = txtEmail.Text;
-            cliente.Obs = txtObs.Text;
+            cliente.Email = txtComplemento.Text;
         }
 
 
         private void FillTextBoxSince(Cliente cliente)
         {
-            txtObs.Text = cliente.Obs;
-            txtTelefone1.Text = cliente.Telefone1;
-            txtTelefone2.Text = cliente.Telefone2;
-            txtTelefone3.Text = cliente.Telefone3;
-            txtEmail.Text = cliente.Email;
+            txtComplemento.Text = cliente.Email;
             txtContatoFuncao.Text = cliente.Contato_Funcao;
             txtContatoNome.Text = cliente.Contato_Nome;
             txtNome.Text = cliente.Nome;
@@ -137,7 +121,6 @@ namespace ccb_ef6
                     MessageBox.Show(ex.Message);
                 }
             }
-
         }
 
         private void btnExit_Click(object sender, EventArgs e)
