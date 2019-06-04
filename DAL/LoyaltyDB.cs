@@ -1,4 +1,5 @@
 ﻿using Models;
+using Models.EntityConfig;
 using MySql.Data.Entity;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,11 @@ namespace DAL
         //    Database.SetInitializer(new LoyaltyDBInitializer());
         //}
 
+
         public LoyaltyDB() : base(GetConnectionString("ccb_ef6", "LocalDB"))//Descomentar para usar BD local de pruebas
         {
             Database.SetInitializer(new LoyaltyDBInitializer());
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<User> Users { get; set; }
@@ -37,12 +40,10 @@ namespace DAL
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
 
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<Enrollment> Enrollments { get; set; }
-        public DbSet<Instructor> Instructors { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
+        public DbSet<Pessoa> Pessoa { get; set; }
+        public DbSet<PessoaFisica> PessoaFisica { get; set; }
+        public DbSet<PessoaJuridica> PessoaJuridica { get; set; }
+        public DbSet<Endereco> Endereco { get; set; }
 
         public static string GetConnectionString(string dbName, string dbConnectionStringName)
         {
@@ -56,15 +57,28 @@ namespace DAL
         {
             modelBuilder.Entity<BordadoLinha>().HasKey(sc => new { sc.BordadoId, sc.LinhaCodigo });
 
+
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
+            modelBuilder.Configurations.Add(new PessoaFisicaConfig());
+            modelBuilder.Configurations.Add(new PessoaConfig());
+            modelBuilder.Configurations.Add(new PessoaJuridicaConfig());
+            modelBuilder.Configurations.Add(new EnderecoConfig());
 
-            modelBuilder.Entity<Course>()
-                .HasMany(c => c.Instructors).WithMany(i => i.Courses)
-                .Map(t => t.MapLeftKey("CourseID")
-                    .MapRightKey("InstructorID")
-                    .ToTable("CourseInstructor"));
-            modelBuilder.Entity<Department>().MapToStoredProcedures();
+            modelBuilder.Properties()
+                .Where(p => p.Name == p.ReflectedType.Name + "Id")
+                .Configure(p => p.IsKey());
+
+            modelBuilder.Properties<string>()
+                .Configure(p => p.HasColumnType("varchar"));
+
+            modelBuilder.Properties<string>()
+                .Configure(p => p.HasMaxLength(100));
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 

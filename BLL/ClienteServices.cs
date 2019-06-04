@@ -16,7 +16,7 @@ namespace BLL
             {
                 db.Clientes.Add(new Cliente
                 {
-                    Nome =  Nome,
+                    Nome = Nome,
                     Contato_Funcao = Contato_Funcao,
                     Cgc_Cpf = Cgc_Cpf,
                     Inscr_Estadual = Inscr_Estadual,

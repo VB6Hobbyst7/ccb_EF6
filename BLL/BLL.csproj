@@ -52,7 +52,6 @@
     <Compile Include="ApplicationSettingServices.cs" />
     <Compile Include="BordadoServices.cs" />
     <Compile Include="ClienteServices.cs" />
-    <Compile Include="CourseServices.cs" />
     <Compile Include="CustomerServices.cs" />
     <Compile Include="FornecedorServices.cs" />
     <Compile Include="LinhaServices.cs" />
