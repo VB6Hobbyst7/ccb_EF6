@@ -86,9 +86,9 @@ namespace ccb_ef6
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
 
-            Cliente cliente = BLL.ClienteServices.FindById(Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+            Pessoa pessoa = BLL.PessoaServices.FindById(Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
 
-            frmNovoOuEditaCliente frm = new frmNovoOuEditaCliente(cliente);
+            frmNovoOuEditaCliente frm = new frmNovoOuEditaCliente(pessoa);
             frm.Text = "Editar cliente";
 
 

@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNovoOuEditaCliente));
             this.lblNomeRazaoSocial = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtContatoFuncao = new System.Windows.Forms.TextBox();
+            this.txtNomeRazaoSocial = new System.Windows.Forms.TextBox();
+            this.txtCpfCnpj = new System.Windows.Forms.TextBox();
             this.lblCpfCnpj = new System.Windows.Forms.Label();
-            this.txtContatoNome = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.txtUf = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLogradoro = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -51,9 +51,9 @@
             this.chkAtivo = new DevExpress.XtraEditors.CheckEdit();
             this.chkCreditoNegado = new DevExpress.XtraEditors.CheckEdit();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCEP = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgPfPj.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivo.Properties)).BeginInit();
@@ -69,19 +69,19 @@
             this.lblNomeRazaoSocial.TabIndex = 0;
             this.lblNomeRazaoSocial.Text = "Nome: *";
             // 
-            // txtNome
+            // txtNomeRazaoSocial
             // 
-            this.txtNome.Location = new System.Drawing.Point(294, 20);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(302, 20);
-            this.txtNome.TabIndex = 3;
+            this.txtNomeRazaoSocial.Location = new System.Drawing.Point(294, 20);
+            this.txtNomeRazaoSocial.Name = "txtNomeRazaoSocial";
+            this.txtNomeRazaoSocial.Size = new System.Drawing.Size(302, 20);
+            this.txtNomeRazaoSocial.TabIndex = 3;
             // 
-            // txtContatoFuncao
+            // txtCpfCnpj
             // 
-            this.txtContatoFuncao.Location = new System.Drawing.Point(94, 20);
-            this.txtContatoFuncao.Name = "txtContatoFuncao";
-            this.txtContatoFuncao.Size = new System.Drawing.Size(185, 20);
-            this.txtContatoFuncao.TabIndex = 4;
+            this.txtCpfCnpj.Location = new System.Drawing.Point(94, 20);
+            this.txtCpfCnpj.Name = "txtCpfCnpj";
+            this.txtCpfCnpj.Size = new System.Drawing.Size(185, 20);
+            this.txtCpfCnpj.TabIndex = 13;
             // 
             // lblCpfCnpj
             // 
@@ -92,12 +92,12 @@
             this.lblCpfCnpj.TabIndex = 1;
             this.lblCpfCnpj.Text = "CPF:";
             // 
-            // txtContatoNome
+            // txtNumero
             // 
-            this.txtContatoNome.Location = new System.Drawing.Point(417, 67);
-            this.txtContatoNome.Name = "txtContatoNome";
-            this.txtContatoNome.Size = new System.Drawing.Size(90, 20);
-            this.txtContatoNome.TabIndex = 5;
+            this.txtNumero.Location = new System.Drawing.Point(417, 67);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(90, 20);
+            this.txtNumero.TabIndex = 5;
             // 
             // label3
             // 
@@ -108,12 +108,12 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Número:";
             // 
-            // txtEstado
+            // txtUf
             // 
-            this.txtEstado.Location = new System.Drawing.Point(248, 169);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(54, 20);
-            this.txtEstado.TabIndex = 12;
+            this.txtUf.Location = new System.Drawing.Point(248, 169);
+            this.txtUf.Name = "txtUf";
+            this.txtUf.Size = new System.Drawing.Size(54, 20);
+            this.txtUf.TabIndex = 10;
             // 
             // label4
             // 
@@ -129,7 +129,7 @@
             this.txtLogradoro.Location = new System.Drawing.Point(12, 67);
             this.txtLogradoro.Name = "txtLogradoro";
             this.txtLogradoro.Size = new System.Drawing.Size(399, 20);
-            this.txtLogradoro.TabIndex = 8;
+            this.txtLogradoro.TabIndex = 4;
             // 
             // label8
             // 
@@ -161,7 +161,7 @@
             this.txtComplemento.Location = new System.Drawing.Point(518, 67);
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(215, 20);
-            this.txtComplemento.TabIndex = 13;
+            this.txtComplemento.TabIndex = 6;
             // 
             // label10
             // 
@@ -212,6 +212,7 @@
             new DevExpress.XtraEditors.Controls.RadioGroupItem(true, "PJ")});
             this.rgPfPj.Size = new System.Drawing.Size(79, 28);
             this.rgPfPj.TabIndex = 27;
+            this.rgPfPj.SelectedIndexChanged += new System.EventHandler(this.rgPfPj_SelectedIndexChanged);
             // 
             // chkAtivo
             // 
@@ -238,12 +239,12 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Bairro:";
             // 
-            // textBox1
+            // txtBairro
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 115);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(399, 20);
-            this.textBox1.TabIndex = 13;
+            this.txtBairro.Location = new System.Drawing.Point(12, 115);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(399, 20);
+            this.txtBairro.TabIndex = 7;
             // 
             // label2
             // 
@@ -254,12 +255,12 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "CEP:";
             // 
-            // textBox2
+            // txtCEP
             // 
-            this.textBox2.Location = new System.Drawing.Point(417, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(138, 20);
-            this.textBox2.TabIndex = 5;
+            this.txtCEP.Location = new System.Drawing.Point(417, 115);
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(138, 20);
+            this.txtCEP.TabIndex = 8;
             // 
             // frmNovoOuEditaCliente
             // 
@@ -272,7 +273,7 @@
             this.Controls.Add(this.rgPfPj);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddOrUpdate);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBairro);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtComplemento);
             this.Controls.Add(this.label10);
@@ -280,15 +281,15 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtLogradoro);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.txtUf);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtCEP);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtContatoNome);
+            this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtContatoFuncao);
+            this.Controls.Add(this.txtCpfCnpj);
             this.Controls.Add(this.lblCpfCnpj);
-            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.txtNomeRazaoSocial);
             this.Controls.Add(this.lblNomeRazaoSocial);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -300,6 +301,7 @@
             this.Name = "frmNovoOuEditaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Novo  Cliente";
+            this.Load += new System.EventHandler(this.frmNovoOuEditaCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgPfPj.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivo.Properties)).EndInit();
@@ -312,12 +314,12 @@
         #endregion
 
         private System.Windows.Forms.Label lblNomeRazaoSocial;
-        private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtContatoFuncao;
+        private System.Windows.Forms.TextBox txtNomeRazaoSocial;
+        private System.Windows.Forms.TextBox txtCpfCnpj;
         private System.Windows.Forms.Label lblCpfCnpj;
-        private System.Windows.Forms.TextBox txtContatoNome;
+        private System.Windows.Forms.TextBox txtNumero;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.TextBox txtUf;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLogradoro;
         private System.Windows.Forms.Label label8;
@@ -331,9 +333,9 @@
         private DevExpress.XtraEditors.RadioGroup rgPfPj;
         private DevExpress.XtraEditors.CheckEdit chkCreditoNegado;
         private DevExpress.XtraEditors.CheckEdit chkAtivo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCEP;
         private System.Windows.Forms.Label label2;
     }
 }

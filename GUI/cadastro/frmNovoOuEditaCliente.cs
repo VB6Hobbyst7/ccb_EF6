@@ -6,31 +6,31 @@ namespace ccb_ef6
 {
     public partial class frmNovoOuEditaCliente : Form
     {
-        private Cliente cliente = null;
-        private bool IsNewCliente;
+        private Pessoa pessoa = null;
+        private bool IsNewPessoa;
 
         public frmNovoOuEditaCliente()
         {
             InitializeComponent();
         }
 
-        public frmNovoOuEditaCliente(Cliente cliente)
+        public frmNovoOuEditaCliente(Pessoa pessoa)
         {
             InitializeComponent();
-            this.cliente = cliente;
-            FillTextBoxSince(cliente);
-            txtNome.ReadOnly = true;
+            this.pessoa = pessoa;
+            FillTextBoxSince(pessoa);
+            txtNomeRazaoSocial.ReadOnly = true;
         }
 
         private bool ValidateInput()
         {
-            if (string.IsNullOrEmpty(txtNome.Text))
+            if (string.IsNullOrEmpty(txtNomeRazaoSocial.Text))
             {
-                errorProvider1.SetError(txtNome, "Digite um Nome");
-                txtNome.Focus();
+                errorProvider1.SetError(txtNomeRazaoSocial, "Digite um Nome");
+                txtNomeRazaoSocial.Focus();
                 return false;
             }
-            errorProvider1.SetError(txtNome, "");
+            errorProvider1.SetError(txtNomeRazaoSocial, "");
 
             if (!string.IsNullOrEmpty(txtComplemento.Text))
             {
@@ -45,37 +45,74 @@ namespace ccb_ef6
 
                 errorProvider1.SetError(txtComplemento, "");
 
-                if (BLL.ClienteServices.NomeExists(txtNome.Text) && IsNewCliente)
+                if (BLL.ClienteServices.NomeExists(txtNomeRazaoSocial.Text) && IsNewPessoa)
                 {
-                    errorProvider1.SetError(txtNome, "Este nome de cliente já existe, digite um diferente");
-                    txtNome.Focus();
+                    errorProvider1.SetError(txtNomeRazaoSocial, "Este nome de cliente já existe, digite um diferente");
+                    txtNomeRazaoSocial.Focus();
                     return false;
                 }
-                errorProvider1.SetError(txtNome, "");
-
+                errorProvider1.SetError(txtNomeRazaoSocial, "");
             }
-
             return true;
         }
 
-        private void AssignDataFromTextBox(Cliente cliente)
+        private void AssignDataFromTextBox(Pessoa pessoa)
         {
-            cliente.Nome = txtNome.Text;
-            cliente.Contato_Funcao = txtContatoFuncao.Text;
-            cliente.Contato_Nome = txtContatoNome.Text;
+            pessoa.DataCadastro = DateTime.Now;
+            pessoa.Ativo = chkAtivo.Checked;
+            pessoa.NegarCredito = chkCreditoNegado.Checked;
 
-            cliente.Email = txtComplemento.Text;
+            // Endereco de Pessoa
+            var endereco = new Endereco()
+            {
+                Logradouro = txtLogradoro.Text,
+                Bairro = txtBairro.Text,
+                Cep = txtCEP.Text,
+                Estado = txtUf.Text,
+                Cidade = txtCidade.Text,
+                Numero = txtNumero.Text,
+                Complemento = txtComplemento.Text
+            };
+
+            if (rgPfPj.SelectedIndex == 0)  //PF
+            {
+                // PF de Pessoa
+                var pessoaFisica = new PessoaFisica()
+                {
+                    Nome = txtNomeRazaoSocial.Text,
+                    Cpf = txtCpfCnpj.Text,
+                    Pessoa = pessoa
+                };
+                // Adicionando EnderecoPF em PF
+                pessoaFisica.EnderecoList.Add(endereco);
+
+                // Adicionando PF em Pessoa
+                pessoa.PessoaFisica = pessoaFisica;
+            }
+            else
+            {
+                // PJ 1 de Pessoa
+                var pessoaJuridica1 = new PessoaJuridica()
+                {
+                    RazaoSocial = txtNomeRazaoSocial.Text,
+                    Cnpj = txtCpfCnpj.Text,
+                    Pessoa = pessoa
+                };
+
+                // Adicionando EnderecoPJ1 em PJ1
+                pessoaJuridica1.EnderecoList.Add(endereco);
+
+                // Adicionando PJ 1 em Pessoa
+                pessoa.PessoaJuridicaList.Add(pessoaJuridica1);
+            }
         }
 
 
-        private void FillTextBoxSince(Cliente cliente)
+        private void FillTextBoxSince(Pessoa pessoa)
         {
-            txtComplemento.Text = cliente.Email;
-            txtContatoFuncao.Text = cliente.Contato_Funcao;
-            txtContatoNome.Text = cliente.Contato_Nome;
-            txtNome.Text = cliente.Nome;
-            txtEstado.Text = cliente.Estado;
-            txtCidade.Text = cliente.Cidade;
+
+            txtCpfCnpj.Text = pessoa.PessoaFisica.Cpf;
+            
         }
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
@@ -86,17 +123,17 @@ namespace ccb_ef6
             }
 
             //Registrar cliente en la BD
-            if (cliente == null)
+            if (pessoa == null)
             {
-                IsNewCliente = true;
-                cliente = new Cliente();
+                IsNewPessoa = true;
+                pessoa = new Pessoa();
 
-                AssignDataFromTextBox(cliente);
+                AssignDataFromTextBox(pessoa);
 
                 try
                 {
                     //Creo al cliente e inmediatamente creo su cuenta correspondiente
-                    BLL.ClienteServices.AddNew(cliente);
+                    BLL.PessoaServices.AddNew(pessoa);
 
                     MessageBox.Show("Cliente agregado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -110,9 +147,9 @@ namespace ccb_ef6
             {
                 try
                 {
-                    IsNewCliente = false;
-                    AssignDataFromTextBox(cliente);
-                    BLL.ClienteServices.Update(cliente);
+                    IsNewPessoa = false;
+                    AssignDataFromTextBox(pessoa);
+                    BLL.PessoaServices.Update(pessoa);
                     MessageBox.Show("Cliente actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
@@ -126,6 +163,45 @@ namespace ccb_ef6
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void rgPfPj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PfOuPj(rgPfPj.SelectedIndex);
+        }
+
+        private void PfOuPj( int pj)
+        {
+            if (pj == 1)
+            {
+                lblCpfCnpj.Text = "CNPJ:";
+                lblNomeRazaoSocial.Text = "Razão Social:";
+            }
+            else
+            {
+                lblCpfCnpj.Text = "CPF:";
+                lblNomeRazaoSocial.Text = "Nome:";
+            }
+        }
+
+        private void LimpaTela()
+        {
+            txtCpfCnpj.Text = "";
+            txtNomeRazaoSocial.Text = "";
+            txtLogradoro.Text = "";
+            txtNumero.Text = "";
+            txtComplemento.Text = "";
+            txtCidade.Text = "";
+            txtUf.Text = "";
+            chkAtivo.Checked = true;
+            chkCreditoNegado.Checked = false;
+
+            PfOuPj(0);
+        }
+
+        private void frmNovoOuEditaCliente_Load(object sender, EventArgs e)
+        {
+            LimpaTela();
         }
     }
 }

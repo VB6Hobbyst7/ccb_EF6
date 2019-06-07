@@ -57,8 +57,6 @@ namespace DAL
         {
             modelBuilder.Entity<BordadoLinha>().HasKey(sc => new { sc.BordadoId, sc.LinhaCodigo });
 
-
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
