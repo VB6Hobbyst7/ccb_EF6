@@ -1,4 +1,9 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
+using System.Linq;
+using System.Web;
 
 namespace Models.EntityConfig
 {
@@ -6,28 +11,24 @@ namespace Models.EntityConfig
     {
         public PessoaJuridicaConfig()
         {
-            HasKey(p => p.PessoaJuridicaId);
+            HasKey(pj => pj.Id);
+            Property(pj => pj.RazaoSocial)
+                .IsRequired()
+                .HasMaxLength(150);
+            Property(pj => pj.CNPJ)
+                .IsRequired()
+                .HasMaxLength(15);
 
-            Property(c => c.Cnpj)
-                .HasMaxLength(14);
 
-            Property(c => c.RazaoSocial)
-                 .HasMaxLength(100);
-
-            // MAPEAMENTO DE UM PARA MUITOS
-            HasRequired(p => p.Pessoa)
-                .WithMany(p => p.PessoaJuridicaList)
-                .HasForeignKey(p => p.PessoaId);
-
-            // MAPEAMENTO DE MUITOS PARA MUITOS
-            HasMany(f => f.EnderecoList)
+            HasMany(pj => pj.Endereco)
                 .WithMany()
                 .Map(me =>
                 {
                     me.MapLeftKey("PessoaJuridicaId");
                     me.MapRightKey("EnderecoId");
-                    me.ToTable("PessoaJuridicaEndereco");
+                    me.ToTable("PessoaJuridica_Endereco");
                 });
+            ToTable("PessoaJuridicas");
         }
     }
 }

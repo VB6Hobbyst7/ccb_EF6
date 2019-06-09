@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace Models
 {
@@ -7,15 +9,21 @@ namespace Models
     {
         public PessoaFisica()
         {
-            PessoaFisicaId = Guid.NewGuid();
-            EnderecoList = new List<Endereco>();
+            Id = Guid.NewGuid();
+            Endereco = new List<Endereco>();
+        }
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        //public string RG { get; set; }
+        public string CPF { get; set; }
+
+        public virtual ICollection<Endereco> Endereco { get; set; }
+        public virtual Pessoa Pessoa { get; set; }
+
+        public void AdicionarEndereco(Endereco endereco)
+        {
+            Endereco.Add(endereco);
         }
 
-        public Guid PessoaFisicaId { get; set; }
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-        public Guid PessoaId { get; set; }
-        public virtual Pessoa Pessoa { get; set; }
-        public virtual ICollection<Endereco> EnderecoList { get; set; }
     }
 }

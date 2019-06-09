@@ -52,7 +52,6 @@
             this.btnAddOrUpdate = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider();
-            this.btnPessoa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -250,23 +249,12 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // btnPessoa
-            // 
-            this.btnPessoa.Location = new System.Drawing.Point(347, 322);
-            this.btnPessoa.Name = "btnPessoa";
-            this.btnPessoa.Size = new System.Drawing.Size(75, 23);
-            this.btnPessoa.TabIndex = 22;
-            this.btnPessoa.Text = "Pessoa";
-            this.btnPessoa.UseVisualStyleBackColor = true;
-            this.btnPessoa.Click += new System.EventHandler(this.btnPessoa_Click);
-            // 
             // frmNewOrUpdateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(748, 372);
-            this.Controls.Add(this.btnPessoa);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnAddOrUpdate);
             this.Controls.Add(this.txtEmail);
@@ -331,6 +319,5 @@
         private System.Windows.Forms.Button btnAddOrUpdate;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button btnPessoa;
     }
 }

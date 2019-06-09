@@ -34,13 +34,13 @@ namespace BLL
             }
         }
 
-        public static List<Cliente> GetAll()
+        public static List<Pessoa> GetAll()
         {
-            List<Cliente> list = new List<Cliente>();
+            List<Pessoa> list = new List<Pessoa>();
 
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                list = db.Clientes.ToList();
+                list = db.Pessoas.ToList();
             }
 
             return list;

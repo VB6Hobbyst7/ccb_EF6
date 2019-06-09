@@ -40,11 +40,6 @@ namespace DAL
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<ApplicationSetting> ApplicationSettings { get; set; }
 
-        public DbSet<Pessoa> Pessoa { get; set; }
-        public DbSet<PessoaFisica> PessoaFisica { get; set; }
-        public DbSet<PessoaJuridica> PessoaJuridica { get; set; }
-        public DbSet<Endereco> Endereco { get; set; }
-
         public static string GetConnectionString(string dbName, string dbConnectionStringName)
         {
             var connString = ConfigurationManager.ConnectionStrings[dbConnectionStringName].ConnectionString.ToString();
@@ -52,7 +47,12 @@ namespace DAL
             return String.Format(connString, dbName);
         }
 
-        //Fluent API
+        public DbSet<Pessoa> Pessoas { get; set; }
+        public DbSet<PessoaFisica> PessoaFisicas { get; set; }
+        public DbSet<PessoaJuridica> PessoaJuridicas { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
+        //public DbSet<Foto> Fotos { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BordadoLinha>().HasKey(sc => new { sc.BordadoId, sc.LinhaCodigo });
@@ -61,20 +61,16 @@ namespace DAL
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
-            modelBuilder.Configurations.Add(new PessoaFisicaConfig());
             modelBuilder.Configurations.Add(new PessoaConfig());
+            modelBuilder.Configurations.Add(new PessoaFisicaConfig());
             modelBuilder.Configurations.Add(new PessoaJuridicaConfig());
             modelBuilder.Configurations.Add(new EnderecoConfig());
+            //modelBuilder.Configurations.Add(new FotoConfig());
 
             modelBuilder.Properties()
-                .Where(p => p.Name == p.ReflectedType.Name + "Id")
-                .Configure(p => p.IsKey());
+               .Where(mo => mo.Name == mo.ReflectedType.Name + "Id")
+               .Configure(mo => mo.IsKey());
 
-            modelBuilder.Properties<string>()
-                .Configure(p => p.HasColumnType("varchar"));
-
-            modelBuilder.Properties<string>()
-                .Configure(p => p.HasMaxLength(100));
 
             base.OnModelCreating(modelBuilder);
         }

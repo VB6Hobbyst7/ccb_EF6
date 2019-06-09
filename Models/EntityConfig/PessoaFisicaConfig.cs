@@ -1,4 +1,9 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using Models;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity.ModelConfiguration;
+using System.Linq;
+using System.Web;
 
 namespace Models.EntityConfig
 {
@@ -6,27 +11,29 @@ namespace Models.EntityConfig
     {
         public PessoaFisicaConfig()
         {
-            HasKey(p => p.PessoaFisicaId);
-
-            Property(c => c.Cpf)
+            HasKey(pf => pf.Id);
+            Property(pf => pf.Nome)
+                .IsRequired()
+                .HasMaxLength(150);
+            Property(pf => pf.CPF)
+                .IsRequired()
                 .HasMaxLength(11);
 
-            Property(c => c.Nome)
-                .HasMaxLength(100);
+            HasMany(pf => pf.Endereco)
+               .WithMany()
+               .Map(me =>
+               {
+                   me.MapLeftKey("PessoaFisicaId");
+                   me.MapRightKey("EnderecoId");
+                   me.ToTable("PessoaFisica_Endereco");
+               }); //.MapToStoredProcedures(s => s.Insert(i => i.HasName("adicionar_endereco_pessoaFisica")
+                   //              .LeftKeyParameter(p => p.Id, "pessoaFisica_Id")
+                   //              .RightKeyParameter(t => t.Id, "endereco_Id"))
+                   //.Delete(d => d.HasName("remover_endereco_pessoaFisica")
+                   //              .LeftKeyParameter(p => p.Id, "pessoaFisica_Id")
+                   //              .RightKeyParameter(t => t.Id, "endereco_Id")));
 
-            // MAPEAMENTO DE UM PARA UM
-            HasRequired(p => p.Pessoa)
-                .WithRequiredPrincipal(p => p.PessoaFisica);
-
-            // MAPEAMENTO DE MUITOS PARA MUITOS
-            HasMany(f => f.EnderecoList)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaFisicaId");
-                    me.MapRightKey("EnderecoId");
-                    me.ToTable("PessoaFisicaEndereco");
-                });
+            ToTable("PessoaFisicas");
         }
     }
 }

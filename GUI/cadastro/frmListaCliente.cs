@@ -38,39 +38,45 @@ namespace ccb_ef6
             editaCliente();
         }
 
-        private void frmListaCliente_Load(object sender, EventArgs e)
+        private void CarregaRegistros()
         {
-            List<Cliente> ClienteList = new List<Cliente>();
+            List<Pessoa> PessoaList = new List<Pessoa>();
 
-            ClienteList = ClienteServices.GetAll();
+            PessoaList = PessoaServices.ObterTodos();
 
             //dgvClientes.DataSource = ClienteList;
-            dgRegistros.DataSource = ClienteList;
+            dgRegistros.DataSource = PessoaList;
 
-            foreach (GridColumn col in gvRegistros.Columns)
-            {
-                switch (col.FieldName)
-                {
-                    case "Nome":
-                    case "Contato_Nome":
-                    case "Telefone1":
-                    case "Telefone2":
-                    case "Email":
-                        col.Visible = true;
-                        break;
-                    default:
-                        col.Visible = false;
-                        break;
-                }
-            }
-
-            if (ClienteList.Count == 0)
+            if (PessoaList.Count == 0)
             {
                 DisableButtonsWhenNoClientes(true);
             }
             else
             {
                 DisableButtonsWhenNoClientes(false);
+            }
+
+        }
+
+        private void frmListaCliente_Load(object sender, EventArgs e)
+        {
+            CarregaRegistros();
+           
+            foreach (GridColumn col in gvRegistros.Columns)
+            {
+                switch (col.FieldName)
+                {
+                    case "_Id":
+                    case "DataCadstro":
+                    case "TipoPessoa":
+                    case "Ativo":
+                    case "PessoaFisica":
+                        col.Visible = true;
+                        break;
+                    default:
+                        col.Visible = false;
+                        break;
+                }
             }
 
             //btnWithdrawal.Visible = Properties.Settings.Default.AllowCashRequest;
@@ -86,7 +92,9 @@ namespace ccb_ef6
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
 
-            Pessoa pessoa = BLL.PessoaServices.FindById(Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+            Pessoa pessoa = BLL.PessoaServices.ObterPorId(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+
+
 
             frmNovoOuEditaCliente frm = new frmNovoOuEditaCliente(pessoa);
             frm.Text = "Editar cliente";
@@ -100,7 +108,8 @@ namespace ccb_ef6
             };
             Linha = gvRegistros.FocusedRowHandle;
             frm.ShowDialog();
-            dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
+            //dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
+            CarregaRegistros();
 
             gvRegistros.FocusedRowHandle = Linha;     
         }

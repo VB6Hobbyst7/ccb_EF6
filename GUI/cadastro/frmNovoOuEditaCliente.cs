@@ -34,24 +34,24 @@ namespace ccb_ef6
 
             if (!string.IsNullOrEmpty(txtComplemento.Text))
             {
-                RegexUtilities regexUtilities = new RegexUtilities();
+                //RegexUtilities regexUtilities = new RegexUtilities();
 
-                if (!regexUtilities.IsValidEmail(txtComplemento.Text))
-                {
-                    errorProvider1.SetError(txtComplemento, "Digite um eMail válido");
-                    txtComplemento.Focus();
-                    return false;
-                }
+                //if (!regexUtilities.IsValidEmail(txtComplemento.Text))
+                //{
+                //    errorProvider1.SetError(txtComplemento, "Digite um eMail válido");
+                //    txtComplemento.Focus();
+                //    return false;
+               // }
 
-                errorProvider1.SetError(txtComplemento, "");
+                //errorProvider1.SetError(txtComplemento, "");
 
-                if (BLL.ClienteServices.NomeExists(txtNomeRazaoSocial.Text) && IsNewPessoa)
-                {
-                    errorProvider1.SetError(txtNomeRazaoSocial, "Este nome de cliente já existe, digite um diferente");
-                    txtNomeRazaoSocial.Focus();
-                    return false;
-                }
-                errorProvider1.SetError(txtNomeRazaoSocial, "");
+                //if (BLL.ClienteServices.NomeExists(txtNomeRazaoSocial.Text) && IsNewPessoa)
+                //{
+                //    errorProvider1.SetError(txtNomeRazaoSocial, "Este nome de cliente já existe, digite um diferente");
+                //    txtNomeRazaoSocial.Focus();
+                //    return false;
+                //}
+                //errorProvider1.SetError(txtNomeRazaoSocial, "");
             }
             return true;
         }
@@ -60,7 +60,6 @@ namespace ccb_ef6
         {
             pessoa.DataCadastro = DateTime.Now;
             pessoa.Ativo = chkAtivo.Checked;
-            pessoa.NegarCredito = chkCreditoNegado.Checked;
 
             // Endereco de Pessoa
             var endereco = new Endereco()
@@ -80,39 +79,51 @@ namespace ccb_ef6
                 var pessoaFisica = new PessoaFisica()
                 {
                     Nome = txtNomeRazaoSocial.Text,
-                    Cpf = txtCpfCnpj.Text,
+                    CPF = txtCpfCnpj.Text,
                     Pessoa = pessoa
                 };
                 // Adicionando EnderecoPF em PF
-                pessoaFisica.EnderecoList.Add(endereco);
+                pessoaFisica.Endereco.Add(endereco);
 
                 // Adicionando PF em Pessoa
                 pessoa.PessoaFisica = pessoaFisica;
+                pessoa.TipoPessoa = TipoPessoa.PessoaFisica;
             }
             else
             {
                 // PJ 1 de Pessoa
-                var pessoaJuridica1 = new PessoaJuridica()
+                var pessoaJuridica = new PessoaJuridica()
                 {
                     RazaoSocial = txtNomeRazaoSocial.Text,
-                    Cnpj = txtCpfCnpj.Text,
+                    CNPJ = txtCpfCnpj.Text,
                     Pessoa = pessoa
                 };
 
-                // Adicionando EnderecoPJ1 em PJ1
-                pessoaJuridica1.EnderecoList.Add(endereco);
+                // Adicionando EnderecoPF em PF
+                pessoaJuridica.Endereco.Add(endereco);
 
-                // Adicionando PJ 1 em Pessoa
-                pessoa.PessoaJuridicaList.Add(pessoaJuridica1);
+                // Adicionando PF em Pessoa
+                pessoa.PessoaJuridica = pessoaJuridica;
+                pessoa.TipoPessoa = TipoPessoa.PessoaJuridica;
             }
         }
-
 
         private void FillTextBoxSince(Pessoa pessoa)
         {
 
-            txtCpfCnpj.Text = pessoa.PessoaFisica.Cpf;
-            
+            if (pessoa.TipoPessoa == TipoPessoa.PessoaFisica)
+            {
+                rgPfPj.SelectedIndex = 0;
+                txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;
+                txtNomeRazaoSocial.Text = pessoa.PessoaFisica.Nome;
+            }
+            else
+            {
+                rgPfPj.SelectedIndex = 1;
+                txtCpfCnpj.Text = pessoa.PessoaJuridica.CNPJ;
+                txtNomeRazaoSocial.Text = pessoa.PessoaJuridica.RazaoSocial;
+            }
+
         }
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
@@ -140,6 +151,7 @@ namespace ccb_ef6
                 }
                 catch (Exception ex)
                 {
+                    pessoa = null;
                     MessageBox.Show(ex.Message);
                 }
             }
@@ -201,7 +213,7 @@ namespace ccb_ef6
 
         private void frmNovoOuEditaCliente_Load(object sender, EventArgs e)
         {
-            LimpaTela();
+            //LimpaTela();
         }
     }
 }

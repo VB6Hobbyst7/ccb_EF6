@@ -69,6 +69,7 @@
     <Compile Include="PessoaJuridica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SharedBase.cs" />
+    <Compile Include="TipoPessoa.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />
   </ItemGroup>

@@ -7,20 +7,20 @@ namespace Models
     {
         public PessoaJuridica()
         {
-            PessoaJuridicaId = Guid.NewGuid();
-            EnderecoList = new List<Endereco>();
+            Id = Guid.NewGuid();
+            Endereco = new List<Endereco>();
         }
-
-        public Guid PessoaJuridicaId { get; set; }
-
-        public string Cnpj { get; set; }
-
+        public Guid Id { get; set; }
         public string RazaoSocial { get; set; }
-
-        public Guid PessoaId { get; set; }
+        public string CNPJ { get; set; }
 
         public virtual Pessoa Pessoa { get; set; }
+        public virtual ICollection<Endereco> Endereco { get; set; }
 
-        public virtual ICollection<Endereco> EnderecoList { get; set; }
+        public void AdicionarEndereco(Endereco endereco)
+        {
+            Endereco.Add(endereco);
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace Models
 {
@@ -7,15 +9,16 @@ namespace Models
     {
         public Pessoa()
         {
-            PessoaId = Guid.NewGuid();
-            PessoaJuridicaList = new List<PessoaJuridica>();
+            Id = Guid.NewGuid();
         }
-
-        public Guid PessoaId { get; set; }
+        public Guid Id { get; set; }
         public DateTime DataCadastro { get; set; }
+        public TipoPessoa TipoPessoa { get; set; }
         public bool Ativo { get; set; }
-        public bool NegarCredito { get; set; }
+
         public virtual PessoaFisica PessoaFisica { get; set; }
-        public virtual ICollection<PessoaJuridica> PessoaJuridicaList { get; set; }
+        public virtual PessoaJuridica PessoaJuridica { get; set; }
+        //public virtual ICollection<Foto> ListaDeFotos { get; set; }
+
     }
 }
