@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using DevExpress.XtraGrid.Columns;
 using System.Windows.Forms;
+using Repository;
 
 namespace ccb_ef6
 {
@@ -42,7 +43,7 @@ namespace ccb_ef6
         {
             List<Pessoa> PessoaList = new List<Pessoa>();
 
-            PessoaList = PessoaServices.ObterTodos();
+            PessoaList = RepositoryPessoa.ObterTodos();
 
             //dgvClientes.DataSource = ClienteList;
             dgRegistros.DataSource = PessoaList;
@@ -70,7 +71,8 @@ namespace ccb_ef6
                     case "DataCadstro":
                     case "TipoPessoa":
                     case "Ativo":
-                    case "PessoaFisica":
+                    case "PessoaFisica.Nome":
+                    case "PessoaJuridica.RazaoSocial":
                         col.Visible = true;
                         break;
                     default:
@@ -92,7 +94,7 @@ namespace ccb_ef6
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
 
-            Pessoa pessoa = BLL.PessoaServices.ObterPorId(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+            Pessoa pessoa = RepositoryPessoa.ObterPorId(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
 
 
 

@@ -61,6 +61,13 @@
     <Compile Include="LinhaServices.cs" />
     <Compile Include="PessoaServices.cs" />
     <Compile Include="RegexUtilities.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Repository\RepositoryEndereco.cs" />
+    <Compile Include="Repository\RepositoryFoto.cs" />
+    <Compile Include="Repository\RepositoryPessoa.cs" />
+    <Compile Include="Repository\RepositoryPessoaFisica.cs" />
+    <Compile Include="Repository\RepositoryPessoaJuridica.cs" />
+    <Compile Include="Service.cs" />
     <Compile Include="TransactionServices.cs" />
     <Compile Include="UserServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,5 +85,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

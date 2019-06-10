@@ -59,10 +59,12 @@
     <Compile Include="Customer.cs" />
     <Compile Include="Endereco.cs" />
     <Compile Include="EntityConfig\EnderecoConfig.cs" />
+    <Compile Include="EntityConfig\FotosConfig.cs" />
     <Compile Include="EntityConfig\PessoaConfig.cs" />
     <Compile Include="EntityConfig\PessoaFisicaConfig.cs" />
     <Compile Include="EntityConfig\PessoaJuridicaConfig.cs" />
     <Compile Include="Fornecedor.cs" />
+    <Compile Include="Foto.cs" />
     <Compile Include="Linha.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="PessoaFisica.cs" />
@@ -72,6 +74,14 @@
     <Compile Include="TipoPessoa.cs" />
     <Compile Include="Transaction.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="ViewModel\ClienteViewModel.cs" />
+    <Compile Include="ViewModel\EditarClienteViewModel.cs" />
+    <Compile Include="ViewModel\EnderecoViewModel.cs" />
+    <Compile Include="ViewModel\FotoViewModel.cs" />
+    <Compile Include="ViewModel\PessoaFisicaViewModel.cs" />
+    <Compile Include="ViewModel\PessoaJuridicaViewModel.cs" />
+    <Compile Include="ViewModel\PessoaViewModel.cs" />
+    <Compile Include="ViewModel\TipoPessoaViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

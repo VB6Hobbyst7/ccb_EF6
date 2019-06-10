@@ -42,6 +42,10 @@
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnNew = new DevExpress.XtraEditors.SimpleButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Id = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TipoPessoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Nome = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.RazaoSocial = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gbList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRegistros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvRegistros)).BeginInit();
@@ -90,7 +94,7 @@
             this.btnFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFind.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFind.ImageOptions.Image")));
             this.btnFind.Location = new System.Drawing.Point(620, 18);
-            this.btnFind.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnFind.Margin = new System.Windows.Forms.Padding(2);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(68, 26);
             this.btnFind.TabIndex = 54;
@@ -115,6 +119,11 @@
             // 
             // gvRegistros
             // 
+            this.gvRegistros.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.Id,
+            this.TipoPessoa,
+            this.Nome,
+            this.RazaoSocial});
             this.gvRegistros.DetailHeight = 100;
             this.gvRegistros.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gvRegistros.GridControl = this.dgRegistros;
@@ -163,7 +172,7 @@
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.ImageOptions.Image")));
             this.btnExit.Location = new System.Drawing.Point(12, 459);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(88, 37);
             this.btnExit.TabIndex = 18;
@@ -174,7 +183,7 @@
             // 
             this.btnEdit.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.ImageOptions.Image")));
             this.btnEdit.Location = new System.Drawing.Point(12, 76);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(88, 37);
             this.btnEdit.TabIndex = 17;
@@ -185,12 +194,48 @@
             // 
             this.btnNew.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.ImageOptions.Image")));
             this.btnNew.Location = new System.Drawing.Point(12, 24);
-            this.btnNew.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(2);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(88, 37);
             this.btnNew.TabIndex = 16;
             this.btnNew.Text = "Novo";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // Id
+            // 
+            this.Id.Caption = "Id";
+            this.Id.FieldName = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = true;
+            this.Id.VisibleIndex = 0;
+            this.Id.Width = 133;
+            // 
+            // TipoPessoa
+            // 
+            this.TipoPessoa.Caption = "Tipo Pessoa";
+            this.TipoPessoa.FieldName = "TipoPessoa";
+            this.TipoPessoa.Name = "TipoPessoa";
+            this.TipoPessoa.Visible = true;
+            this.TipoPessoa.VisibleIndex = 1;
+            this.TipoPessoa.Width = 96;
+            // 
+            // Nome
+            // 
+            this.Nome.Caption = "Nome";
+            this.Nome.FieldName = "PessoaFisica.Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.Visible = true;
+            this.Nome.VisibleIndex = 2;
+            this.Nome.Width = 219;
+            // 
+            // RazaoSocial
+            // 
+            this.RazaoSocial.Caption = "RazaoSocial";
+            this.RazaoSocial.FieldName = "PessoaJuridica.RazaoSocial";
+            this.RazaoSocial.Name = "RazaoSocial";
+            this.RazaoSocial.Visible = true;
+            this.RazaoSocial.VisibleIndex = 3;
+            this.RazaoSocial.Width = 227;
             // 
             // frmListaCliente
             // 
@@ -227,5 +272,9 @@
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnExit;
         private DevExpress.XtraEditors.SimpleButton btnFind;
+        private DevExpress.XtraGrid.Columns.GridColumn Id;
+        private DevExpress.XtraGrid.Columns.GridColumn TipoPessoa;
+        private DevExpress.XtraGrid.Columns.GridColumn Nome;
+        private DevExpress.XtraGrid.Columns.GridColumn RazaoSocial;
     }
 }

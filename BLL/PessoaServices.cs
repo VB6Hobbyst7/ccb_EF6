@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Dapper;
+using Repository;
 
 namespace BLL
 {
@@ -224,6 +225,5 @@ namespace BLL
 
             return pessoa;
         }
-
     }
 }

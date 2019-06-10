@@ -15,7 +15,7 @@ namespace Models
         public string CNPJ { get; set; }
 
         public virtual Pessoa Pessoa { get; set; }
-        public virtual ICollection<Endereco> Endereco { get; set; }
+        public virtual IList<Endereco> Endereco { get; set; }
 
         public void AdicionarEndereco(Endereco endereco)
         {

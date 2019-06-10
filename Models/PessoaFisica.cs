@@ -17,7 +17,7 @@ namespace Models
         //public string RG { get; set; }
         public string CPF { get; set; }
 
-        public virtual ICollection<Endereco> Endereco { get; set; }
+        public virtual IList<Endereco> Endereco { get; set; }
         public virtual Pessoa Pessoa { get; set; }
 
         public void AdicionarEndereco(Endereco endereco)

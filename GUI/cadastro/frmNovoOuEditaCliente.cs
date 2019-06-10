@@ -110,20 +110,28 @@ namespace ccb_ef6
 
         private void FillTextBoxSince(Pessoa pessoa)
         {
-
             if (pessoa.TipoPessoa == TipoPessoa.PessoaFisica)
             {
                 rgPfPj.SelectedIndex = 0;
                 txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;
                 txtNomeRazaoSocial.Text = pessoa.PessoaFisica.Nome;
+                txtLogradoro.Text = pessoa.PessoaFisica.Endereco[0].Logradouro;
+                txtNumero.Text = pessoa.PessoaFisica.Endereco[0].Numero;
+                txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
+                txtCidade.Text = pessoa.PessoaFisica.Endereco[0].Cidade;
+                txtCEP.Text = pessoa.PessoaFisica.Endereco[0].Cep;
             }
             else
             {
                 rgPfPj.SelectedIndex = 1;
                 txtCpfCnpj.Text = pessoa.PessoaJuridica.CNPJ;
                 txtNomeRazaoSocial.Text = pessoa.PessoaJuridica.RazaoSocial;
+                txtLogradoro.Text = pessoa.PessoaJuridica.Endereco[0].Logradouro;
+                txtNumero.Text = pessoa.PessoaJuridica.Endereco[0].Numero;
+                //txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
+                txtCidade.Text = pessoa.PessoaJuridica.Endereco[0].Cidade;
+                txtCEP.Text = pessoa.PessoaJuridica.Endereco[0].Cep;
             }
-
         }
 
         private void btnAddOrUpdate_Click(object sender, EventArgs e)
@@ -155,13 +163,14 @@ namespace ccb_ef6
                     MessageBox.Show(ex.Message);
                 }
             }
-            else//Actualizar cliente en la BD
+            else//Atualizar
             {
                 try
                 {
                     IsNewPessoa = false;
                     AssignDataFromTextBox(pessoa);
-                    BLL.PessoaServices.Update(pessoa);
+                    //BLL.PessoaServices.Update(pessoa);
+                    //Repository.RepositoryBase
                     MessageBox.Show("Cliente actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
