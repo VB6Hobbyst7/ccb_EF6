@@ -15,7 +15,7 @@ namespace Repository
         {
 
         }
-        public static List<Pessoa> ObterTodos()
+        public IEnumerable<Pessoa> ObterTodos()
         {
             var pessoa = new List<Pessoa>();
             var sql = "SELECT * FROM Pessoas p " +

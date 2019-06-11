@@ -7,16 +7,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Service
+namespace BLL
 {
-    public class Service_CRUD
+    public class Service_ccb
     {
         protected readonly RepositoryEndereco repositoryEndereco;
         protected readonly RepositoryPessoaFisica repositoryPessoaFisica;
         protected readonly RepositoryPessoaJuridica repositoryPessoaJuridica;
         protected readonly RepositoryPessoa repositoryPessoa;
         protected readonly RepositoryFoto repositoryFoto;
-        public Service_CRUD()
+        public Service_ccb()
         {
             repositoryEndereco = new RepositoryEndereco();
             repositoryPessoaFisica = new RepositoryPessoaFisica();
@@ -141,15 +141,15 @@ namespace Service
             repositoryPessoa.Remover(pessoa);
         }
 
-        public bool SalvarImagemCliente(HttpPostedFileBase img, Guid id)
-        {
-            if (img == null || img.ContentLength <= 0) return false;
-
-            const string directory = @"C:\Users\Alexandre\Documents\Visual Studio 2017\Projects\CRUD_Pessoa_Fisica_Juridica_2\CRUD_Pessoa_Fisica_Juridica_2\src\contents\clientes\";
-            var fileName = id + Guid.NewGuid().ToString() + Path.GetExtension(img.FileName);
-            img.SaveAs(Path.Combine(directory, fileName));
-            return File.Exists(Path.Combine(directory, fileName));
-        }
+        //public bool SalvarImagemCliente(HttpPostedFileBase img, Guid id)
+        // {
+        //    if (img == null || img.ContentLength <= 0) return false;
+        //
+         //   const string directory = @"C:\Users\Alexandre\Documents\Visual Studio 2017\Projects\CRUD_Pessoa_Fisica_Juridica_2\CRUD_Pessoa_Fisica_Juridica_2\src\contents\clientes\";
+         //   var fileName = id + Guid.NewGuid().ToString() + Path.GetExtension(img.FileName);
+         //   img.SaveAs(Path.Combine(directory, fileName));
+         //   return File.Exists(Path.Combine(directory, fileName));
+       // }
 
         public bool SalvarImagemCliente(List<string> base64StringList, Guid id)
         {
@@ -159,13 +159,13 @@ namespace Service
                 byte[] imageBytes = Convert.FromBase64String(base64);
                 MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
                 ms.Write(imageBytes, 0, imageBytes.Length);
-                System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
+                //System.Drawing.Image image = System.Drawing.Image.FromStream(ms, true);
 
-                if (image == null) return false;
+                //if (image == null) return false;
 
                 const string directory = @"C:\Users\Alexandre\Documents\Visual Studio 2017\Projects\CRUD_Pessoa_Fisica_Juridica_2\CRUD_Pessoa_Fisica_Juridica_2\src\contents\clientes\";
                 var fileName = id.ToString() + Guid.NewGuid().ToString() + ".jpg";
-                image.Save(Path.Combine(directory, fileName));
+                //image.Save(Path.Combine(directory, fileName));
 
                 var foto = new Foto();
                 foto.FileName = fileName;

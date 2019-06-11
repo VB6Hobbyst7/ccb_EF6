@@ -1,18 +1,22 @@
-﻿using BLL;
-using Models;
+﻿using Models;
 using System;
 using System.Collections.Generic;
 using DevExpress.XtraGrid.Columns;
 using System.Windows.Forms;
 using Repository;
+using BLL;
+using Models.ViewModel;
 
 namespace ccb_ef6
 {
     public partial class frmListaCliente : Form
     {
+        protected Service_ccb _service;
+
         public frmListaCliente()
         {
             InitializeComponent();
+            _service = new Service_ccb();
         }
 
         private void DisableButtonsWhenNoClientes(bool v)
@@ -41,14 +45,13 @@ namespace ccb_ef6
 
         private void CarregaRegistros()
         {
-            List<Pessoa> PessoaList = new List<Pessoa>();
+            IEnumerable<PessoaViewModel> PessoaList = new List<PessoaViewModel>();
 
-            PessoaList = RepositoryPessoa.ObterTodos();
-
-            //dgvClientes.DataSource = ClienteList;
+            PessoaList = _service.ObterTodos();
+            
             dgRegistros.DataSource = PessoaList;
 
-            if (PessoaList.Count == 0)
+            if (PessoaList == null)
             {
                 DisableButtonsWhenNoClientes(true);
             }
@@ -93,8 +96,8 @@ namespace ccb_ef6
 
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
-
-            Pessoa pessoa = RepositoryPessoa.ObterPorId(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+            Guid guid = new Guid(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+            PessoaViewModel pessoa = _service.ObterPorIdPessoa (guid);
 
 
 

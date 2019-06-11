@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Windows.Forms;
 using Models;
+using BLL;
+using Models.ViewModel;
 
 namespace ccb_ef6
 {
     public partial class frmNovoOuEditaCliente : Form
     {
-        private Pessoa pessoa = null;
+        protected Service_ccb _service;
+        private ClienteViewModel cliente = null;
+
+        private PessoaViewModel pessoa = null;
         private bool IsNewPessoa;
 
         public frmNovoOuEditaCliente()
         {
             InitializeComponent();
+            _service = new Service_ccb();
         }
 
-        public frmNovoOuEditaCliente(Pessoa pessoa)
+        public frmNovoOuEditaCliente(PessoaViewModel pessoa)
         {
             InitializeComponent();
             this.pessoa = pessoa;
+            //this.pessoa = pessoa;
             FillTextBoxSince(pessoa);
             txtNomeRazaoSocial.ReadOnly = true;
         }
@@ -56,10 +63,10 @@ namespace ccb_ef6
             return true;
         }
 
-        private void AssignDataFromTextBox(Pessoa pessoa)
+        private void AssignDataFromTextBox(PessoaViewModel pessoa)
         {
+
             pessoa.DataCadastro = DateTime.Now;
-            pessoa.Ativo = chkAtivo.Checked;
 
             // Endereco de Pessoa
             var endereco = new Endereco()
@@ -108,29 +115,29 @@ namespace ccb_ef6
             }
         }
 
-        private void FillTextBoxSince(Pessoa pessoa)
+        private void FillTextBoxSince(PessoaViewModel pessoa)
         {
-            if (pessoa.TipoPessoa == TipoPessoa.PessoaFisica)
+            if (pessoa.TipoPessoa  ==  TipoPessoaViewModel.PessoaFisica)
             {
                 rgPfPj.SelectedIndex = 0;
                 txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;
                 txtNomeRazaoSocial.Text = pessoa.PessoaFisica.Nome;
-                txtLogradoro.Text = pessoa.PessoaFisica.Endereco[0].Logradouro;
-                txtNumero.Text = pessoa.PessoaFisica.Endereco[0].Numero;
-                txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
-                txtCidade.Text = pessoa.PessoaFisica.Endereco[0].Cidade;
-                txtCEP.Text = pessoa.PessoaFisica.Endereco[0].Cep;
+                //txtLogradoro.Text = pessoa.PessoaFisica.Endereco->Logradouro;
+                //txtNumero.Text = pessoa.PessoaFisica.Endereco[0].Numero;
+                //txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
+                //txtCidade.Text = pessoa.PessoaFisica.Endereco[0].Cidade;
+                //txtCEP.Text = pessoa.PessoaFisica.Endereco[0].Cep;
             }
             else
             {
                 rgPfPj.SelectedIndex = 1;
                 txtCpfCnpj.Text = pessoa.PessoaJuridica.CNPJ;
                 txtNomeRazaoSocial.Text = pessoa.PessoaJuridica.RazaoSocial;
-                txtLogradoro.Text = pessoa.PessoaJuridica.Endereco[0].Logradouro;
-                txtNumero.Text = pessoa.PessoaJuridica.Endereco[0].Numero;
+                //txtLogradoro.Text = pessoa.PessoaJuridica.Endereco[0].Logradouro;
+                //txtNumero.Text = pessoa.PessoaJuridica.Endereco[0].Numero;
                 //txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
-                txtCidade.Text = pessoa.PessoaJuridica.Endereco[0].Cidade;
-                txtCEP.Text = pessoa.PessoaJuridica.Endereco[0].Cep;
+                //txtCidade.Text = pessoa.PessoaJuridica.Endereco[0].Cidade;
+                //txtCEP.Text = pessoa.PessoaJuridica.Endereco[0].Cep;
             }
         }
 
@@ -145,21 +152,23 @@ namespace ccb_ef6
             if (pessoa == null)
             {
                 IsNewPessoa = true;
-                pessoa = new Pessoa();
+                //pessoa = new Pessoa();
+                PessoaViewModel pessoa = new PessoaViewModel();
 
                 AssignDataFromTextBox(pessoa);
 
                 try
                 {
                     //Creo al cliente e inmediatamente creo su cuenta correspondiente
-                    BLL.PessoaServices.AddNew(pessoa);
+                    _service.Adicionar(cliente);
+                    //BLL.PessoaServices.AddNew(pessoa);
 
                     MessageBox.Show("Cliente agregado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    pessoa = null;
+                    cliente = null;
                     MessageBox.Show(ex.Message);
                 }
             }
