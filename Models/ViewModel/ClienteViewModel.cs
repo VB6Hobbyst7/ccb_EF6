@@ -10,9 +10,9 @@ namespace Models.ViewModel
         public PessoaJuridicaViewModel PessoaJuridica { get; set; }
         public EnderecoViewModel Endereco { get; set; }    
         
-        [FileSize(10240000)]
-        [FileTypes("jpg,jpeg,png")]        
-        public HttpPostedFileBase Foto { get; set; }
+        //[FileSize(10240000)]
+        //[FileTypes("jpg,jpeg,png")]        
+        //public HttpPostedFileBase Foto { get; set; }
 
         public List<string> Foto2 { get; set; }
     }

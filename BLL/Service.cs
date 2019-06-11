@@ -1,20 +1,22 @@
-﻿using Models;
-using Models.ViewModel;
+﻿using AutoMapper;
+using Models;
 using Repository;
+using Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
-namespace BLL
+namespace Service
 {
-    public class Service
+    public class Service_CRUD
     {
         protected readonly RepositoryEndereco repositoryEndereco;
         protected readonly RepositoryPessoaFisica repositoryPessoaFisica;
         protected readonly RepositoryPessoaJuridica repositoryPessoaJuridica;
         protected readonly RepositoryPessoa repositoryPessoa;
         protected readonly RepositoryFoto repositoryFoto;
-        public Service()
+        public Service_CRUD()
         {
             repositoryEndereco = new RepositoryEndereco();
             repositoryPessoaFisica = new RepositoryPessoaFisica();

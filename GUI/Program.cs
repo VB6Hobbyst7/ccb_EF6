@@ -1,4 +1,5 @@
-﻿using GUI;
+﻿using ccb_ef6.AutoMapper;
+using GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace ccb_ef6
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            AutoMapperConfig.RegisterMappings();
             Application.Run(new frmPrincipal());
         }
     }
