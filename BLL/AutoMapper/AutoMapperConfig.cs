@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace ccb_ef6.AutoMapper
+namespace AutoMapper
 {
     public class AutoMapperConfig
     {

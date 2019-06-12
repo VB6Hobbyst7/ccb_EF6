@@ -40,18 +40,19 @@ namespace BLL
                     var pessoaFisica = Mapper.Map<PessoaFisica>(cliente.PessoaFisica);
                     pessoaFisica.Endereco.Add(endereco);
                     pessoa.PessoaFisica = pessoaFisica;
-                    repositoryPessoa.Adicionar(pessoa);
-                    if (SalvarImagemCliente(cliente.Foto2, pessoa.Id))
-                    {
-                        break;
-                    }
+                    repositoryPessoa.Adicionar(pessoa );
+                    //if (SalvarImagemCliente(cliente.Foto2, pessoa.Id))
+                    //{
+                    //break;
+                    //}
                     break;
                 case TipoPessoa.PessoaJuridica:
                     var pessoaJuridica = Mapper.Map<PessoaJuridica>(cliente.PessoaJuridica);
                     pessoaJuridica.Endereco.Add(endereco);
                     pessoa.PessoaJuridica = pessoaJuridica;
-                    repositoryPessoa.Adicionar(pessoa);
-                    SalvarImagemCliente(cliente.Foto2, pessoa.Id);
+                    //BLL.PessoaServices.AddNew(pessoaJuridica.Pessoa);
+                    repositoryPessoa.Adicionar(pessoaJuridica.Pessoa );
+                    //SalvarImagemCliente(cliente.Foto2, pessoa.Id);
                     break;
                 default:
 
@@ -104,22 +105,22 @@ namespace BLL
         public void AtualizarPessoaFisica(ClienteViewModel obj)
         {
             var pessoaFisica = obj.PessoaFisica;
-            var fotos = obj.Foto2;
-            if (fotos != null)
-            {
-                SalvarImagemCliente(fotos, pessoaFisica.Id);
-            };
+            //var fotos = obj.Foto2;
+            //if (fotos != null)
+            //{
+                //SalvarImagemCliente(fotos, pessoaFisica.Id);
+            //};
             repositoryPessoaFisica.Atualizar(Mapper.Map<PessoaFisica>(pessoaFisica));
         }
 
         public void AtualizarPessoaJuridica(ClienteViewModel obj)
         {
             var pessoaJuridica = obj.PessoaJuridica;
-            var fotos = obj.Foto2;
-            if (fotos != null)
-            {
-                SalvarImagemCliente(fotos, pessoaJuridica.Id);
-            };
+            //var fotos = obj.Foto2;
+            //if (fotos != null)
+            //{
+                //SalvarImagemCliente(fotos, pessoaJuridica.Id);
+            //};
             repositoryPessoaJuridica.Atualizar(Mapper.Map<PessoaJuridica>(pessoaJuridica));
         }
 
@@ -181,10 +182,10 @@ namespace BLL
             return true;
         }
 
-        public ICollection<FotoViewModel> ObterImagemCliente(Guid id)
-        {
-            return Mapper.Map<List<FotoViewModel>>(repositoryFoto.ObterTodasFotosPorClienteId(id));
-        }
+        //public ICollection<FotoViewModel> ObterImagemCliente(Guid id)
+        //{
+        //    return Mapper.Map<List<FotoViewModel>>(repositoryFoto.ObterTodasFotosPorClienteId(id));
+        //}
 
         public void DeletarImagemCliente(string imagemPath, Guid id)
         {

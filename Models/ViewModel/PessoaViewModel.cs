@@ -11,7 +11,7 @@ namespace Models.ViewModel
         public PessoaViewModel()
         {
             Id = Guid.NewGuid();
-            Fotos = new List<FotoViewModel>();
+            //Fotos = new List<FotoViewModel>();
         }
         [Key]
         public Guid Id { get; set; }
@@ -22,9 +22,10 @@ namespace Models.ViewModel
         [Required]
         [EnumDataType(typeof(TipoPessoaViewModel))]
         public TipoPessoaViewModel TipoPessoa { get; set; }
+        public bool Ativo { get; set; }
 
         public virtual PessoaFisicaViewModel PessoaFisica { get; set; }
         public virtual PessoaJuridicaViewModel PessoaJuridica { get; set; }
-        public virtual ICollection<FotoViewModel> Fotos { get; set; }
+        //public virtual ICollection<FotoViewModel> Fotos { get; set; }
     }
 }

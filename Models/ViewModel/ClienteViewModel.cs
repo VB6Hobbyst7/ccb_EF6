@@ -8,12 +8,12 @@ namespace Models.ViewModel
         public PessoaViewModel Pessoa { get; set; }
         public PessoaFisicaViewModel PessoaFisica { get; set; }
         public PessoaJuridicaViewModel PessoaJuridica { get; set; }
-        public EnderecoViewModel Endereco { get; set; }    
-        
+        public EnderecoViewModel Endereco { get; set; }
+
         //[FileSize(10240000)]
         //[FileTypes("jpg,jpeg,png")]        
-        //public HttpPostedFileBase Foto { get; set; }
+        //public byte[] Foto { get; set; }
 
-        public List<string> Foto2 { get; set; }
+        //public List<string> Foto2 { get; set; }
     }
 }

@@ -67,7 +67,7 @@ namespace ccb_ef6
         {
             var pessoa = new PessoaViewModel();
 
-            pessoa.DataCadastro = DateTime.Now;
+            //pessoa.DataCadastro = DateTime.Now;
 
             // Endereco de Pessoa
             var endereco = new EnderecoViewModel()
@@ -87,11 +87,11 @@ namespace ccb_ef6
                 var pessoaFisica = new PessoaFisicaViewModel()
                 {
                     Nome = txtNomeRazaoSocial.Text,
-                    CPF = txtCpfCnpj.Text
-                    //Pessoa = pessoa;
+                    CPF = txtCpfCnpj.Text,
+                    Pessoa = pessoa
                 };
                 // Adicionando EnderecoPF em PF
-                pessoaFisica.Endereco.Add(endereco);
+                //pessoaFisica.Endereco.Add(endereco);
 
                 // Adicionando PF em Pessoa
                 pessoa.PessoaFisica = pessoaFisica;
@@ -104,11 +104,11 @@ namespace ccb_ef6
                 var pessoaJuridica = new PessoaJuridicaViewModel()
                 {
                     RazaoSocial = txtNomeRazaoSocial.Text,
-                    CNPJ = txtCpfCnpj.Text
-                    //Pessoa = pessoa;
+                    CNPJ = txtCpfCnpj.Text,
+                    Pessoa = pessoa
                 };
                 // Adicionando EnderecoPF em PF
-                pessoaJuridica.Endereco.Add(endereco);
+                //pessoaJuridica.Endereco.Add(endereco);
 
                 // Adicionando PJ em Pessoa
                 pessoa.PessoaJuridica = pessoaJuridica;
@@ -116,9 +116,9 @@ namespace ccb_ef6
                 cliente.PessoaJuridica = pessoaJuridica;
             }
 
+            pessoa.Ativo = chkAtivo.Checked;
             cliente.Pessoa = pessoa;
             cliente.Endereco = endereco;
-
         }
 
         private void FillTextBoxSince(PessoaViewModel pessoa)
@@ -161,15 +161,15 @@ namespace ccb_ef6
                 //pessoa = new Pessoa();
                 ClienteViewModel cliente = new ClienteViewModel();
 
-                AssignDataFromTextBox(cliente);
+               AssignDataFromTextBox(cliente);
 
                 try
                 {
                     //Creo al cliente e inmediatamente creo su cuenta correspondiente
                     _service.Adicionar(cliente);
-                    //BLL.PessoaServices.AddNew(pessoa);
+                    //BLL.PessoaServices.AddNew(client);
 
-                    MessageBox.Show("Cliente agregado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cliente gravado com sucesso.", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)
@@ -186,7 +186,7 @@ namespace ccb_ef6
                     AssignDataFromTextBox(cliente);
                     //BLL.PessoaServices.Update(pessoa);
                     //Repository.RepositoryBase
-                    MessageBox.Show("Cliente actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Cliente gravado com sucesso.", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)

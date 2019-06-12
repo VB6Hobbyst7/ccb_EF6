@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ccb_ef6.AutoMapper;
 using GUI;
 using System;
 using System.Collections.Generic;

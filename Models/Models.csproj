@@ -77,7 +77,6 @@
     <Compile Include="ViewModel\ClienteViewModel.cs" />
     <Compile Include="ViewModel\EditarClienteViewModel.cs" />
     <Compile Include="ViewModel\EnderecoViewModel.cs" />
-    <Compile Include="ViewModel\FotoViewModel.cs" />
     <Compile Include="ViewModel\PessoaFisicaViewModel.cs" />
     <Compile Include="ViewModel\PessoaJuridicaViewModel.cs" />
     <Compile Include="ViewModel\PessoaViewModel.cs" />

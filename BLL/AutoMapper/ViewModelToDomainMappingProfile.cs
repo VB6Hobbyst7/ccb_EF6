@@ -12,7 +12,7 @@ namespace AutoMapper
             CreateMap<PessoaFisicaViewModel, PessoaFisica>();
             CreateMap<PessoaJuridicaViewModel, PessoaJuridica>();
             CreateMap<EnderecoViewModel, Endereco>();
-            CreateMap<FotoViewModel, Foto>();
+            //CreateMap<FotoViewModel, Foto>();
 
         }
     }

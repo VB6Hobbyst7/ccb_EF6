@@ -19,7 +19,7 @@ namespace Context
         public DbSet<PessoaFisica> PessoaFisicas { get; set; }
         public DbSet<PessoaJuridica> PessoaJuridicas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
-        public DbSet<Foto> Fotos { get; set; }
+        //public DbSet<Foto> Fotos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

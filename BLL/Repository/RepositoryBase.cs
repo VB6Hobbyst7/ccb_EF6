@@ -5,11 +5,10 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Web;
 
 namespace Repository
 {
-    public class RepositoryBase<TEntity> where TEntity:class
+    public class RepositoryBase<TEntity> where TEntity : class
     {
         protected CCB_Context context;
         protected DbSet<TEntity> dbSet;
@@ -23,7 +22,7 @@ namespace Repository
         public virtual TEntity ObterPorId(Guid id)
         {
             var result = dbSet.Find(id);
-            
+
             return result;
         }
 
@@ -70,7 +69,7 @@ namespace Repository
         {
 
             var entry = context.Entry(tentity);
-            dbSet.Attach(tentity);            
+            dbSet.Attach(tentity);
             entry.State = EntityState.Modified;
             context.SaveChanges();
             return tentity;
