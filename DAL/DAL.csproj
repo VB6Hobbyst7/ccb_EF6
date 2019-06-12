@@ -75,9 +75,9 @@
     <Compile Include="Context.cs" />
     <Compile Include="LoyaltyDB.cs" />
     <Compile Include="LoyaltyDBInitializer.cs" />
-    <Compile Include="Migrations\201906111311382_Inicial.cs" />
-    <Compile Include="Migrations\201906111311382_Inicial.Designer.cs">
-      <DependentUpon>201906111311382_Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\201906112331260_inicial.cs" />
+    <Compile Include="Migrations\201906112331260_inicial.Designer.cs">
+      <DependentUpon>201906112331260_inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,8 +93,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906111311382_Inicial.resx">
-      <DependentUpon>201906111311382_Inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906112331260_inicial.resx">
+      <DependentUpon>201906112331260_inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

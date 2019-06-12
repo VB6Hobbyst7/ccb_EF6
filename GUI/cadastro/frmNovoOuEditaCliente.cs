@@ -63,13 +63,14 @@ namespace ccb_ef6
             return true;
         }
 
-        private void AssignDataFromTextBox(PessoaViewModel pessoa)
+        private void AssignDataFromTextBox(ClienteViewModel cliente)
         {
+            var pessoa = new PessoaViewModel();
 
             pessoa.DataCadastro = DateTime.Now;
 
             // Endereco de Pessoa
-            var endereco = new Endereco()
+            var endereco = new EnderecoViewModel()
             {
                 Logradouro = txtLogradoro.Text,
                 Bairro = txtBairro.Text,
@@ -83,36 +84,41 @@ namespace ccb_ef6
             if (rgPfPj.SelectedIndex == 0)  //PF
             {
                 // PF de Pessoa
-                var pessoaFisica = new PessoaFisica()
+                var pessoaFisica = new PessoaFisicaViewModel()
                 {
                     Nome = txtNomeRazaoSocial.Text,
-                    CPF = txtCpfCnpj.Text,
-                    Pessoa = pessoa
+                    CPF = txtCpfCnpj.Text
+                    //Pessoa = pessoa;
                 };
                 // Adicionando EnderecoPF em PF
                 pessoaFisica.Endereco.Add(endereco);
 
                 // Adicionando PF em Pessoa
                 pessoa.PessoaFisica = pessoaFisica;
-                pessoa.TipoPessoa = TipoPessoa.PessoaFisica;
+                pessoa.TipoPessoa =  TipoPessoaViewModel.PessoaFisica;
+                cliente.PessoaFisica = pessoaFisica;
             }
             else
             {
-                // PJ 1 de Pessoa
-                var pessoaJuridica = new PessoaJuridica()
+                // PJ de Pessoa
+                var pessoaJuridica = new PessoaJuridicaViewModel()
                 {
                     RazaoSocial = txtNomeRazaoSocial.Text,
-                    CNPJ = txtCpfCnpj.Text,
-                    Pessoa = pessoa
+                    CNPJ = txtCpfCnpj.Text
+                    //Pessoa = pessoa;
                 };
-
                 // Adicionando EnderecoPF em PF
                 pessoaJuridica.Endereco.Add(endereco);
 
-                // Adicionando PF em Pessoa
+                // Adicionando PJ em Pessoa
                 pessoa.PessoaJuridica = pessoaJuridica;
-                pessoa.TipoPessoa = TipoPessoa.PessoaJuridica;
+                pessoa.TipoPessoa = TipoPessoaViewModel.PessoaJuridica;
+                cliente.PessoaJuridica = pessoaJuridica;
             }
+
+            cliente.Pessoa = pessoa;
+            cliente.Endereco = endereco;
+
         }
 
         private void FillTextBoxSince(PessoaViewModel pessoa)
@@ -153,9 +159,9 @@ namespace ccb_ef6
             {
                 IsNewPessoa = true;
                 //pessoa = new Pessoa();
-                PessoaViewModel pessoa = new PessoaViewModel();
+                ClienteViewModel cliente = new ClienteViewModel();
 
-                AssignDataFromTextBox(pessoa);
+                AssignDataFromTextBox(cliente);
 
                 try
                 {
@@ -177,7 +183,7 @@ namespace ccb_ef6
                 try
                 {
                     IsNewPessoa = false;
-                    AssignDataFromTextBox(pessoa);
+                    AssignDataFromTextBox(cliente);
                     //BLL.PessoaServices.Update(pessoa);
                     //Repository.RepositoryBase
                     MessageBox.Show("Cliente actualizado satisfactoriamente", "Mensaje del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
