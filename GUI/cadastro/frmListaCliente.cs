@@ -34,7 +34,6 @@ namespace ccb_ef6
                 this.WindowState = FormWindowState.Maximized;
                 this.Show();
             };
-
             frm.ShowDialog();
         }
 
@@ -59,7 +58,6 @@ namespace ccb_ef6
             {
                 DisableButtonsWhenNoClientes(false);
             }
-
         }
 
         private void frmListaCliente_Load(object sender, EventArgs e)
@@ -97,9 +95,9 @@ namespace ccb_ef6
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
             Guid guid = new Guid(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
-            PessoaViewModel pessoa = _service.ObterPorIdPessoa (guid);
+            var pessoa = _service.ObterPorIdPessoa(guid);
 
-
+            //PessoaViewModel pessoa = _service.ObterPorIdPessoa (guid);
 
             frmNovoOuEditaCliente frm = new frmNovoOuEditaCliente(pessoa);
             frm.Text = "Editar cliente";
@@ -135,7 +133,6 @@ namespace ccb_ef6
                 txtTextToFind.Text = "";
                 dgRegistros.DataSource = BLL.ClienteServices.FindByClienteData(txtTextToFind.Text);
             }
-
         }
 
         private void gvRegistros_KeyUp(object sender, KeyEventArgs e)

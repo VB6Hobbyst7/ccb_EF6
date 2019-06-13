@@ -24,9 +24,9 @@ namespace Repository
 
             var con = context.Database.Connection;
             var pessoaJuridica = new List<PessoaJuridica>();
-            var sql = "SELECT * FROM dbo.PessoaJuridicas f " +
-                "LEFT JOIN dbo.PessoaJuridica_Endereco x ON x.PessoaJuridicaId = f.Id " +
-                "LEFT JOIN dbo.Enderecos e ON e.Id = x.EnderecoId " +
+            var sql = "SELECT * FROM PessoaJuridicas f " +
+                "LEFT JOIN PessoaJuridica_Endereco x ON x.PessoaJuridicaId = f.Id " +
+                "LEFT JOIN Enderecos e ON e.Id = x.EnderecoId " +
                 "WHERE f.Id = @sid; ";
             con.Query<PessoaJuridica, Endereco, PessoaJuridica>(sql, (f, e) =>
             {

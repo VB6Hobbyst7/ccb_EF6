@@ -82,6 +82,17 @@ namespace BLL
         public PessoaViewModel ObterPorIdPessoa(Guid id)
         {
             var pessoa = Mapper.Map<PessoaViewModel>(repositoryPessoa.ObterPorId(id));
+
+            if (pessoa.TipoPessoa == TipoPessoaViewModel.PessoaFisica)
+            {
+                pessoa.PessoaFisica = Mapper.Map<PessoaFisicaViewModel>(repositoryPessoaFisica.ObterPorId(id));
+                pessoa.PessoaFisica.Endereco.Add (Mapper.Map<EnderecoViewModel>(repositoryEndereco.ObterPorId(id)));
+            }
+            else
+            {
+                pessoa.PessoaJuridica = Mapper.Map<PessoaJuridicaViewModel>(repositoryPessoaJuridica.ObterPorId(id));
+                pessoa.PessoaJuridica.Endereco.Add(Mapper.Map<EnderecoViewModel>(repositoryEndereco.ObterPorId(id)));
+            }
             return pessoa;
         }
 

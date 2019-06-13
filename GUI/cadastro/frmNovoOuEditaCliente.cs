@@ -24,7 +24,6 @@ namespace ccb_ef6
         {
             InitializeComponent();
             this.pessoa = pessoa;
-            //this.pessoa = pessoa;
             FillTextBoxSince(pessoa);
             txtNomeRazaoSocial.ReadOnly = true;
         }
@@ -128,7 +127,7 @@ namespace ccb_ef6
                 rgPfPj.SelectedIndex = 0;
                 txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;
                 txtNomeRazaoSocial.Text = pessoa.PessoaFisica.Nome;
-                //txtLogradoro.Text = pessoa.PessoaFisica.Endereco->Logradouro;
+                //txtLogradoro.Text = pessoa.PessoaFisica.Endereco[0].Logradouro;
                 //txtNumero.Text = pessoa.PessoaFisica.Endereco[0].Numero;
                 //txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
                 //txtCidade.Text = pessoa.PessoaFisica.Endereco[0].Cidade;
