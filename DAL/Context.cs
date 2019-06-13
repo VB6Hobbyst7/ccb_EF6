@@ -6,15 +6,26 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
+using System.Configuration;
+using MySql.Data.Entity;
 
 namespace Context
 {
+    [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class CCB_Context : DbContext
     {
-        public CCB_Context() : base("DefaultConnection")
+        public CCB_Context() : base(GetConnectionString("ccb_ef6", "LocalDB"))
         {
             this.Configuration.LazyLoadingEnabled = false;
         }
+
+        public static string GetConnectionString(string dbName, string dbConnectionStringName)
+        {
+            var connString = ConfigurationManager.ConnectionStrings[dbConnectionStringName].ConnectionString.ToString();
+
+            return String.Format(connString, dbName);
+        }
+
         public DbSet<Pessoa> Pessoas { get; set; }
         public DbSet<PessoaFisica> PessoaFisicas { get; set; }
         public DbSet<PessoaJuridica> PessoaJuridicas { get; set; }

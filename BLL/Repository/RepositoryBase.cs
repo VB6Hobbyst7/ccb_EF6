@@ -1,4 +1,5 @@
 ﻿using Context;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,11 +11,11 @@ namespace Repository
 {
     public class RepositoryBase<TEntity> where TEntity : class
     {
-        protected CCB_Context context;
+        protected LoyaltyDB context;
         protected DbSet<TEntity> dbSet;
         public RepositoryBase()
         {
-            context = new CCB_Context();
+            context = new LoyaltyDB();
             dbSet = context.Set<TEntity>();
             context.Database.Log = x => Debug.Write(x);
         }
