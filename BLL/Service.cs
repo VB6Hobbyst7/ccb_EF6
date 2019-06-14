@@ -113,6 +113,21 @@ namespace BLL
             return endereco;
         }
 
+        public void AtualizarPessoa(ClienteViewModel obj)
+        {
+            if (obj.Pessoa.TipoPessoa == TipoPessoaViewModel.PessoaFisica )
+            {
+                var pessoaFisica = obj.PessoaFisica;
+                repositoryPessoaFisica.Atualizar(Mapper.Map<PessoaFisica>(pessoaFisica));
+            }
+            else
+            {
+                obj.PessoaJuridica.Endereco.Add(obj.Endereco);
+                var pessoaJuridica = obj.PessoaJuridica;
+                repositoryPessoaJuridica.Atualizar(Mapper.Map<PessoaJuridica>(pessoaJuridica));
+            }
+        }
+
         public void AtualizarPessoaFisica(ClienteViewModel obj)
         {
             var pessoaFisica = obj.PessoaFisica;

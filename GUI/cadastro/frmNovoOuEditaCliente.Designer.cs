@@ -49,7 +49,6 @@
             this.btnExit = new DevExpress.XtraEditors.SimpleButton();
             this.rgPfPj = new DevExpress.XtraEditors.RadioGroup();
             this.chkAtivo = new DevExpress.XtraEditors.CheckEdit();
-            this.chkCreditoNegado = new DevExpress.XtraEditors.CheckEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,7 +56,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgPfPj.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkCreditoNegado.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNomeRazaoSocial
@@ -110,7 +108,7 @@
             // 
             // txtUf
             // 
-            this.txtUf.Location = new System.Drawing.Point(248, 169);
+            this.txtUf.Location = new System.Drawing.Point(417, 169);
             this.txtUf.Name = "txtUf";
             this.txtUf.Size = new System.Drawing.Size(54, 20);
             this.txtUf.TabIndex = 10;
@@ -118,7 +116,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(248, 153);
+            this.label4.Location = new System.Drawing.Point(417, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 10;
@@ -144,7 +142,7 @@
             // 
             this.txtCidade.Location = new System.Drawing.Point(12, 169);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(225, 20);
+            this.txtCidade.Size = new System.Drawing.Size(399, 20);
             this.txtCidade.TabIndex = 9;
             // 
             // label9
@@ -216,19 +214,11 @@
             // 
             // chkAtivo
             // 
-            this.chkAtivo.Location = new System.Drawing.Point(615, 1);
+            this.chkAtivo.Location = new System.Drawing.Point(681, 20);
             this.chkAtivo.Name = "chkAtivo";
             this.chkAtivo.Properties.Caption = "Ativo";
             this.chkAtivo.Size = new System.Drawing.Size(52, 19);
             this.chkAtivo.TabIndex = 28;
-            // 
-            // chkCreditoNegado
-            // 
-            this.chkCreditoNegado.Location = new System.Drawing.Point(615, 26);
-            this.chkCreditoNegado.Name = "chkCreditoNegado";
-            this.chkCreditoNegado.Properties.Caption = "Crédito Negado";
-            this.chkCreditoNegado.Size = new System.Drawing.Size(113, 19);
-            this.chkCreditoNegado.TabIndex = 28;
             // 
             // label1
             // 
@@ -268,7 +258,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(750, 380);
-            this.Controls.Add(this.chkCreditoNegado);
             this.Controls.Add(this.chkAtivo);
             this.Controls.Add(this.rgPfPj);
             this.Controls.Add(this.btnExit);
@@ -305,7 +294,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgPfPj.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkAtivo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chkCreditoNegado.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,7 +319,6 @@
         private DevExpress.XtraEditors.SimpleButton btnAddOrUpdate;
         private DevExpress.XtraEditors.SimpleButton btnExit;
         private DevExpress.XtraEditors.RadioGroup rgPfPj;
-        private DevExpress.XtraEditors.CheckEdit chkCreditoNegado;
         private DevExpress.XtraEditors.CheckEdit chkAtivo;
         private System.Windows.Forms.TextBox txtBairro;
         private System.Windows.Forms.Label label1;

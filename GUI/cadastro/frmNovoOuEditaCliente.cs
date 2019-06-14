@@ -11,16 +11,15 @@ namespace ccb_ef6
         protected Service_ccb _service;
         private ClienteViewModel cliente = null;
 
-        private PessoaViewModel pessoa = null;
+        private Pessoa pessoa = null;
         private bool IsNewPessoa;
 
         public frmNovoOuEditaCliente()
         {
             InitializeComponent();
-            _service = new Service_ccb();
         }
 
-        public frmNovoOuEditaCliente(PessoaViewModel pessoa)
+        public frmNovoOuEditaCliente(Pessoa pessoa)
         {
             InitializeComponent();
             this.pessoa = pessoa;
@@ -120,9 +119,11 @@ namespace ccb_ef6
             cliente.Endereco = endereco;
         }
 
-        private void FillTextBoxSince(PessoaViewModel pessoa)
+        private void FillTextBoxSince(Pessoa pessoa)
         {
-            if (pessoa.TipoPessoa  ==  TipoPessoaViewModel.PessoaFisica)
+            chkAtivo.Checked = pessoa.Ativo;
+
+            if (pessoa.TipoPessoa  ==  TipoPessoa.PessoaFisica)
             {
                 rgPfPj.SelectedIndex = 0;
                 txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;
@@ -157,6 +158,7 @@ namespace ccb_ef6
             if (pessoa == null)
             {
                 IsNewPessoa = true;
+                chkAtivo.Checked = true;
                 //pessoa = new Pessoa();
                 ClienteViewModel cliente = new ClienteViewModel();
 
@@ -182,7 +184,10 @@ namespace ccb_ef6
                 try
                 {
                     IsNewPessoa = false;
+                    ClienteViewModel cliente = new ClienteViewModel();
                     AssignDataFromTextBox(cliente);
+
+                    _service.AtualizarPessoa(cliente);
                     //BLL.PessoaServices.Update(pessoa);
                     //Repository.RepositoryBase
                     MessageBox.Show("Cliente gravado com sucesso.", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -229,13 +234,14 @@ namespace ccb_ef6
             txtCidade.Text = "";
             txtUf.Text = "";
             chkAtivo.Checked = true;
-            chkCreditoNegado.Checked = false;
 
             PfOuPj(0);
         }
 
         private void frmNovoOuEditaCliente_Load(object sender, EventArgs e)
         {
+            _service = new Service_ccb();
+
             //LimpaTela();
         }
     }

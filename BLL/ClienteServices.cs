@@ -82,7 +82,7 @@ namespace BLL
             }
         }
 
-        public static Cliente FindById(int id)
+        public static Cliente FindById(Guid id)
         {
             Cliente cliente = null;
 

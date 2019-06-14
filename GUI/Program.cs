@@ -18,7 +18,7 @@ namespace ccb_ef6
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AutoMapperConfig.RegisterMappings();
+            //AutoMapperConfig.RegisterMappings();
             Application.Run(new frmPrincipal());
         }
     }

@@ -11,12 +11,12 @@ namespace ccb_ef6
 {
     public partial class frmListaCliente : Form
     {
-        protected Service_ccb _service;
+        //protected Service_ccb _service;
 
         public frmListaCliente()
         {
             InitializeComponent();
-            _service = new Service_ccb();
+            //_service = new Service_ccb();
         }
 
         private void DisableButtonsWhenNoClientes(bool v)
@@ -44,10 +44,12 @@ namespace ccb_ef6
 
         private void CarregaRegistros()
         {
-            IEnumerable<PessoaViewModel> PessoaList = new List<PessoaViewModel>();
+            IEnumerable<Pessoa> PessoaList = new List<Pessoa>();
 
-            PessoaList = _service.ObterTodos();
-            
+            //PessoaList = _service.ObterTodos();
+
+            PessoaList = ClienteServices.GetAll();
+
             dgRegistros.DataSource = PessoaList;
 
             if (PessoaList == null)
@@ -95,7 +97,8 @@ namespace ccb_ef6
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
             Guid guid = new Guid(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
-            var pessoa = _service.ObterPorIdPessoa(guid);
+            //var pessoa = _service.ObterPorIdPessoa(guid);
+            var pessoa = PessoaServices.FindById(guid);  
 
             //PessoaViewModel pessoa = _service.ObterPorIdPessoa (guid);
 

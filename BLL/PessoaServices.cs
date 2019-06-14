@@ -71,21 +71,21 @@ namespace BLL
             }
         }
 
-        public static Pessoa FindById(string id)
+        public static Pessoa FindById(Guid id)
         {
             Pessoa pessoa = null;
-            Guid guid = new Guid(id);
+            //Guid guid = new Guid(id);
 
             using (LoyaltyDB db = new LoyaltyDB())
             {
-                pessoa = db.Pessoas.Find(guid);
+                pessoa = db.Pessoas.Find(id);
 
                 if (pessoa != null)
                 {
                     if (pessoa.TipoPessoa == TipoPessoa.PessoaFisica)
-                        pessoa.PessoaFisica = db.PessoaFisicas.Find(guid);
+                        pessoa.PessoaFisica = db.PessoaFisicas.Find(id);
                     else
-                        pessoa.PessoaJuridica = db.PessoaJuridicas.Find(guid);
+                        pessoa.PessoaJuridica = db.PessoaJuridicas.Find(id);
                     return pessoa;
                 }
             }

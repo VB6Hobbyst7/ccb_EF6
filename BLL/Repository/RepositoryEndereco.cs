@@ -10,8 +10,8 @@ namespace Repository
         {
             var con = context.Database.Connection;
             var sql = "SELECT * FROM Enderecos e " +
-                "WHERE e.Id = @sid; ";
-            var endereco = con.QuerySingle(sql, new { sid = id });
+                "WHERE e.Id = @Sid; ";
+            var endereco = con.QueryFirstOrDefault(sql, new { Sid = id });
 
             return endereco;
         }
