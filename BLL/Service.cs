@@ -26,7 +26,8 @@ namespace BLL
         }
         public IEnumerable<PessoaViewModel> ObterTodos()
         {
-            return Mapper.Map<IEnumerable<PessoaViewModel>>(repositoryPessoa.ObterTodos());
+           // return Mapper.Map<IEnumerable<PessoaViewModel>>(repositoryPessoa.ObterTodos());
+           return null;
         }
 
         public void Adicionar(ClienteViewModel cliente)
@@ -38,7 +39,7 @@ namespace BLL
             {
                 case TipoPessoa.PessoaFisica:
                     var pessoaFisica = Mapper.Map<PessoaFisica>(cliente.PessoaFisica);
-                    pessoaFisica.Endereco.Add(endereco);
+                    pessoa.Endereco = endereco;
                     pessoa.PessoaFisica = pessoaFisica;
                     repositoryPessoa.Adicionar(pessoa );
                     //if (SalvarImagemCliente(cliente.Foto2, pessoa.Id))
@@ -48,7 +49,7 @@ namespace BLL
                     break;
                 case TipoPessoa.PessoaJuridica:
                     var pessoaJuridica = Mapper.Map<PessoaJuridica>(cliente.PessoaJuridica);
-                    pessoaJuridica.Endereco.Add(endereco);
+                    pessoa.Endereco = endereco;
                     pessoa.PessoaJuridica = pessoaJuridica;
                     //BLL.PessoaServices.AddNew(pessoaJuridica.Pessoa);
                     repositoryPessoa.Adicionar(pessoaJuridica.Pessoa );
@@ -60,28 +61,17 @@ namespace BLL
             }
         }
 
-        public void AdicionarEndereco(EnderecoViewModel obj, Guid pessoaId, string tipoPessoa = null)
+        public void AdicionarEndereco(EnderecoViewModel obj, Guid pessoaId)
         {
-            switch (tipoPessoa)
-            {
-                case "PessoaFisica":
-                    var pessoaFisica = repositoryPessoaFisica.ObterPorIdEF(pessoaId);
-                    pessoaFisica.AdicionarEndereco(Mapper.Map<Endereco>(obj));
-                    repositoryPessoaFisica.Atualizar(pessoaFisica);
-                    break;
-                case "PessoaJuridica":
-                    var pessoaJuridica = repositoryPessoaJuridica.ObterPorIdEF(pessoaId);
-                    pessoaJuridica.AdicionarEndereco(Mapper.Map<Endereco>(obj));
-                    repositoryPessoaJuridica.Atualizar(pessoaJuridica);
-                    break;
-                default:
-                    break;
-            }
+                    var pessoa = repositoryPessoa.ObterPorIdEF(pessoaId);
+                    //pessoa.AdicionarEndereco(Mapper.Map<Endereco>(obj));
+                    repositoryPessoa.Atualizar(pessoa);
         }
 
         public PessoaViewModel ObterPorIdPessoa(Guid id)
         {
-            var pessoa = Mapper.Map<PessoaViewModel>(repositoryPessoa.ObterPorId(id));
+            //var pessoa = Mapper.Map<PessoaViewModel>(repositoryPessoa.ObterPorId(id));
+            var pessoa = new PessoaViewModel();
 
             if (pessoa.TipoPessoa == TipoPessoaViewModel.PessoaFisica)
             {
@@ -164,8 +154,8 @@ namespace BLL
 
         public void Deletar(Guid id)
         {
-            var pessoa = repositoryPessoa.ObterPorId(id);
-            repositoryPessoa.Remover(pessoa);
+            //var pessoa = repositoryPessoa.ObterPorId(id);
+            //repositoryPessoa.Remover(pessoa);
         }
 
         //public bool SalvarImagemCliente(HttpPostedFileBase img, Guid id)

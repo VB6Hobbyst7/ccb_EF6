@@ -82,10 +82,11 @@ namespace BLL
 
                 if (pessoa != null)
                 {
+                    pessoa.Endereco = db.Enderecos.Find(id);
                     if (pessoa.TipoPessoa == TipoPessoa.PessoaFisica)
-                        pessoa.PessoaFisica = db.PessoaFisicas.Find(id);
+                        pessoa.PessoaFisica = db.PessoasFisicas.Find(id);
                     else
-                        pessoa.PessoaJuridica = db.PessoaJuridicas.Find(id);
+                        pessoa.PessoaJuridica = db.PessoasJuridicas.Find(id);
                     return pessoa;
                 }
             }
@@ -106,14 +107,12 @@ namespace BLL
             Guid guid = new Guid(id);
             var pessoa = new List<Pessoa>();
             var sql = "SELECT * FROM Pessoas p " +
-                "LEFT JOIN PessoaFisicas f ON f.Id = p.Id " +
-                "LEFT JOIN PessoaFisica_Endereco x ON x.PessoaFisicaId = f.Id " +
-                "LEFT JOIN Enderecos e ON e.Id = x.EnderecoId " +
+                "LEFT JOIN PessoasFisicas f ON f.Id = p.Id " +
+                "LEFT JOIN Enderecos e ON e.Id = p.EnderecoId " +
                 "WHERE p.Id = @sid;" +
                 "SELECT * FROM Pessoas p " +
-                "LEFT JOIN PessoaJuridicas j ON j.Id = p.Id " +
-                "LEFT JOIN PessoaJuridica_Endereco y ON y.PessoaJuridicaId = j.Id " +
-                "LEFT JOIN Enderecos e ON e.Id = y.EnderecoId " +
+                "LEFT JOIN PessoasJuridicas j ON j.Id = p.Id " +
+                "LEFT JOIN Enderecos e ON e.Id = p.EnderecoId " +
                 "WHERE p.Id = @sid";
             using (var context = new LoyaltyDB())
             {
@@ -130,7 +129,7 @@ namespace BLL
                         }
                         if (e != null)
                         {
-                            pessoa[0].PessoaFisica.Endereco.Add(e);
+                            pessoa[0].Endereco = e;
                         }
                         return pessoa.FirstOrDefault();
                     });
@@ -152,7 +151,7 @@ namespace BLL
                                 }
                                 if (e != null)
                                 {
-                                    pessoa[i].PessoaJuridica.Endereco.Add(e);
+                                    pessoa[i].Endereco = e;
                                 }
                             }
                         }
@@ -192,14 +191,15 @@ namespace BLL
         {
             var pessoa = new List<Pessoa>();
             var sql = "SELECT * FROM Pessoas p " +
-                "LEFT JOIN PessoaFisicas f ON f.Id = p.Id " +
-                "LEFT JOIN PessoaJuridicas j ON j.Id = p.Id ";
+                "LEFT JOIN Enderecos e ON e.Id = p.Id " +
+                "LEFT JOIN PessoasFisicas f ON f.Id = p.Id " +
+                "LEFT JOIN PessoasJuridicas j ON j.Id = p.Id ";
 
             using (var context = new LoyaltyDB())
             {
                 var con = context.Database.Connection;
 
-                con.Query<Pessoa, PessoaFisica, PessoaJuridica, Pessoa>(sql, (p, f, j) =>
+                con.Query<Pessoa, PessoaFisica, PessoaJuridica, Endereco, Pessoa>(sql, (p, f, j, e) =>
                 {
                     if (p != null && !pessoa.Exists(src => src.Id == p.Id))
                     {
@@ -217,6 +217,12 @@ namespace BLL
                             {
                                 pessoa[i].PessoaJuridica = j;
                             }
+
+                            if (e != null)
+                            {
+                                pessoa[0].Endereco = e;
+                            }
+
                         }
                     }
                     return pessoa.FirstOrDefault();

@@ -18,6 +18,10 @@ namespace Models.EntityConfig
             HasOptional(p => p.PessoaJuridica)
                 .WithRequired(p => p.Pessoa);
 
+            HasOptional(p => p.Endereco)
+                .WithRequired(p => p.Pessoa);
+
+
             ToTable("Pessoas");
         }
     }

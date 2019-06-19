@@ -18,6 +18,7 @@ namespace Models
 
         public virtual PessoaFisica PessoaFisica { get; set; }
         public virtual PessoaJuridica PessoaJuridica { get; set; }
+        public virtual Endereco Endereco { get; set; }
         //public virtual ICollection<Foto> ListaDeFotos { get; set; }
 
     }

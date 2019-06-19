@@ -61,14 +61,13 @@ namespace ccb_ef6
             return true;
         }
 
-        private void AssignDataFromTextBox(ClienteViewModel cliente)
+        private void AssignDataFromTextBox(Pessoa pessoa)
         {
-            var pessoa = new PessoaViewModel();
 
             //pessoa.DataCadastro = DateTime.Now;
 
             // Endereco de Pessoa
-            var endereco = new EnderecoViewModel()
+            var endereco = new Endereco()
             {
                 Logradouro = txtLogradoro.Text,
                 Bairro = txtBairro.Text,
@@ -79,10 +78,12 @@ namespace ccb_ef6
                 Complemento = txtComplemento.Text
             };
 
+            if (pessoa != null)
+                endereco.Id = pessoa.Id;
             if (rgPfPj.SelectedIndex == 0)  //PF
             {
                 // PF de Pessoa
-                var pessoaFisica = new PessoaFisicaViewModel()
+                var pessoaFisica = new PessoaFisica()
                 {
                     Nome = txtNomeRazaoSocial.Text,
                     CPF = txtCpfCnpj.Text,
@@ -92,14 +93,16 @@ namespace ccb_ef6
                 //pessoaFisica.Endereco.Add(endereco);
 
                 // Adicionando PF em Pessoa
+                if (pessoa != null)
+                    pessoaFisica.Id = pessoa.Id;
+
                 pessoa.PessoaFisica = pessoaFisica;
-                pessoa.TipoPessoa =  TipoPessoaViewModel.PessoaFisica;
-                cliente.PessoaFisica = pessoaFisica;
+                pessoa.TipoPessoa =  TipoPessoa.PessoaFisica;
             }
             else
             {
                 // PJ de Pessoa
-                var pessoaJuridica = new PessoaJuridicaViewModel()
+                var pessoaJuridica = new PessoaJuridica()
                 {
                     RazaoSocial = txtNomeRazaoSocial.Text,
                     CNPJ = txtCpfCnpj.Text,
@@ -109,41 +112,38 @@ namespace ccb_ef6
                 //pessoaJuridica.Endereco.Add(endereco);
 
                 // Adicionando PJ em Pessoa
+                if (pessoa != null)
+                    pessoaJuridica.Id = pessoa.Id;
                 pessoa.PessoaJuridica = pessoaJuridica;
-                pessoa.TipoPessoa = TipoPessoaViewModel.PessoaJuridica;
-                cliente.PessoaJuridica = pessoaJuridica;
+                pessoa.TipoPessoa = TipoPessoa.PessoaJuridica;
             }
 
             pessoa.Ativo = chkAtivo.Checked;
-            cliente.Pessoa = pessoa;
-            cliente.Endereco = endereco;
+            pessoa.Endereco = endereco;
         }
 
         private void FillTextBoxSince(Pessoa pessoa)
         {
             chkAtivo.Checked = pessoa.Ativo;
+            txtLogradoro.Text = pessoa.Endereco.Logradouro;
+            txtNumero.Text = pessoa.Endereco.Numero;
+            txtComplemento.Text = pessoa.Endereco.Complemento;
+            txtBairro.Text = pessoa.Endereco.Bairro;
+            txtCEP.Text = pessoa.Endereco.Cep;
+            txtCidade.Text = pessoa.Endereco.Cidade;
+            txtUf.Text = pessoa.Endereco.Estado;
 
             if (pessoa.TipoPessoa  ==  TipoPessoa.PessoaFisica)
             {
                 rgPfPj.SelectedIndex = 0;
                 txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;
                 txtNomeRazaoSocial.Text = pessoa.PessoaFisica.Nome;
-                //txtLogradoro.Text = pessoa.PessoaFisica.Endereco[0].Logradouro;
-                //txtNumero.Text = pessoa.PessoaFisica.Endereco[0].Numero;
-                //txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
-                //txtCidade.Text = pessoa.PessoaFisica.Endereco[0].Cidade;
-                //txtCEP.Text = pessoa.PessoaFisica.Endereco[0].Cep;
             }
             else
             {
                 rgPfPj.SelectedIndex = 1;
                 txtCpfCnpj.Text = pessoa.PessoaJuridica.CNPJ;
                 txtNomeRazaoSocial.Text = pessoa.PessoaJuridica.RazaoSocial;
-                //txtLogradoro.Text = pessoa.PessoaJuridica.Endereco[0].Logradouro;
-                //txtNumero.Text = pessoa.PessoaJuridica.Endereco[0].Numero;
-                //txtComplemento.Text = pessoa.PessoaFisica.Endereco[0].Complemento;
-                //txtCidade.Text = pessoa.PessoaJuridica.Endereco[0].Cidade;
-                //txtCEP.Text = pessoa.PessoaJuridica.Endereco[0].Cep;
             }
         }
 
@@ -160,15 +160,15 @@ namespace ccb_ef6
                 IsNewPessoa = true;
                 chkAtivo.Checked = true;
                 //pessoa = new Pessoa();
-                ClienteViewModel cliente = new ClienteViewModel();
+                Pessoa pessoa = new Pessoa();
 
-               AssignDataFromTextBox(cliente);
+               AssignDataFromTextBox(pessoa);
 
                 try
                 {
                     //Creo al cliente e inmediatamente creo su cuenta correspondiente
-                    _service.Adicionar(cliente);
-                    //BLL.PessoaServices.AddNew(client);
+                    //_service.Adicionar(cliente);
+                    BLL.PessoaServices.AddNew(pessoa);
 
                     MessageBox.Show("Cliente gravado com sucesso.", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -184,11 +184,11 @@ namespace ccb_ef6
                 try
                 {
                     IsNewPessoa = false;
-                    ClienteViewModel cliente = new ClienteViewModel();
-                    AssignDataFromTextBox(cliente);
+                    //Pessoa pessoa = new Pessoa();
+                    AssignDataFromTextBox(this.pessoa);
 
-                    _service.AtualizarPessoa(cliente);
-                    //BLL.PessoaServices.Update(pessoa);
+                    //_service.AtualizarPessoa(cliente);
+                    BLL.PessoaServices.Update(pessoa);
                     //Repository.RepositoryBase
                     MessageBox.Show("Cliente gravado com sucesso.", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
@@ -196,7 +196,7 @@ namespace ccb_ef6
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
+                 }
             }
         }
 

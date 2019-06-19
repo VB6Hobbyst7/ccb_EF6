@@ -45,8 +45,8 @@ namespace DAL
         }
 
         public DbSet<Pessoa> Pessoas { get; set; }
-        public DbSet<PessoaFisica> PessoaFisicas { get; set; }
-        public DbSet<PessoaJuridica> PessoaJuridicas { get; set; }
+        public DbSet<PessoaFisica> PessoasFisicas { get; set; }
+        public DbSet<PessoaJuridica> PessoasJuridicas { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         //public DbSet<Foto> Fotos { get; set; }
 

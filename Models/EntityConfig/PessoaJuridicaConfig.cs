@@ -19,16 +19,7 @@ namespace Models.EntityConfig
                 .IsRequired()
                 .HasMaxLength(15);
 
-
-            HasMany(pj => pj.Endereco)
-                .WithMany()
-                .Map(me =>
-                {
-                    me.MapLeftKey("PessoaJuridicaId");
-                    me.MapRightKey("EnderecoId");
-                    me.ToTable("PessoaJuridica_Endereco");
-                });
-            ToTable("PessoaJuridicas");
+            ToTable("PessoasJuridicas");
         }
     }
 }

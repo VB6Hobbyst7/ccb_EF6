@@ -25,17 +25,12 @@ namespace Repository
             var pessoaFisica = new List<PessoaFisica>();
             var sql = "SELECT * FROM dbo.PessoaFisicas f " +
                 "LEFT JOIN dbo.PessoaFisica_Endereco x ON x.PessoaFisicaId = f.Id " +
-                "LEFT JOIN dbo.Enderecos e ON e.Id = x.EnderecoId " +
                 "WHERE f.Id = @sid; ";
             con.Query<PessoaFisica, Endereco, PessoaFisica>(sql, (f, e) =>
             {
                 if (f != null && !pessoaFisica.Exists(src => src.Id == f.Id))
                 {
                     pessoaFisica.Add(f);
-                }
-                if (e != null)
-                {
-                    pessoaFisica[0].AdicionarEndereco(e);
                 }
                 return pessoaFisica.FirstOrDefault();
             }, new { sid = id });

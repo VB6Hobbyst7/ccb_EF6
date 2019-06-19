@@ -19,21 +19,14 @@ namespace Models.EntityConfig
                 .IsRequired()
                 .HasMaxLength(11);
 
-            HasMany(pf => pf.Endereco)
-               .WithMany()
-               .Map(me =>
-               {
-                   me.MapLeftKey("PessoaFisicaId");
-                   me.MapRightKey("EnderecoId");
-                   me.ToTable("PessoaFisica_Endereco");
-               }); //.MapToStoredProcedures(s => s.Insert(i => i.HasName("adicionar_endereco_pessoaFisica")
+                   //.MapToStoredProcedures(s => s.Insert(i => i.HasName("adicionar_endereco_pessoaFisica")
                    //              .LeftKeyParameter(p => p.Id, "pessoaFisica_Id")
                    //              .RightKeyParameter(t => t.Id, "endereco_Id"))
                    //.Delete(d => d.HasName("remover_endereco_pessoaFisica")
                    //              .LeftKeyParameter(p => p.Id, "pessoaFisica_Id")
                    //              .RightKeyParameter(t => t.Id, "endereco_Id")));
 
-            ToTable("PessoaFisicas");
+            ToTable("PessoasFisicas");
         }
     }
 }

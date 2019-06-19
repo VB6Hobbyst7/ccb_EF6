@@ -10,17 +10,17 @@ namespace Repository
 {
     public class RepositoryPessoa : RepositoryBase<Pessoa>
     {
-
         public RepositoryPessoa() : base()
         {
 
         }
-        public IEnumerable<Pessoa> ObterTodos()
+
+        public static IEnumerable<Pessoa> ObterTodos()
         {
             var pessoa = new List<Pessoa>();
             var sql = "SELECT * FROM Pessoas p " +
-                "LEFT JOIN PessoaFisicas f ON f.Id = p.Id " +
-                "LEFT JOIN PessoaJuridicas j ON j.Id = p.Id ";
+                "LEFT JOIN PessoasFisicas f ON f.Id = p.Id " +
+                "LEFT JOIN PessoasJuridicas j ON j.Id = p.Id ";
             using (var context = new LoyaltyDB())
             {
                 var con = context.Database.Connection;
@@ -56,25 +56,23 @@ namespace Repository
             return dbSet.Find(id);
         }
 
-        public static Pessoa ObterPorId(string id)
+        public static Pessoa ObterPorId(Guid id)
         {
-            Guid guid = new Guid(id);
-
             var pessoa = new List<Pessoa>();
             var sql = "SELECT * FROM Pessoas p " +
-                "LEFT JOIN PessoaFisicas f ON f.Id = p.Id " +
-                "LEFT JOIN PessoaFisica_Endereco x ON x.PessoaFisicaId = f.Id " +
-                "LEFT JOIN Enderecos e ON e.Id = x.EnderecoId " +
+                "LEFT JOIN PessoasFisicas f ON f.Id = p.Id " +
+                "LEFT JOIN PessoasFisica_Endereco x ON x.PessoasFisicaId = f.Id " +
+                "LEFT JOIN Enderecos e ON e.Id = p.Id " +
                 "WHERE p.Id = @sid;" +
                 "SELECT * FROM Pessoas p " +
-                "LEFT JOIN PessoaJuridicas j ON j.Id = p.Id " +
-                "LEFT JOIN PessoaJuridica_Endereco y ON y.PessoaJuridicaId = j.Id " +
-                "LEFT JOIN Enderecos e ON e.Id = y.EnderecoId " +
+                "LEFT JOIN PessoasJuridicas j ON j.Id = p.Id " +
+                "LEFT JOIN PessoasJuridica_Endereco y ON y.PessoasJuridicaId = j.Id " +
+                "LEFT JOIN Enderecos e ON e.Id = p.Id " +
                 "WHERE p.Id = @sid";
             using (var context = new LoyaltyDB())
             {
                 var con = context.Database.Connection;
-                using (var multi = con.QueryMultiple(sql, new { sid = guid }))
+                using (var multi = con.QueryMultiple(sql, new { sid = id }))
                 {
                     var pessoaFisica = multi.Read<Pessoa, PessoaFisica, Endereco, Pessoa>((p, f, e) =>
                     {
@@ -85,7 +83,7 @@ namespace Repository
                         }
                         if (e != null)
                         {
-                            pessoa[0].PessoaFisica.Endereco.Add(e);
+                            pessoa[0].Endereco = e;
                         }
                         return pessoa.FirstOrDefault();
                     });
@@ -107,7 +105,7 @@ namespace Repository
                                 }
                                 if (e != null)
                                 {
-                                    pessoa[i].PessoaJuridica.Endereco.Add(e);
+                                    pessoa[0].Endereco = e;
                                 }
                             }
                         }

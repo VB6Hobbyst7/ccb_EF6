@@ -199,7 +199,44 @@ namespace DAL.Migrations
                         Estado = c.String(nullable: false, maxLength: 2, storeType: "nvarchar"),
                         Cep = c.String(unicode: false),
                     })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pessoas", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
+                "dbo.Pessoas",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        DataCadastro = c.DateTime(nullable: false, precision: 0),
+                        TipoPessoa = c.Int(nullable: false),
+                        Ativo = c.Boolean(nullable: false),
+                    })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.PessoasFisicas",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        Nome = c.String(nullable: false, maxLength: 150, storeType: "nvarchar"),
+                        CPF = c.String(nullable: false, maxLength: 11, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pessoas", t => t.Id)
+                .Index(t => t.Id);
+            
+            CreateTable(
+                "dbo.PessoasJuridicas",
+                c => new
+                    {
+                        Id = c.Guid(nullable: false),
+                        RazaoSocial = c.String(nullable: false, maxLength: 150, storeType: "nvarchar"),
+                        CNPJ = c.String(nullable: false, maxLength: 15, storeType: "nvarchar"),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Pessoas", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.Fornecedores",
@@ -225,99 +262,30 @@ namespace DAL.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.PessoaFisicas",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        Nome = c.String(nullable: false, maxLength: 150, storeType: "nvarchar"),
-                        CPF = c.String(nullable: false, maxLength: 11, storeType: "nvarchar"),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pessoas", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
-                "dbo.Pessoas",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        DataCadastro = c.DateTime(nullable: false, precision: 0),
-                        TipoPessoa = c.Int(nullable: false),
-                        Ativo = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.PessoaJuridicas",
-                c => new
-                    {
-                        Id = c.Guid(nullable: false),
-                        RazaoSocial = c.String(nullable: false, maxLength: 150, storeType: "nvarchar"),
-                        CNPJ = c.String(nullable: false, maxLength: 15, storeType: "nvarchar"),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pessoas", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
-                "dbo.PessoaFisica_Endereco",
-                c => new
-                    {
-                        PessoaFisicaId = c.Guid(nullable: false),
-                        EnderecoId = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.PessoaFisicaId, t.EnderecoId })
-                .ForeignKey("dbo.PessoaFisicas", t => t.PessoaFisicaId)
-                .ForeignKey("dbo.Enderecos", t => t.EnderecoId)
-                .Index(t => t.PessoaFisicaId)
-                .Index(t => t.EnderecoId);
-            
-            CreateTable(
-                "dbo.PessoaJuridica_Endereco",
-                c => new
-                    {
-                        PessoaJuridicaId = c.Guid(nullable: false),
-                        EnderecoId = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.PessoaJuridicaId, t.EnderecoId })
-                .ForeignKey("dbo.PessoaJuridicas", t => t.PessoaJuridicaId)
-                .ForeignKey("dbo.Enderecos", t => t.EnderecoId)
-                .Index(t => t.PessoaJuridicaId)
-                .Index(t => t.EnderecoId);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.PessoaJuridicas", "Id", "dbo.Pessoas");
-            DropForeignKey("dbo.PessoaJuridica_Endereco", "EnderecoId", "dbo.Enderecos");
-            DropForeignKey("dbo.PessoaJuridica_Endereco", "PessoaJuridicaId", "dbo.PessoaJuridicas");
-            DropForeignKey("dbo.PessoaFisicas", "Id", "dbo.Pessoas");
-            DropForeignKey("dbo.PessoaFisica_Endereco", "EnderecoId", "dbo.Enderecos");
-            DropForeignKey("dbo.PessoaFisica_Endereco", "PessoaFisicaId", "dbo.PessoaFisicas");
+            DropForeignKey("dbo.PessoasJuridicas", "Id", "dbo.Pessoas");
+            DropForeignKey("dbo.PessoasFisicas", "Id", "dbo.Pessoas");
+            DropForeignKey("dbo.Enderecos", "Id", "dbo.Pessoas");
             DropForeignKey("dbo.BordadoLinha", "LinhaCodigo", "dbo.Linha");
             DropForeignKey("dbo.BordadoLinha", "BordadoId", "dbo.Bordados");
             DropForeignKey("dbo.Transaction", "UserID", "dbo.User");
             DropForeignKey("dbo.Transaction", "CustomerID", "dbo.Account");
             DropForeignKey("dbo.Account", "CustomerID", "dbo.Customer");
-            DropIndex("dbo.PessoaJuridica_Endereco", new[] { "EnderecoId" });
-            DropIndex("dbo.PessoaJuridica_Endereco", new[] { "PessoaJuridicaId" });
-            DropIndex("dbo.PessoaFisica_Endereco", new[] { "EnderecoId" });
-            DropIndex("dbo.PessoaFisica_Endereco", new[] { "PessoaFisicaId" });
-            DropIndex("dbo.PessoaJuridicas", new[] { "Id" });
-            DropIndex("dbo.PessoaFisicas", new[] { "Id" });
+            DropIndex("dbo.PessoasJuridicas", new[] { "Id" });
+            DropIndex("dbo.PessoasFisicas", new[] { "Id" });
+            DropIndex("dbo.Enderecos", new[] { "Id" });
             DropIndex("dbo.BordadoLinha", new[] { "LinhaCodigo" });
             DropIndex("dbo.BordadoLinha", new[] { "BordadoId" });
             DropIndex("dbo.Transaction", new[] { "UserID" });
             DropIndex("dbo.Transaction", new[] { "CustomerID" });
             DropIndex("dbo.Account", new[] { "CustomerID" });
-            DropTable("dbo.PessoaJuridica_Endereco");
-            DropTable("dbo.PessoaFisica_Endereco");
-            DropTable("dbo.PessoaJuridicas");
-            DropTable("dbo.Pessoas");
-            DropTable("dbo.PessoaFisicas");
             DropTable("dbo.Fornecedores");
+            DropTable("dbo.PessoasJuridicas");
+            DropTable("dbo.PessoasFisicas");
+            DropTable("dbo.Pessoas");
             DropTable("dbo.Enderecos");
             DropTable("dbo.Cliente");
             DropTable("dbo.Linha");

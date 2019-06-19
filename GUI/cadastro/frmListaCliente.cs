@@ -46,9 +46,7 @@ namespace ccb_ef6
         {
             IEnumerable<Pessoa> PessoaList = new List<Pessoa>();
 
-            //PessoaList = _service.ObterTodos();
-
-            PessoaList = ClienteServices.GetAll();
+            PessoaList = RepositoryPessoa.ObterTodos();
 
             dgRegistros.DataSource = PessoaList;
 
