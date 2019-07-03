@@ -5,12 +5,13 @@ namespace Models
 {
     public class PessoaJuridica
     {
-        public PessoaJuridica()
-        {
-            Id = Guid.NewGuid();
+        //public PessoaJuridica()
+        //{
+        //    Id = Guid.NewGuid();
         //    Endereco = new List<Endereco>();
-        }
-        public Guid Id { get; set; }
+        //}
+        //public Guid Id { get; set; }
+        public int Id { get; set; }
         public string RazaoSocial { get; set; }
         public string CNPJ { get; set; }
 

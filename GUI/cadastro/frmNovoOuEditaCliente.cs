@@ -79,7 +79,7 @@ namespace ccb_ef6
             };
 
             if (pessoa != null)
-                endereco.Id = pessoa.Id;
+                endereco.EnderecoId = pessoa.Id;
             if (rgPfPj.SelectedIndex == 0)  //PF
             {
                 // PF de Pessoa
@@ -118,6 +118,7 @@ namespace ccb_ef6
                 pessoa.TipoPessoa = TipoPessoa.PessoaJuridica;
             }
 
+            //pessoa.DataCadastro = DateTime.Now;
             pessoa.Ativo = chkAtivo.Checked;
             pessoa.Endereco = endereco;
         }
@@ -163,6 +164,7 @@ namespace ccb_ef6
                 Pessoa pessoa = new Pessoa();
 
                AssignDataFromTextBox(pessoa);
+                pessoa.DataCadastro = DateTime.Now;
 
                 try
                 {

@@ -4,11 +4,12 @@ namespace Models
 {
     public class Endereco
     {
-        public Endereco()
-        {
-            Id = Guid.NewGuid();
-        }
-        public Guid Id { get; set; }
+        //public Endereco()
+        //{
+        //    Id = Guid.NewGuid();
+        //}
+        //public Guid Id { get; set; }
+        public int EnderecoId { get; set; }
         public string Logradouro { get; set; }
         public string Complemento { get; set; }
         public string Numero { get; set; }

@@ -10,7 +10,7 @@ namespace Models.EntityConfig
     {
         public EnderecoConfig()
         {
-            HasKey(e => e.Id);
+            HasKey(e => e.EnderecoId);
             Property(e => e.Bairro)
                 .IsRequired()
                 .HasMaxLength(50);

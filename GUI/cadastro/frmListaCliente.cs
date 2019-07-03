@@ -94,9 +94,10 @@ namespace ccb_ef6
 
             if (!gvRegistros.IsValidRowHandle(gvRegistros.FocusedRowHandle))
                 return;
-            Guid guid = new Guid(Convert.ToString(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id")));
+             
+            int id = Convert.ToInt32(gvRegistros.GetRowCellValue(gvRegistros.FocusedRowHandle, "Id"));
             //var pessoa = _service.ObterPorIdPessoa(guid);
-            var pessoa = PessoaServices.FindById(guid);  
+            var pessoa = PessoaServices.FindById(id);  
 
             //PessoaViewModel pessoa = _service.ObterPorIdPessoa (guid);
 

@@ -49,6 +49,7 @@ namespace BLL
         {
             using (LoyaltyDB db = new LoyaltyDB())
             {
+                
                 db.Entry(Pessoa).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
@@ -71,7 +72,7 @@ namespace BLL
             }
         }
 
-        public static Pessoa FindById(Guid id)
+        public static Pessoa FindById(int id)
         {
             Pessoa pessoa = null;
             //Guid guid = new Guid(id);

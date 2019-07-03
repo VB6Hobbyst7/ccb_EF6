@@ -190,7 +190,7 @@ namespace DAL.Migrations
                 "dbo.Enderecos",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        EnderecoId = c.Int(nullable: false),
                         Logradouro = c.String(nullable: false, maxLength: 200, storeType: "nvarchar"),
                         Complemento = c.String(unicode: false),
                         Numero = c.String(nullable: false, maxLength: 10, storeType: "nvarchar"),
@@ -199,15 +199,15 @@ namespace DAL.Migrations
                         Estado = c.String(nullable: false, maxLength: 2, storeType: "nvarchar"),
                         Cep = c.String(unicode: false),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Pessoas", t => t.Id)
-                .Index(t => t.Id);
+                .PrimaryKey(t => t.EnderecoId)
+                .ForeignKey("dbo.Pessoas", t => t.EnderecoId)
+                .Index(t => t.EnderecoId);
             
             CreateTable(
                 "dbo.Pessoas",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false, identity: true),
                         DataCadastro = c.DateTime(nullable: false, precision: 0),
                         TipoPessoa = c.Int(nullable: false),
                         Ativo = c.Boolean(nullable: false),
@@ -218,7 +218,7 @@ namespace DAL.Migrations
                 "dbo.PessoasFisicas",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false),
                         Nome = c.String(nullable: false, maxLength: 150, storeType: "nvarchar"),
                         CPF = c.String(nullable: false, maxLength: 11, storeType: "nvarchar"),
                     })
@@ -230,7 +230,7 @@ namespace DAL.Migrations
                 "dbo.PessoasJuridicas",
                 c => new
                     {
-                        Id = c.Guid(nullable: false),
+                        Id = c.Int(nullable: false),
                         RazaoSocial = c.String(nullable: false, maxLength: 150, storeType: "nvarchar"),
                         CNPJ = c.String(nullable: false, maxLength: 15, storeType: "nvarchar"),
                     })
@@ -268,7 +268,7 @@ namespace DAL.Migrations
         {
             DropForeignKey("dbo.PessoasJuridicas", "Id", "dbo.Pessoas");
             DropForeignKey("dbo.PessoasFisicas", "Id", "dbo.Pessoas");
-            DropForeignKey("dbo.Enderecos", "Id", "dbo.Pessoas");
+            DropForeignKey("dbo.Enderecos", "EnderecoId", "dbo.Pessoas");
             DropForeignKey("dbo.BordadoLinha", "LinhaCodigo", "dbo.Linha");
             DropForeignKey("dbo.BordadoLinha", "BordadoId", "dbo.Bordados");
             DropForeignKey("dbo.Transaction", "UserID", "dbo.User");
@@ -276,7 +276,7 @@ namespace DAL.Migrations
             DropForeignKey("dbo.Account", "CustomerID", "dbo.Customer");
             DropIndex("dbo.PessoasJuridicas", new[] { "Id" });
             DropIndex("dbo.PessoasFisicas", new[] { "Id" });
-            DropIndex("dbo.Enderecos", new[] { "Id" });
+            DropIndex("dbo.Enderecos", new[] { "EnderecoId" });
             DropIndex("dbo.BordadoLinha", new[] { "LinhaCodigo" });
             DropIndex("dbo.BordadoLinha", new[] { "BordadoId" });
             DropIndex("dbo.Transaction", new[] { "UserID" });

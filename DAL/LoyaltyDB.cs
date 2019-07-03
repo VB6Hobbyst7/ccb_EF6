@@ -68,7 +68,6 @@ namespace DAL
                .Where(mo => mo.Name == mo.ReflectedType.Name + "Id")
                .Configure(mo => mo.IsKey());
 
-
             base.OnModelCreating(modelBuilder);
         }
     }
