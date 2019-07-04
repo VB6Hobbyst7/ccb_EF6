@@ -70,7 +70,6 @@
     <Compile Include="BordadoServices.cs" />
     <Compile Include="ClienteServices.cs" />
     <Compile Include="CustomerServices.cs" />
-    <Compile Include="FornecedorServices.cs" />
     <Compile Include="LinhaServices.cs" />
     <Compile Include="PessoaServices.cs" />
     <Compile Include="RegexUtilities.cs" />

@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using Models;
 using BLL;
-using Models.ViewModel;
 
 namespace ccb_ef6
 {
@@ -97,7 +96,7 @@ namespace ccb_ef6
                     pessoaFisica.Id = pessoa.Id;
 
                 pessoa.PessoaFisica = pessoaFisica;
-                pessoa.TipoPessoa =  TipoPessoa.PessoaFisica;
+                pessoa.TipoPessoa =  TipoPessoa.Fisica;
             }
             else
             {
@@ -115,7 +114,7 @@ namespace ccb_ef6
                 if (pessoa != null)
                     pessoaJuridica.Id = pessoa.Id;
                 pessoa.PessoaJuridica = pessoaJuridica;
-                pessoa.TipoPessoa = TipoPessoa.PessoaJuridica;
+                pessoa.TipoPessoa = TipoPessoa.Juridica;
             }
 
             //pessoa.DataCadastro = DateTime.Now;
@@ -134,7 +133,7 @@ namespace ccb_ef6
             txtCidade.Text = pessoa.Endereco.Cidade;
             txtUf.Text = pessoa.Endereco.Estado;
 
-            if (pessoa.TipoPessoa  ==  TipoPessoa.PessoaFisica)
+            if (pessoa.TipoPessoa  ==  TipoPessoa.Fisica)
             {
                 rgPfPj.SelectedIndex = 0;
                 txtCpfCnpj.Text = pessoa.PessoaFisica.CPF;

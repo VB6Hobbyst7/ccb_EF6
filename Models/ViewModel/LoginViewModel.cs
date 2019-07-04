@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class LoginViewModel
     {

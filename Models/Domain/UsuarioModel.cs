@@ -1,9 +1,10 @@
 ﻿using Dapper;
+using Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class UsuarioModel
     {

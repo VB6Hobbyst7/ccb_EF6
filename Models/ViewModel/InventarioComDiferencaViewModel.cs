@@ -1,4 +1,4 @@
-﻿namespace ControleEstoque.Web.Models
+﻿namespace Models
 {
     public class InventarioComDiferencaViewModel
     {

@@ -5,7 +5,6 @@ using DevExpress.XtraGrid.Columns;
 using System.Windows.Forms;
 using Repository;
 using BLL;
-using Models.ViewModel;
 
 namespace ccb_ef6
 {
@@ -44,9 +43,9 @@ namespace ccb_ef6
 
         private void CarregaRegistros()
         {
-            IEnumerable<Pessoa> PessoaList = new List<Pessoa>();
+            IEnumerable<FornecedorModel> PessoaList = new List<FornecedorModel>();
 
-            PessoaList = RepositoryPessoa.ObterTodos();
+            PessoaList = FornecedorModel.RecuperarLista();
 
             dgRegistros.DataSource = PessoaList;
 

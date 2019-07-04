@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Models;
-using Models.ViewModel;
 
 namespace AutoMapper
 {

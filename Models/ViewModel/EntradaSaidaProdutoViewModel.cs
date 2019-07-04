@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class EntradaSaidaProdutoViewModel
     {

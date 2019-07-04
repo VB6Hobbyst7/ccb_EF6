@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class FornecedorViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class GrupoProdutoViewModel
     {

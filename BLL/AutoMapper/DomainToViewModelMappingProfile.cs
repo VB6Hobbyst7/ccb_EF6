@@ -1,5 +1,4 @@
 ﻿using Models;
-using Models.ViewModel;
 using AutoMapper;
 
 namespace AutoMapper

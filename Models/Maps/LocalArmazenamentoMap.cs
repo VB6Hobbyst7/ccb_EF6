@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class LocalArmazenamentoMap : EntityTypeConfiguration<LocalArmazenamentoModel>
     {

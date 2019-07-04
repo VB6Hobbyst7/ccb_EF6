@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Models;
 using Repository;
-using Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,7 +36,7 @@ namespace BLL
             pessoa.DataCadastro = DateTime.Now.Date;
             switch (pessoa.TipoPessoa)
             {
-                case TipoPessoa.PessoaFisica:
+                case TipoPessoa.Fisica:
                     var pessoaFisica = Mapper.Map<PessoaFisica>(cliente.PessoaFisica);
                     pessoa.Endereco = endereco;
                     pessoa.PessoaFisica = pessoaFisica;
@@ -47,7 +46,7 @@ namespace BLL
                     //break;
                     //}
                     break;
-                case TipoPessoa.PessoaJuridica:
+                case TipoPessoa.Juridica:
                     var pessoaJuridica = Mapper.Map<PessoaJuridica>(cliente.PessoaJuridica);
                     pessoa.Endereco = endereco;
                     pessoa.PessoaJuridica = pessoaJuridica;

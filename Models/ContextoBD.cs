@@ -1,10 +1,25 @@
-﻿using System.Data.Entity;
+﻿using Models;
+using Models.EntityConfig;
+using MySql.Data;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class ContextoBD : DbContext
     {
-        public ContextoBD() : base("name=principal")
+        public static string GetConnectionString(string dbName, string dbConnectionStringName)
+        {
+            var connString = ConfigurationManager.ConnectionStrings[dbConnectionStringName].ConnectionString.ToString();
+
+            return String.Format(connString, dbName);
+        }
+
+        public ContextoBD() : base(GetConnectionString("ccb_ef6", "LocalDB"))
         {
         }
 

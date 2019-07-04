@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ControleEstoque.Web.Models
+namespace Models
 {
     public class EntradaProdutoModel
     {

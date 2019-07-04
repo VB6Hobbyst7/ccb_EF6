@@ -84,7 +84,7 @@ namespace BLL
                 if (pessoa != null)
                 {
                     pessoa.Endereco = db.Enderecos.Find(id);
-                    if (pessoa.TipoPessoa == TipoPessoa.PessoaFisica)
+                    if (pessoa.TipoPessoa == TipoPessoa.Fisica)
                         pessoa.PessoaFisica = db.PessoasFisicas.Find(id);
                     else
                         pessoa.PessoaJuridica = db.PessoasJuridicas.Find(id);
