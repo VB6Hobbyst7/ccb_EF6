@@ -77,7 +77,7 @@ namespace ccb_ef6
 
         private void ClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmListaCliente frm = new frmListaCliente
+            frmListaFornecedor frm = new frmListaFornecedor
             {
                 MdiParent = this
             };

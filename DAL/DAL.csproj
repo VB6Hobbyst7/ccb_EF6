@@ -72,9 +72,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context.cs" />
     <Compile Include="LoyaltyDB.cs" />
     <Compile Include="LoyaltyDBInitializer.cs" />
+    <Compile Include="Migrations\201907050001585_Inicial.cs" />
+    <Compile Include="Migrations\201907050001585_Inicial.Designer.cs">
+      <DependentUpon>201907050001585_Inicial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +90,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201907050001585_Inicial.resx">
+      <DependentUpon>201907050001585_Inicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

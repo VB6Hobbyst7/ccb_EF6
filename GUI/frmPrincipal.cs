@@ -298,7 +298,7 @@ namespace GUI
         private void btnCliente_ItemClick(object sender, ItemClickEventArgs e)
         {
             MostraAgaurde("Aguarde", "Abrindo o formulário...");
-            frmListaCliente frm = new frmListaCliente
+            frmListaFornecedor frm = new frmListaFornecedor
             {
                 MdiParent = this
             };

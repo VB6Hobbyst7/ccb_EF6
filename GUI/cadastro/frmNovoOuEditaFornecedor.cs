@@ -5,7 +5,7 @@ using BLL;
 
 namespace ccb_ef6
 {
-    public partial class frmNovoOuEditaCliente : Form
+    public partial class frmNovoOuEditaFornecedor : Form
     {
         protected Service_ccb _service;
         private ClienteViewModel cliente = null;
@@ -13,12 +13,12 @@ namespace ccb_ef6
         private Pessoa pessoa = null;
         private bool IsNewPessoa;
 
-        public frmNovoOuEditaCliente()
+        public frmNovoOuEditaFornecedor()
         {
             InitializeComponent();
         }
 
-        public frmNovoOuEditaCliente(Pessoa pessoa)
+        public frmNovoOuEditaFornecedor(Pessoa pessoa)
         {
             InitializeComponent();
             this.pessoa = pessoa;
@@ -239,7 +239,7 @@ namespace ccb_ef6
             PfOuPj(0);
         }
 
-        private void frmNovoOuEditaCliente_Load(object sender, EventArgs e)
+        private void frmNovoOuEditaFornecedor_Load(object sender, EventArgs e)
         {
             _service = new Service_ccb();
 
